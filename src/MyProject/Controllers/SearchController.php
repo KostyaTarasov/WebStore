@@ -15,16 +15,8 @@ class SearchController extends AbstractController
     {
         if ($_POST['search'] != "") {
             try {
-                $this->foundResult = SearchModel::searchArticle($_POST);
                 $_SESSION['postSearch'] = $_POST;
-                $_SESSION['countArticle'] = count($this->foundResult);
-                // foreach ($this->foundResult as $item2) {
-                //     foreach ($item2 as $item) {
-                //         $b[] = $item;
-                //     }
-                //     $numberIdArticles[] = $b[0];
-                //     unset($b);
-                // }
+                $_SESSION['countArticle'] = SearchModel::countArticles($_POST);
             } catch (InvalidArgumentException $e) { // Если поиск ничего не нашёл
                 // подключаем файл с нужным шаблоном, получив путь до него, склеив пути до папки с шаблонами и именем конкретного шаблона
                 // поток вывода(html, echo, вывод данных) положить во временный буфер вывода
@@ -34,8 +26,8 @@ class SearchController extends AbstractController
                 ]);
                 return;
             }
-        } else {
-            header('Location: /'); // Если пользователь не ввёл ничего в поисковик
+        } else { // Если пользователь не ввёл ничего в поисковик
+            header('Location: /'); 
             return;
         }
         $this->page(1);
@@ -43,14 +35,10 @@ class SearchController extends AbstractController
 
     public function page(int $pageNum) // Экшн страниц статей
     {
-        //$pagesCount = SearchModel::getPagesCount(5, $this->foundResult);
         $pagesCount = SearchModel::getPagesCount(5, $_SESSION['countArticle']);
         $this->view->renderHtml('main/search.php', [
-
-            'articles' => SearchModel::getPage($pageNum, 5, $_SESSION['postSearch']), // Для вывода только 5 записей
-            //'articles' => $this->foundResult,
-            //'pagesCount' => SearchModel::getPagesCount(5, $this->foundResult), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
-            'pagesCount' => SearchModel::getPagesCount(5, $_SESSION['countArticle']),
+            'articles' => SearchModel::getPage($pageNum, 5, $_SESSION['postSearch']), // Для вывода по 5 записей на n странице
+            'pagesCount' => $pagesCount,
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
             'previousPageLink' => $pageNum > 1
                 ? '/search/' . ($pageNum - 1)

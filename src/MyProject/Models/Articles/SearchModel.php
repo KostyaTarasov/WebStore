@@ -12,52 +12,44 @@ class SearchModel
     private const TABLE_USERS = 'users';
     private const COLUMN_NAME = "(`name`,' ',`text`)"; // Чтобы искать в данных столбцах
 
-    public static function searchArticle(array $valueFromPost)
+    public static function countArticles(array $valueFromPost)
     {
-        $valueFromPost = $valueFromPost['search'];
-        $resultSearch = self::searchArticleSQL($valueFromPost);
-        if ($resultSearch === null) {
-            throw new InvalidArgumentException(
-                "По запросу <b>$valueFromPost</b>  ничего не найдено. <br><br>
+        $value = $valueFromPost['search'];
+        $db = Db::getInstance();
+        $resultSearch = $db->query(
+            'SELECT COUNT(*) FROM `' . self::TABLE_ARTICLES . '` WHERE CONCAT ' . self::COLUMN_NAME . ' LIKE  ' . ':value' . ';',
+            [':value' => "%$value%"],
+            static::class
+        );
+
+        foreach ($resultSearch[0] as $count) {
+            if ($count == 0) { // Если ничего не найдено
+                throw new InvalidArgumentException(
+                    "По запросу <b>$value</b>  ничего не найдено. <br><br>
             Рекомендации:<br><br>
             <li>Убедитесь, что все слова написаны без ошибок.</li> 
             <li>Попробуйте использовать другие ключевые слова.</li>
             <li>Попробуйте использовать более популярные ключевые слова.</li>"
-            );
+                );
+                return null;
+            }
+            return $count;
         }
-        return $resultSearch;
     }
 
-    //* Поиск пользователя
-    //* Поиск дубликатов, проверка, что пользователя с такими email и nickname нет в столбце базы данных  SQL
-    public static function searchArticleSQL($value) // Параметры(имя столбца, по которому искать; значение введённое пользователем)
-    {
-        $db = Db::getInstance();
-        $resultSearch = $db->query(
-            'SELECT * FROM `' . self::TABLE_ARTICLES . '` WHERE CONCAT ' . self::COLUMN_NAME . ' LIKE  ' . ':value' . ' ORDER BY id DESC;',
-            [':value' => "%$value%"],
-            static::class
-        );
-        if ($resultSearch === []) { // Если ничего не найдено
-            return null; // вернётся null
-        }
-        return $resultSearch;
-    }
-
-    # Получение количества страниц (для пагинации). Метод будет принимать на вход количество записей на одной странице.
+    # Получение количества страниц (для пагинации). Метод будет принимать на вход количество записей на одной странице и общее количество статей
     public static function getPagesCount(int $itemsPerPage, int $countArticle)
     {
         return ceil($countArticle / $itemsPerPage);
     }
 
 
-    //* Получение записей на n-ой страничке
+    //* Получение статей на n-ой странице
     /** 
      * @return static[]
      */
     public static function getPage(int $pageNum, int $itemsPerPage, array $valueFromPost) // параметры: номер страницы, количество записей на одной странице .
     {
-        $columnName = "(`name`,' ',`text`)";
         $skip = ($pageNum - 1) * $itemsPerPage;
         $value = $valueFromPost['search'];
         $db = Db::getInstance();
