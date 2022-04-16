@@ -4,7 +4,6 @@ namespace MyProject\Services;
 
 use MyProject\Exception\DbException;
 
-
 class Db
 {
     private static $instance;
@@ -17,7 +16,6 @@ class Db
 
     {
         $dbOptions = (require __DIR__ . '/../../settings.php')['db'];
-
         try {
             $this->pdo = new \PDO(
                 'mysql:host=' . $dbOptions['host'] . ';dbname=' . $dbOptions['dbname'],
@@ -46,17 +44,14 @@ class Db
     {
         $sth = $this->pdo->prepare($sql);
         $result = $sth->execute($params); // Запускает подготовленный запрос на выполнение, где $params - массив значений, содержащий столько элементов, сколько параметров заявлено в SQL-запросе (value введённое пользователем).
-
         if (false === $result) {
             return null;
         }
-
         // return $sth->fetchAll();
 
         # для ORM
         return $sth->fetchAll(\PDO::FETCH_CLASS, $className); // В метод fetchAll() мы передали специальную константу - \PDO::FETCH_CLASS, она говорит о том, что нужно вернуть результат в виде объектов какого-то класса. Второй аргумент – это имя класса, которое мы можем передать в метод query().
         // в результате мы получили массив объектов класса stdClass, у которых есть public-свойства, соответствующие именам столбцов в базе данных. В PHP мы можем задавать свойства объектов на лету, даже если они не были определены в классе. Это называется динамическим объявлением свойств. Если свойства у объекта нет, но мы попытаемся его задать – будет создано новое публичное свойство.
-
 
         // Второй способ через цикл, возвращает массив строк с необходимыми столбцами бд:
         /*       
