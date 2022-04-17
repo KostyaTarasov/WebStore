@@ -20,6 +20,9 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     /** @var string */
     protected  $createdAt;
 
+
+    protected  $content;
+
     # Cделаем геттеры для свойств id, name и text:
     #Теперь мы можем работать с этими объектами в коде. Например – обращаться к геттерам в шаблонах: templates/main/main.php
     /**
@@ -61,6 +64,10 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         return User::getById($this->authorId);
     }
 
+    public function getImage() // Используется в templates/main/main.php
+    {
+        return $this->content; // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+    }
 
     public function setName($name1): string // Устанавливаем новое значение для свойства $this->name
     {
@@ -70,6 +77,22 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     public function setText($text1): string
     {
         return $this->text = $text1;
+    }
+
+    public function setImages()
+    {
+        if (!empty($_FILES['image']['name'])) {
+            // Проверяем, что при загрузке не произошло ошибок
+            if ($_FILES['image']['error'] == 0) {
+                // Если файл загружен успешно, то проверяем - графический ли он
+                if (substr($_FILES['image']['type'], 0, 5) == 'image') {
+                    // Читаем содержимое файла
+                    return $this->content = file_get_contents($_FILES['image']['tmp_name']);
+                }
+            }
+        } else {
+            return $this->content = " "; // Для INSERT необходимо значение. Затем в шаблоне view при выводе изображения будет проверка на пустое значение. Где " " равен "IA=="
+        }
     }
 
     public function setAuthorId($authorId1): string
@@ -102,6 +125,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         $article->setAuthor($author);
         $article->setName($fields['name']);
         $article->setText($fields['text']);
+        $article->setImages(); // Загруженное изображение кладём в массив данных
 
         $article->save();
 
@@ -121,7 +145,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
 
         $this->setName($fields['name']);
         $this->setText($fields['text']);
-
+        $this->setImages(); // Загруженное изображение кладём в массив данных
         $this->save();
 
         return $this;

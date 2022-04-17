@@ -53,9 +53,7 @@ class ArticlesController extends AbstractController
         // var_dump($propertiesNames);
         // echo "</pre>";
 
-
-        $image=Images::loadImage();
-
+        $image = Images::loadImage($articleId); // Для рендеринга изображения из бд
 
         # Получение нужного юзера:
         //$articleAuthor = User::getById($article->getAuthorId());
@@ -98,8 +96,8 @@ class ArticlesController extends AbstractController
             header('Location: /articles/' . $article->getId(), true, 302);
             exit();
         }
-
-        $this->view->renderHtml('articles/edit.php', ['article' => $article]);
+        $image = Images::loadImage($articleId);
+        $this->view->renderHtml('articles/edit.php', ['article' => $article, 'image' => $image]);
 
 
         // $article->setName('Новое название статьи5'); // Редактируем свойства у объекта Article
@@ -172,7 +170,6 @@ class ArticlesController extends AbstractController
         }
 
         $article->delete(); // Вызов метода удаления статьи
-        echo ' Статья успешно удалена' . "<br>";
-        var_dump($article);
+        header('Location: /');
     }
 }

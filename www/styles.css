@@ -36,3 +36,10 @@ a,
 a:visited {
   color: darkgreen;
 }
+
+.image {
+  width: 50%; 
+  height: 50%;
+  margin: auto;
+  display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
+}

@@ -9,13 +9,15 @@ include __DIR__ . '/../header.php';
 <?php if (!empty($error)) : ?>
     <div style="color: red;"><?= $error ?></div>
 <?php endif; ?>
-<form action="/articles/edit/<?= $article->getId() ?>" method="post">
+<form enctype="multipart/form-data" action="/articles/edit/<?= $article->getId() ?>" method="post">
     <label for="name">Название статьи</label><br>
     <input type="text" name="name" id="name" value="<?= $_POST['name'] ?? $article->getName() ?>" size="50"><br>
     <br>
     <label for="text">Текст статьи</label><br>
     <textarea name="text" id="text" rows="10" cols="80"><?= $_POST['text'] ?? $article->getText() ?></textarea><br>
     <br>
+    Изображение: <input type="file" name="image" />
     <input type="submit" value="Обновить">
 </form>
+
 <?php include __DIR__ . '/../footer.php'; ?>

@@ -1,1 +1,0 @@
-<img src="data:image/png;base64,$image" width="400" height="400" alt="" />

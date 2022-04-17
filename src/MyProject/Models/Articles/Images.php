@@ -7,17 +7,16 @@ use MyProject\Services\Db;
 class Images
 {
     private const TABLE_ARTICLES = 'articles';
-    private const COLUMN_NAME = "content";
 
-    public static function loadImage()
+    public static function loadImage(int $id)
     {
-        $id = 39;
         $db = Db::getInstance();
         $image2 = $db->query(
             'SELECT `content` FROM `' . self::TABLE_ARTICLES . '` WHERE id=:id;', // SQL код выбора строки из таблицы
             [':id' => $id], // Параметры
             static::class   // Имя класса
         );
+
         foreach ($image2[0] as $item => $value) {
             $image = $value;
         }

@@ -125,19 +125,21 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         // пишем запрос аналогичный: INSERT INTO `articles`    (`author_id`, `name`, `text`) VALUES (:author_id, :name, :text)
         $sql = 'INSERT INTO ' . static::getTableName() . ' (' . $columnsViaSemicolon . ') VALUES (' . $paramsNamesViaSemicolon . ');';
 
-        echo "<pre>"; // Отобразим полный путь преобразования
-        var_dump($mappedProperties); // Массив изначально
-        var_dump($columns); // `author_id`
-        var_dump($paramsNames); // :author_id
-        var_dump($params2values); // Готовый массив с параметрами
-        var_dump($sql); // Полученная строка SQL
-        echo "</pre>";
+        // echo "<pre>"; // Отобразим полный путь преобразования
+        // var_dump($mappedProperties); // Массив изначально
+        // var_dump($columns); // `author_id`
+        // var_dump($paramsNames); // :author_id
+        // var_dump($params2values); // Готовый массив с параметрами
+        // var_dump($sql); // Полученная строка SQL
+        // echo "</pre>";
 
         # Остаётся выполнить запрос, подставив нужные параметры.
         $db = Db::getInstance();
         $db->query($sql, $params2values, static::class); // запрос (строка sql, готовый массив с параметрами, класс)
         $this->id = $db->getLastInsertId(); // Сохраняем текущее id, чтобы id не был null в выводе массива на экран
-        $this->refresh(); // Сохраняем текущее значение для вывода в массив на экран, в данном примере выводим дату вместо null для ["createdAt":protected]=>NULL
+        $f=$this->id;
+        $f=$this->id;
+        //$this->refresh(); // Сохраняем текущее значение для вывода в массив на экран, в данном примере выводим дату вместо null для ["createdAt":protected]=>NULL
     }
 
     public function delete(): void
