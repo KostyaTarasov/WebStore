@@ -9,8 +9,6 @@ session_start();
 //* Контроллер для поиска
 class SearchController extends AbstractController
 {
-    protected $foundResult;
-
     public function searchFunction() // Имя метода, который указан в routes.php
     {
         if ($_POST['search'] != "") {
@@ -27,7 +25,7 @@ class SearchController extends AbstractController
                 return;
             }
         } else { // Если пользователь не ввёл ничего в поисковик
-            header('Location: /'); 
+            header('Location: /');
             return;
         }
         $this->page(1);

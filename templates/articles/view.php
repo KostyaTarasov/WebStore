@@ -10,4 +10,12 @@ include __DIR__ . '/../header.php'; ?>
     <p><a href="/../articles/edit/<?= $article->getId() ?>">Редактировать статью</a></p>
     <p><a href="/../articles/del/<?= $article->getId() ?>">Удалить данную статью</a></p>
 <?php endif; ?>
+
+<form enctype="multipart/form-data" method="post" action="image.php">
+    Изображение: <input type="file" name="image" />
+    <input type="submit" value="Загрузить" />
+</form>
+
+<img src="data:image/png;base64, <?= $image ?>  " />
+
 <?php include __DIR__ . '/../footer.php'; ?>

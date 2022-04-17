@@ -28,4 +28,6 @@ return [
     '~^users/logOut~' => [\MyProject\Controllers\UsersController::class, 'logOut'],                 // Роут для выхода пользователя          http://localhost:8080/users/login
 
     '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'],                  // Роут для поиска статей                http://learnphp/search
+
+    '~^articles/image.php$~' => [\MyProject\Controllers\LoadImageController::class, 'loadImage'],
 ];

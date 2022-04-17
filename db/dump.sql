@@ -23,6 +23,8 @@ CREATE TABLE `users` (
     `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `articles` ADD `content` BLOB NOT NULL AFTER `created_at`;
+
 INSERT INTO `users` (`id`, `nickname`, `email`, `is_confirmed`, `role`, `password_hash`, `auth_token`, `created_at`) VALUES
 (1, 'admin', 'admin@gmail.com', 1, 'admin', 'hash1', 'token1', '2022-01-31 18:52:29'),
 (2, 'user', 'user@gmail.com', 1, 'user', 'hash2', 'token2', '2021-02-31 18:52:29');

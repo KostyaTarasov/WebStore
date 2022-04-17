@@ -7,6 +7,7 @@ use MyProject\Exceptions\Forbidden;
 use MyProject\Exceptions\NotFoundException;
 use MyProject\Exceptions\UnauthorizedException;
 use MyProject\Models\Articles\Article;
+use MyProject\Models\Articles\Images;
 use MyProject\Models\Users\User;
 
 //* Контроллер для работы со статьями (просмотр, добавление, обновление, удаление статей)
@@ -52,10 +53,15 @@ class ArticlesController extends AbstractController
         // var_dump($propertiesNames);
         // echo "</pre>";
 
+
+        $image=Images::loadImage();
+
+
         # Получение нужного юзера:
         //$articleAuthor = User::getById($article->getAuthorId());
         $this->view->renderHtml('articles/view.php', [
             'article' => $article,
+            'image' => $image,
             //'author' => $articleAuthor
         ]);
     }
