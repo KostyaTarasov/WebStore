@@ -12,7 +12,12 @@ include __DIR__ . '/../header.php'; ?>
 <?php endif; ?>
 
 <?php if (!empty($image) && $image != "IA==") : ?>
-    <img class="image" src="data:image/png;base64, <?= $image ?? null ?>  " />
+    <img class="imageBig" src="data:image/png;base64, <?= $image ?? null ?>  " />
 <?php endif; ?>
 
+<form action="/buy.php" method="GET">
+    <!-- кнопка при помощи которой можно заказать  -->
+    <input type="hidden" name="id" value="<?= $article->getId(); ?>" />
+    <button type="submit">Заказать</button>
+</form>
 <?php include __DIR__ . '/../footer.php'; ?>

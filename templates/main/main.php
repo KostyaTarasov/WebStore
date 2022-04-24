@@ -7,28 +7,40 @@ include __DIR__ . '/../header.php'; ?>
     <input type="submit" value="Искать">
 </form>
 
-<?php foreach ($articles as $article) : ?>
-    <!-- Проход по полученным даннымм -->
-    <h2>
-        <a href="/articles/<?= $article->getId() ?>">
-            <!-- Ccылка на статью для каждого id найденного foreach -->
-            <?= $article->getName() ?>
-        </a> <!-- Вывод имени -->
-    </h2>
-    <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
-    <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
+<div>
+    <table class="table2">
+        <?php foreach (array_chunk($articles, 4) as $value) : ?>
+            <tr>
+                <?php foreach ($value as $item) : ?>
+                    <td class="td2">
+                        <h2>
+                            <a href="/articles/<?= $item->getId() ?>">
+                                <!-- Ccылка на статью для каждого id найденного -->
+                                <?= $item->getName() ?>
+                            </a> <!-- Вывод имени -->
+                        </h2>
+                        <p><?= $item->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
+                        <p>Автор: <?= $item->getAuthor()->getNickname() ?></p>
+                        <?php
+                        $image = base64_encode($item->getImage());
+                        if (!empty($image) && $image != "IA==") : ?>
+                            <img class="imageSmall" src="data:image/png;base64, <?= $image ?? null ?>  " />
+                        <?php endif; ?>
+                        <hr>
+                        <form action="/articles/<?= $item->getId() ?>">
+                            <input type="hidden" />
+                            <button type="submit">Подробнее</button>
+                        </form>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
 
-    <?php
-    $image = base64_encode($article->getImage());
-    if (!empty($image) && $image != "IA==") : ?>
-        <img class="image" src="data:image/png;base64, <?= $image ?? null ?>  " />
-    <?php endif; ?>
 
-    <hr>
-<?php endforeach; ?>
-
-<!-- Пагинация, выводить на каждой странице блога по 5 записей
-SELECT * FROM articles ORDER BY id DESC LIMIT 5 OFFSET 0;
+<!-- Пагинация, выводить на каждой странице по 8 записей
+SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
 -->
 <div style="text-align: center">
     <section>

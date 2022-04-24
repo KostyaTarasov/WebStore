@@ -44,10 +44,11 @@ class MainController extends AbstractController
 
     public function page(int $pageNum) // Экшн страниц статей
     {
-        $pagesCount = Article::getPagesCount(5);
+        $amount=8; // Количество статей на 1 странице
+        $pagesCount = Article::getPagesCount($amount);
         $this->view->renderHtml('main/main.php', [
-            'articles' => Article::getPage($pageNum, 5),
-            'pagesCount' => Article::getPagesCount(5), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
+            'articles' => Article::getPage($pageNum, $amount),
+            'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
 
             'previousPageLink' => $pageNum > 1

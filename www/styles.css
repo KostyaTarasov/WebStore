@@ -1,23 +1,19 @@
 .layout {
   width: 100%;
-  max-width: 70%;
-  margin: auto;
+/*  max-width: 70%;*/ 
   background-color: white;
-  border-collapse: collapse;
-}
-
-.layout tr td {
-  padding: 20px;
-  vertical-align: top;
-  border: solid 1px gray;
 }
 
 .header {
-  font-size: 30px;
+  text-align: center;
+  border: solid 1px rgb(110, 67, 179);
 }
 
 .footer {
   text-align: center;
+  padding: 20px;
+  vertical-align: top;
+  border: solid 1px rgb(250, 163, 64);
 }
 
 .sidebarHeader {
@@ -26,20 +22,40 @@
 
 .sidebar {
   width: 20%;
+  padding: 20px;
+  vertical-align: top;
+  border: solid 1px rgb(250, 163, 64);
 }
 
 .sidebar ul {
   padding-left: 20px;
 }
 
-a,
-a:visited {
-  color: darkgreen;
-}
-
-.image {
-  width: 50%; 
-  height: 50%;
+.imageBig {
+  width: 500px; 
+  height: 500px;
+  object-fit: cover; 
   margin: auto;
   display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
+}
+
+.imageSmall {
+  width: 200px; 
+  height: 200px; 
+  object-fit: cover; 
+  margin: auto;
+  display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
+}
+
+.table2 {
+  border: 3mm solid rgb(238, 235, 235); 
+  vertical-align: top;
+}
+
+.td2 {
+  width:25%;
+  text-align: center;
+  padding: 20px;
+  vertical-align: top;
+  border: 3mm solid rgb(238, 235, 235); 
 }
