@@ -125,6 +125,14 @@ foreach ($list as $item => $value) // Где $list массив, новые пе
 }
 
 
+foreach ($list as $element => $value) {
+    if (is_numeric($value)) { // Если число
+        unset($list[$element]); // Удаляем для указанного индекса
+    }
+}
+$list = array_slice($list, -1, 1); // срез массива, (массив, начиная с конца при отриц, сколько элементов)
+
+
 echo '<h5>Тернарынй оператор</h5>';
 $status = true;
 echo ($status) ? "Включен" : "Отключен";

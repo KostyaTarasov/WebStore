@@ -93,7 +93,7 @@ class ArticlesController extends AbstractController
                 return;
             }
 
-            header('Location: /articles/' . $article->getId(), true, 302);
+            header('Location:./', true, 302);
             exit();
         }
         $image = Images::loadImage($articleId);
@@ -132,7 +132,7 @@ class ArticlesController extends AbstractController
                 return;
             }
 
-            header('Location: /articles/' . $article->getId(), true, 302);
+            header('Location:' . $article->getId() . '/', true, 302);
             exit();
         }
 
@@ -170,6 +170,6 @@ class ArticlesController extends AbstractController
         }
 
         $article->delete(); // Вызов метода удаления статьи
-        header('Location: /');
+        header('Location: /catalog');
     }
 }

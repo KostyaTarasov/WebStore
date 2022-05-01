@@ -64,7 +64,7 @@ try {
         throw new \MyProject\Exceptions\NotFoundException(); // Бросаем исключение
     }
 
-    unset($matches[0]);
+    $matches = array_slice($matches, -1, 1); // Срез массива, иначе передадутся лишние значения в вызываемый метод контроллера
 
     $controllerName = $controllerAndAction[0];
     $actionName = $controllerAndAction[1];

@@ -1,5 +1,6 @@
 <?php $title = "Мой личный блог";
-include __DIR__ . '/../header.php'; ?>
+include __DIR__ . '/../header.php';
+?>
 
 <form action="/search" method="post">
     <label>Введите ключевое слово <input type="text" name="search" value="<?= $_POST['search'] ?? '' ?>"></label>
@@ -14,7 +15,7 @@ include __DIR__ . '/../header.php'; ?>
                 <?php foreach ($value as $item) : ?>
                     <td class="td2">
                         <h2>
-                            <a href="/articles/<?= $item->getId() ?>">
+                            <a href="../<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
                                 <?= $item->getName() ?>
                             </a> <!-- Вывод имени -->
@@ -27,7 +28,7 @@ include __DIR__ . '/../header.php'; ?>
                             <img class="imageSmall" src="data:image/png;base64, <?= $image ?? null ?>  " />
                         <?php endif; ?>
                         <hr>
-                        <form action="/articles/<?= $item->getId() ?>">
+                        <form action="../<?= $item->getId() ?>/">
                             <input type="hidden" />
                             <button type="submit">Подробнее</button>
                         </form>
@@ -62,7 +63,7 @@ SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
             <?php if ($currentPageNum === $pageNum) : ?>
                 <b><?= $pageNum ?></b>
             <?php else : ?>
-                <a href="/<?= $pageNum === 1 ? '' : $pageNum ?>"><?= $pageNum ?></a>
+                <a href="<?= $pageNum ?>"><?= $pageNum ?></a>
             <?php endif; ?>
         <?php endfor; ?>
     </section>

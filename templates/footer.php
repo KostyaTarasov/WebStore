@@ -8,9 +8,9 @@
         <li><a href="/../manual.php">Документация по PHP</a></li>
         <br>
         <li><a href="/../hello/Kostya">Страница приветствия</a></li>
-        <?php if (!empty($user) && $user->isAdmin()) : // Ссылка будет доступна только админу для добавления статьи
+        <?php if (!empty($user) && $user->isAdmin() && strripos($_REQUEST['route'],'page')) : // Ссылка будет доступна только админу для добавления статьи
         ?>
-            <li><a href="/../articles/add">Страница добавления статей</a></li>
+            <li><a href="../add">Страница добавления статей</a></li>
         <?php endif; ?>
     </ul>
 </td>

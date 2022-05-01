@@ -1,15 +1,13 @@
 <?php
 $title = "Редактирование статьи";
-/**
- * @var \MyProject\Models\Articles\Article $article
- */
+
 include __DIR__ . '/../header.php';
 ?>
 <h1>Редактирование статьи</h1>
 <?php if (!empty($error)) : ?>
     <div style="color: red;"><?= $error ?></div>
 <?php endif; ?>
-<form enctype="multipart/form-data" action="/articles/edit/<?= $article->getId() ?>" method="post">
+<form enctype="multipart/form-data" action="edit" method="post">
     <label for="name">Название статьи</label><br>
     <input type="text" name="name" id="name" value="<?= $_POST['name'] ?? $article->getName() ?>" size="50"><br>
     <br>

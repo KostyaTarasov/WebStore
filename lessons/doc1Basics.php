@@ -30,10 +30,8 @@ echo "<input type=\"text\">" . '<br>';
 $length = strlen($str) . '<br>'; // Длина определённой строки
 echo $length . '<br>';
 echo substr('substring!', 3, 5) . '<br>'; // Вернули символы начиная с 3 элемента, в количестве 6
-echo str_replace('sub', 'replace', 'substring!') . '<br>'; // Pfvtyf ( какие символы, на что заменяем, какая строка )
+echo str_replace('sub', 'replace', 'substring!') . '<br>'; // Замена ( какие символы, на что заменяем, какая строка )
 echo str_replace(array('sub', 'ing'), '_', 'substring!') . '<br>';
-
-
 
 echo trim(" sdf ") . '<br>'; // Убрать пробелы
 //strtol в нижний регистр

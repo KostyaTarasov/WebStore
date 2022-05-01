@@ -4,15 +4,13 @@ namespace MyProject\Models\Articles;
 
 use MyProject\Services\Db;
 
-class Images
+class Images extends Article
 {
-    private const TABLE_ARTICLES = 'articles';
-
     public static function loadImage(int $id)
     {
         $db = Db::getInstance();
         $image2 = $db->query(
-            'SELECT `content` FROM `' . self::TABLE_ARTICLES . '` WHERE id=:id;', // SQL код выбора строки из таблицы
+            'SELECT `content` FROM `' . Article::getTableName() . '` WHERE id=:id;', // SQL код выбора строки из таблицы
             [':id' => $id], // Параметры
             static::class   // Имя класса
         );
