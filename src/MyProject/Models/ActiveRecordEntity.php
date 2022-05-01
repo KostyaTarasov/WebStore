@@ -137,8 +137,8 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         $db = Db::getInstance();
         $db->query($sql, $params2values, static::class); // запрос (строка sql, готовый массив с параметрами, класс)
         $this->id = $db->getLastInsertId(); // Сохраняем текущее id, чтобы id не был null в выводе массива на экран
-        $f=$this->id;
-        $f=$this->id;
+        $f = $this->id;
+        $f = $this->id;
         //$this->refresh(); // Сохраняем текущее значение для вывода в массив на экран, в данном примере выводим дату вместо null для ["createdAt":protected]=>NULL
     }
 
