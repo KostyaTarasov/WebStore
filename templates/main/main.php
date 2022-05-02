@@ -1,17 +1,12 @@
 <?php $title = "Мой личный блог";
 include __DIR__ . '/../header.php';
-
+include __DIR__ . '/../features/search.php';
 //TODO Вывести h1 открытого каталога. Проверять совпадает ли имя таблицы открытого каталога со значением столбца таблицы catalog. Если совпадает, то вывести имя стольца name таблицы catalog 
+// TODO сделать `name` уникальным в таблице каталоги
 
 //TODO Добавить столбик цена, сделать возможность редактирования цены также как редактируется столбик текст
 
 ?>
-
-<form action="/search" method="post">
-    <label>Введите ключевое слово <input type="text" name="search" value="<?= $_POST['search'] ?? '' ?>"></label>
-    <br><br>
-    <input type="submit" value="Искать">
-</form>
 
 <div>
     <table class="table2">
@@ -74,4 +69,4 @@ SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
     </section>
 </div>
 
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>

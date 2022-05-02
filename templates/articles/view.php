@@ -20,4 +20,4 @@ include __DIR__ . '/../header.php'; ?>
     <input type="hidden" name="id" value="<?= $article->getId(); ?>" />
     <button type="submit">Заказать</button>
 </form>
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>

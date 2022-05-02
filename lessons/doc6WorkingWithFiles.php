@@ -33,5 +33,5 @@ chmod(__FILE__, 0777); // Доступ к файлу, 0777 доступ для �
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

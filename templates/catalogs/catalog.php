@@ -1,11 +1,7 @@
-<?php $title = "Каталоги";
-include __DIR__ . '/../header.php'; ?>
-
-<form action="/search" method="post">
-    <label>Введите ключевое слово <input type="text" name="search" value="<?= $_POST['search'] ?? '' ?>"></label>
-    <br><br>
-    <input type="submit" value="Искать">
-</form>
+<?php $title = "Каталог товаров";
+include __DIR__ . '/../header.php';
+include __DIR__ . '/../features/search.php';
+?>
 
 <div>
     <table class="table2">
@@ -36,4 +32,4 @@ include __DIR__ . '/../header.php'; ?>
     </table>
 </div>
 
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>

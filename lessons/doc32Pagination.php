@@ -37,5 +37,5 @@ SELECT * FROM articles ORDER BY id DESC LIMIT k OFFSET (n-1)*k;
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

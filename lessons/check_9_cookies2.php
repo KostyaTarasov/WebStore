@@ -18,5 +18,5 @@ if (isset($_COOKIE['name'])) { //  Если куки существует для
 <a href="doc9cookiesAndSessions.php">Страница doc9cookiesAndSessions.php</a>
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

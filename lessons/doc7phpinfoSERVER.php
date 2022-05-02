@@ -28,5 +28,5 @@ echo $_SERVER['HTTP_USER_AGENT'] . "<br>"; // Опер. система
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

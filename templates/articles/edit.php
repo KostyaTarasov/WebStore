@@ -18,4 +18,4 @@ include __DIR__ . '/../header.php';
     <input type="submit" value="Обновить">
 </form>
 
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>

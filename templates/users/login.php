@@ -1,5 +1,5 @@
-<?php 
-$title = "Авторизация"; 
+<?php
+$title = "Авторизация";
 include __DIR__ . '/../header.php'; ?>
 <div style="text-align: center;">
     <h1>Вход</h1>
@@ -14,4 +14,4 @@ include __DIR__ . '/../header.php'; ?>
         <input type="submit" value="Войти">
     </form>
 </div>
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>

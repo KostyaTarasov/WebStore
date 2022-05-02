@@ -58,5 +58,5 @@ $obj2->printPropetries2(); // a и b вывелись, b получили по �
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

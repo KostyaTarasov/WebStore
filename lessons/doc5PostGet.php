@@ -43,5 +43,5 @@ include_once "../blocks/header.php"; // при include остальная час
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php"; // при require остальная часть страницы не будет загружаться при ошибке пути
+require_once  "../templates/rightSidebar.php"; // при require остальная часть страницы не будет загружаться при ошибке пути
 ?>

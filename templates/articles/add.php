@@ -15,4 +15,4 @@ include __DIR__ . '/../header.php'; ?>
     Изображение: <input type="file" name="image" />
     <input type="submit" value="Создать">
 </form>
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>

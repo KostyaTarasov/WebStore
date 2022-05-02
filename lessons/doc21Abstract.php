@@ -85,5 +85,5 @@ var_dump($audi1 instanceof Car);
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

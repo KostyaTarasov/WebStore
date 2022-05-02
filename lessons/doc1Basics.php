@@ -72,5 +72,5 @@ ceil(4.2); // округляет до 5
 
 <?php
 echo "<br>";
-require "../templates/footer.php";
+require "../templates/rightSidebar.php";
 ?>

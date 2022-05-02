@@ -91,7 +91,7 @@ echo 'Людей уже ' . Human::getCount(); // 3
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>
 
 <!-- По окончанию выполнения программы вызывается __destruct() -->

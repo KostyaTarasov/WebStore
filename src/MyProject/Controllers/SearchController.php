@@ -19,7 +19,7 @@ class SearchController extends AbstractController
                 // подключаем файл с нужным шаблоном, получив путь до него, склеив пути до папки с шаблонами и именем конкретного шаблона
                 // поток вывода(html, echo, вывод данных) положить во временный буфер вывода
                 # профит в том, что мы можем обрабатывать ошибки, возникшие в процессе работы с шаблоном
-                $this->view->renderHtml('main/search.php', [
+                $this->view->renderHtml('features/searchPage.php', [
                     'error' => $e->getMessage()
                 ]);
                 return;
@@ -34,15 +34,15 @@ class SearchController extends AbstractController
     public function page(int $pageNum) // Экшн страниц статей
     {
         $pagesCount = SearchModel::getPagesCount(5, $_SESSION['countArticle']);
-        $this->view->renderHtml('main/search.php', [
+        $this->view->renderHtml('features/searchPage.php', [
             'articles' => SearchModel::getPage($pageNum, 5, $_SESSION['postSearch']), // Для вывода по 5 записей на n странице
             'pagesCount' => $pagesCount,
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
             'previousPageLink' => $pageNum > 1
-                ? '/search/' . ($pageNum - 1)
+                ? '/searchPage/' . ($pageNum - 1)
                 : null,
             'nextPageLink' => $pageNum < $pagesCount
-                ? '/search/' . ($pageNum + 1)
+                ? '/searchPage/' . ($pageNum + 1)
                 : null
         ]);
     }

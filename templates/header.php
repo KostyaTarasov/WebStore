@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/../www/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -21,16 +22,14 @@
     <table class="layout">
 
         <tr>
-
             <td colspan="1" class="sidebar">
-
             </td>
 
             <td colspan="1" class="header">
                 <h3><?= $title ?></h3>
             </td>
 
-            <td colspan="1" class="sidebar">
+            <td colspan="1" class="accountLogin">
                 <?php if (!empty($user)) : ?>
                     Привет, <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
                 <?php else : ?>
@@ -40,6 +39,8 @@
         </tr>
 
         <tr>
-            <td colspan="1" class="sidebar"></td>
+            <td class="sidebar">
+                <?php if ($_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
+            </td>
 
             <td>

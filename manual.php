@@ -39,5 +39,5 @@ require "templates/header.php";
 <a href="lessons/doc32Pagination.php">32 Пагинация</a> <br>
 <?php
 echo "<br>";
-require "templates/footer.php";
+require "templates/rightSidebar.php";
 ?>

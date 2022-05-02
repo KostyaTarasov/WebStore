@@ -79,5 +79,5 @@ echo '<br>Тест метода tripTime' . $car2->tripTime(1000);
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

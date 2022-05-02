@@ -19,5 +19,5 @@ echo time(); // колич секунд, т.е. время от 1 января 1
 
 <?php
 echo "<br>";
-require "../templates/footer.php";
+require "../templates/rightSidebar.php";
 ?>

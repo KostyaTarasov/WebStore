@@ -5,8 +5,8 @@ $title = "О себе";
 ?>
 <?php include __DIR__ . '/../header.php'; ?>
 <h1>Подготовлен материал в 2022 году </h1>
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '/../rightSidebar.php'; ?>
 <?php
 //echo "<br>";
-//require_once "blocks/footer.php"; // при require остальная часть страницы не будет загружаться при ошибке пути
+//require_once "blocks/rightSidebar.php"; // при require остальная часть страницы не будет загружаться при ошибке пути
 ?>

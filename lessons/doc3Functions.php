@@ -40,9 +40,9 @@ print_r($arr_words) . '<br>';
 echo '<br>' . implode(" | ", $arr_words); // объединение массива внутри строки
 
 echo "<br>";
-$string='15-02-2022';
-$pattern='/([0-9]{2})-([0-9]{2})-([0-9]{4})/'; // где [] допустимый диапазон, {} количество символов
-$replacement='Год $3, месяц $2, день $1';
+$string = '15-02-2022';
+$pattern = '/([0-9]{2})-([0-9]{2})-([0-9]{4})/'; // где [] допустимый диапазон, {} количество символов
+$replacement = 'Год $3, месяц $2, день $1';
 echo preg_replace($pattern, $replacement, $string); // Выполняет поиск по строке $string по специальному регулярному выражению $pattern.
 // Если совпадения найдены, функция изменяет содержимое строки $replacement, при этом заменяет ссылки $3... на соответствующие им значения из под масок
 
@@ -50,5 +50,5 @@ echo preg_replace($pattern, $replacement, $string); // Выполняет пои
 
 <?php
 echo "<br>";
-require "../templates/footer.php";
+require "../templates/rightSidebar.php";
 ?>

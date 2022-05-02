@@ -1,7 +1,7 @@
 .layout {
-  width: 100%;
-/*  max-width: 70%;*/ 
+  width: 85%;
   background-color: white;
+  margin:auto;
 }
 
 .header {
@@ -17,18 +17,21 @@
 }
 
 .sidebarHeader {
-  font-size: 20px;
+  font-size: 25px; /* Размер слова Меню */ 
+  padding: 10px;
 }
 
 .sidebar {
-  width: 20%;
-  padding: 20px;
+  width: 15%;
   vertical-align: top;
   border: solid 1px rgb(250, 163, 64);
 }
 
-.sidebar ul {
-  padding-left: 20px;
+.accountLogin {
+  width: 15%;
+  vertical-align: top;
+  padding: 10px;
+  border: solid 1px rgb(250, 163, 64);
 }
 
 .imageBig {
@@ -40,8 +43,8 @@
 }
 
 .imageSmall {
-  width: 200px; 
-  height: 200px; 
+  width: 150px; 
+  height: 150px; 
   object-fit: cover; 
   margin: auto;
   display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
@@ -60,4 +63,41 @@
   padding: 20px;
   vertical-align: top;
   border: 3mm solid rgb(238, 235, 235); 
+}
+
+a {
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #bd0f2c !important;
+}
+
+.link a { /* Кнопка Каталог товаров*/
+  display:block;
+  width:100%;
+  margin:auto;
+  text-align: center;
+  padding:10px 10px;
+  background:#5d9cee;
+  color:rgb(0, 0, 0)!important;
+  font-size:20px;
+}
+  
+.link a:hover {
+  color:#fff!important;
+}
+
+.refSidebarCatalog {
+  font-size: 18px; /* Размер ссылок в левом sidebar */ 
+}
+
+.refSidebarCatalog:hover {
+  background: rgb(226, 212, 205); /* Цвет фона при наведении на ссылку курсора */
+  color: rgb(70, 39, 11); /* Новый цвет текста */
+}
+
+.iconSearch {
+  width:25px;
 }

@@ -19,5 +19,5 @@ require_once  "../templates/header.php";
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>

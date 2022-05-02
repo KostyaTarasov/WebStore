@@ -29,15 +29,15 @@ $message = 'Добро пожаловать на наш портал!<br>
 
 $headers  = 'From: mixtmneon@gmail.com' . "\r\n" . // От кого
     'Content-Type: text/html; charset=UTF-8' . "\r\n"; // либо doc-type:text/plain
-    //'Reply-To: tarasovaelenamed@gmail.com' . "\r\n" .
-    // 'MIME-Version: 1.0' . "\r\n" .
-    // 'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
-    // 'X-Mailer: PHP/' . phpversion();
-    
+//'Reply-To: tarasovaelenamed@gmail.com' . "\r\n" .
+// 'MIME-Version: 1.0' . "\r\n" .
+// 'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
+// 'X-Mailer: PHP/' . phpversion();
+
 mail('tarasovaelenamed@gmail.com', 'Тема нового письма', $message, $headers);
 ?>
 
 <?php
 echo "<br>";
-require_once  "../templates/footer.php";
+require_once  "../templates/rightSidebar.php";
 ?>
