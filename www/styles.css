@@ -101,3 +101,8 @@ a:hover {
 .iconSearch {
   width:25px;
 }
+
+.buttonSearch {
+  background: rgb(247, 202, 135) !important; /* Цвет фона при наведении на ссылку курсора */
+
+}

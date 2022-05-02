@@ -11,7 +11,7 @@ include __DIR__ . '/../header.php'; ?>
         <br><br>
         <label>Пароль <input type="password" name="password" value="<?= $_POST['password'] ?? '' ?>"></label>
         <br><br>
-        <input type="submit" value="Войти">
+        <input type="submit" class="btn btn-success" value="Войти">
     </form>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

@@ -1,5 +1,4 @@
 <form style=" margin: 15px" action="/search" method="post">
-    <label>Введите ключевое слово <input type="text" name="search" value="<?= $_POST['search'] ?? '' ?>"></label>
-    <br><br>
-    <input type="submit" value="Искать">
+    <label> <input type="text" name="search" placeholder="Поиск по сайту" value="<?= $_POST['search'] ?? '' ?>"></label>
+    <input type="submit" class="buttonSearch" value=" Искать">
 </form>
