@@ -17,7 +17,9 @@ class Images extends Article
 
         foreach ($image2[0] as $item => $value) {
             $image = $value;
+            if (!empty($image)) {
+                return base64_encode($image);
+            }
         }
-        return $image = base64_encode($image);
     }
 }

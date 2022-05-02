@@ -13,9 +13,14 @@ include __DIR__ . '/../header.php';
     <br>
     <label for="text">Текст статьи</label><br>
     <textarea name="text" id="text" rows="10" cols="80"><?= $_POST['text'] ?? $article->getText() ?></textarea><br>
+
+    <?php if (!empty($image) && $image != "IA==") : ?>
+        <img class="imageMiddle" src="data:image/png;base64, <?= $image ?? null ?>  " />
+    <?php endif; ?>
     <br>
-    Изображение: <input type="file" name="image" />
-    <input type="submit" value="Обновить">
+
+    Изображение: <input type="file" accept=".png, .jpg, .jpeg" name="image" />
+    <input type="submit" class="btn btn-success" value="Обновить">
 </form>
 
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
