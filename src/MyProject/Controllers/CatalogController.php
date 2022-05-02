@@ -3,15 +3,15 @@
 namespace MyProject\Controllers;
 
 use MyProject\Models\Articles\Article;
+use MyProject\Models\Articles\Catalog;
 
 class CatalogController extends AbstractController
 {
     public function catalog()  // Экшн страницы "Каталоги"
     {
-        $page = 10;
-        $this->view->renderHtml('catalogs/catalog.php', [
-            'PageLink' => '/search/' . ($page - 1),
-        ]);
+            $this->view->renderHtml('catalogs/catalog.php', [
+                'articles' => Catalog::getPage(1, 100),
+            ]);
     }
 
     public function page(int $pageNum) // Экшн страниц каталогов

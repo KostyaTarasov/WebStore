@@ -16,6 +16,23 @@ INSERT INTO `articles` (`id`, `author_id`, `name`, `text`, `created_at`, `conten
 (1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
 (2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
 
+DROP TABLE IF EXISTS `catalog`;
+CREATE TABLE IF NOT EXISTS `catalog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_table` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `catalog` (`id`, `name_table`, `name`, `text`, `content`) VALUES
+(1, 'articles', 'Статьи', 'Дополнительное описание', ''),
+(2, 'holodilniki', 'Холодильники', 'Дополнительное описание', 'holodilniki');
+(3, 'chajniki', 'Чайники', 'Дополнительное описание', 'chajniki'),
+(4, 'televizory', 'Телевизоры', 'Дополнительное описание', 'televizory'),
+(5, 'naushniki', 'Наушники', 'Дополнительное описание', 'naushniki');
+
 CREATE TABLE `users` (
     `id` int(11) NOT NULL,
     `email` varchar(255) NOT NULL,
