@@ -48,6 +48,8 @@
 }
 
 .table2 {
+  width:100%;
+  height:100%;
   border: 3mm solid rgb(238, 235, 235); 
   vertical-align: top;
 }
