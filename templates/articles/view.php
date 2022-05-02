@@ -18,6 +18,6 @@ include __DIR__ . '/../header.php'; ?>
 <form action="buy.php" method="GET">
     <!-- кнопка при помощи которой можно заказать  -->
     <input type="hidden" name="id" value="<?= $article->getId(); ?>" />
-    <button type="submit">Заказать</button>
+    <button type="submit" class="btn btn-success">Заказать</button>
 </form>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
