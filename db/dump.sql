@@ -19,12 +19,15 @@ INSERT INTO `articles` (`id`, `author_id`, `name`, `text`, `created_at`, `conten
 DROP TABLE IF EXISTS `catalog`;
 CREATE TABLE IF NOT EXISTS `catalog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name_table` varchar(255) NOT NULL,
+  `name_table` char(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `content` mediumblob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+/*Обязательно сделать уникальным столбец name_table*/
+ALTER TABLE `catalog` ADD UNIQUE(`name_table`);
 
 INSERT INTO `catalog` (`id`, `name_table`, `name`, `text`, `content`) VALUES
 (1, 'articles', 'Статьи', 'Дополнительное описание', ''),
