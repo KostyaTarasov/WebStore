@@ -13,8 +13,10 @@ return [
     // При создании нового файла, класса, метода прописываем информацию в этом файле
     // ключи-регулярка для адреса, [имя контроллера, имя метода]
 
-    //TODO добавить главную страницу
-    //'~^$~' => [\MyProject\Controllers\MainController::class, 'main'],  // Роут главной станицы (первой страницы со статьями)
+    '~^$~' => [\MyProject\Controllers\MainController::class, 'main'],  // Роут главной станицы (первой страницы со статьями)
+    '~^(\d+)$~' => [\MyProject\Controllers\MainController::class, 'page'], // Роут страниц конкретного каталога
+
+
     '~^hello/(.*)$~' => [\MyProject\Controllers\MainController::class, 'sayHello'], // Роут страницы приветствия пользователя, где в конце адреса задаётся имя пользователя http://localhost:8080/hello/Kostya
 
     '~^catalog$~' => [\MyProject\Controllers\CatalogController::class, 'catalog'],

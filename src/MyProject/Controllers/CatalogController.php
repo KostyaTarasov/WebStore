@@ -9,16 +9,16 @@ class CatalogController extends AbstractController
 {
     public function catalog()  // Экшн страницы "Каталоги"
     {
-            $this->view->renderHtml('catalogs/catalog.php', [
-                'articles' => Catalog::getPage(1, 100),
-            ]);
+        $this->view->renderHtml('catalogs/catalog.php', [
+            'articles' => Catalog::getPage(1, 100),
+        ]);
     }
 
     public function page(int $pageNum) // Экшн страниц каталогов
     {
         $amount = 8; // Количество статей на 1 странице
         $pagesCount = Article::getPagesCount($amount);
-        $this->view->renderHtml('main/main.php', [
+        $this->view->renderHtml('catalogs/products.php', [
             'articles' => Article::getPage($pageNum, $amount),
             'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон

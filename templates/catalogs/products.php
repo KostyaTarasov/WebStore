@@ -1,7 +1,13 @@
 <?php $title = "ShopKirov - магазин бытовой техники и электроники в Кирове";
-$h1 = "Главная страница";
+$h1 = "Каталог холодильников";
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';
+//TODO Вывести h1 открытого каталога. Проверять совпадает ли имя таблицы открытого каталога со значением столбца таблицы catalog. Если совпадает, то вывести имя стольца name таблицы catalog 
+
+//TODO Добавить столбик цена, сделать возможность редактирования цены также как редактируется столбик текст
+
+
+//TODO чтобы не выводились ненужные каталоги http://learnphp/catalog/articles/page/1, в частности http://learnphp/catalog/catalog/page/1 и другие сделать проверку, данный каталог входит в столбец name_table таблицы catalog? Иначе не выводить!
 ?>
 
 <div>
@@ -11,7 +17,7 @@ include __DIR__ . '/../features/search.php';
                 <?php foreach ($value as $item) : ?>
                     <td class="td2">
                         <h2>
-                            <a href="/catalog/articles/<?= $item->getId() ?>/">
+                            <a href="../<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
                                 <?= $item->getName() ?>
                             </a> <!-- Вывод имени -->
@@ -24,7 +30,7 @@ include __DIR__ . '/../features/search.php';
                             <img class="imageSmall" src="data:image/png;base64, <?= $image ?? null ?>  " />
                         <?php endif; ?>
                         <hr>
-                        <form action="/catalog/articles/<?= $item->getId() ?>/">
+                        <form action="../<?= $item->getId() ?>/">
                             <input type="hidden" />
                             <button type="submit">Подробнее</button>
                         </form>

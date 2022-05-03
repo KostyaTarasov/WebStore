@@ -44,7 +44,11 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     # Возвращает имя таблицы: articles в случае если адрес /catalog/articles, где хранятся статьи.
     protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
     {
-        return preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route'])); // заменяем цифры и слова на пустое значение
+        if ($_SERVER['REQUEST_URI'] == "/" || preg_replace('/[0-9]/', '', $_SERVER['REQUEST_URI']) == "/") {
+            return 'articles';
+        }
+
+        return preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route'])); // заменяем цифры и слова на пустое значение чтобы вернуть имя таблицы
     }
 
     /**
