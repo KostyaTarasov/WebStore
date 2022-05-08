@@ -21,7 +21,7 @@ include __DIR__ . '/../features/search.php';
                         <?php
                         $image = base64_encode($item->getImage());
                         if (!empty($image) && $image != "IA==") : ?>
-                            <img class="imageSmall" src="data:image/png;base64, <?= $image ?? null ?>  " />
+                            <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
                         <?php endif; ?>
                         <hr>
                         <form action="/catalog/articles/<?= $item->getId() ?>/">

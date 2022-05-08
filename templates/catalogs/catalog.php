@@ -9,7 +9,7 @@ include __DIR__ . '/../features/search.php';
             <tr>
                 <?php foreach ($value as $item) : ?>
                     <td class="td2">
-                        <img class="imageSmall" src="<?= $item->getPathImage() ?>" ">
+                        <img class="image small" src="<?= $item->getPathImage() ?>" ">
 
                         <h2>
                             <a href=" /catalog/<?= $item->getNameTable() ?>/page/1">

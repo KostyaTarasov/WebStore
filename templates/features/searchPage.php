@@ -2,19 +2,35 @@
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';
 ?>
+
 <div style="margin: 15px;">
     <?php if (empty($error)) : ?>
         <?php foreach ($articles as $article) : ?>
-            <!-- Проход по полученным даннымм -->
-            <h2>
-                <a href="/articles/<?= $article->getId() ?>">
-                    <!-- Ccылка на статью для каждого id найденного foreach -->
-                    <?= $article->getName() ?>
-                </a> <!-- Вывод имени -->
-            </h2>
-            <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
-            <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
-            <hr>
+            <table>
+                <tr>
+                    <td>
+                        <?php
+                        $image = base64_encode($article->getImage());
+                        if (!empty($image) && $image != "IA==") : ?>
+                            <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
+                        <?php else : ?>
+                            <img class="image small" src="/images/catalog/no-image.png " ">
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <h2>
+                            <a href=" /catalog/articles/<?= $article->getId()  //TODO изменить ссылку /catalog/articles/
+                              ?>/">
+                            <!-- Ccылка на статью для каждого id найденного foreach -->
+                            <?= $article->getName() ?>
+                            </a> <!-- Вывод имени -->
+                            </h2>
+                            <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
+                            <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
+                            <hr>
+                    </td>
+                </tr>
+            </table>
         <?php endforeach; ?>
 </div>
 
@@ -38,7 +54,7 @@ include __DIR__ . '/../features/search.php';
             <?php if ($currentPageNum === $pageNum) : ?>
                 <b><?= $pageNum ?></b>
             <?php else : ?>
-                <a href="/searchPage/<?= $pageNum === 1 ? '1' : $pageNum ?>"><?= $pageNum ?></a>
+                <a href="/search/<?= $pageNum === 1 ? '1' : $pageNum ?>"><?= $pageNum ?></a>
             <?php endif; ?>
         <?php endfor; ?>
     </section>

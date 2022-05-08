@@ -34,27 +34,28 @@
   border: solid 1px rgb(250, 163, 64);
 }
 
-.imageSmall {
+.image {
   width: 150px; 
   height: 150px; 
   object-fit: cover; 
-  margin: auto;
   display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
 }
 
-.imageMiddle {
+.image.small {
+  width: 150px; 
+  height: 150px;
+  margin: auto;
+}
+
+.image.middle {
   width: 300px; 
   height: 300px; 
-  object-fit: cover; 
-  display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
 }
 
-.imageBig {
+.image.big {
   width: 500px; 
   height: 500px;
-  object-fit: cover; 
   margin: auto;
-  display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
 }
 
 .table2 {

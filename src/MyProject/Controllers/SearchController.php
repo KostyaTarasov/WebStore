@@ -39,10 +39,10 @@ class SearchController extends AbstractController
             'pagesCount' => $pagesCount,
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
             'previousPageLink' => $pageNum > 1
-                ? '/searchPage/' . ($pageNum - 1)
+                ? '/search/' . ($pageNum - 1)
                 : null,
             'nextPageLink' => $pageNum < $pagesCount
-                ? '/searchPage/' . ($pageNum + 1)
+                ? '/search/' . ($pageNum + 1)
                 : null
         ]);
     }

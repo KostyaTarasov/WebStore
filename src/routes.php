@@ -27,13 +27,10 @@ return [
     '~^catalog/(.+)/(\d+)/del$~' => [\MyProject\Controllers\ArticlesController::class, 'del'], // Роут для удаления статей
     '~^catalog/(.+)/add$~' => [\MyProject\Controllers\ArticlesController::class, 'add'], // Роут для добавления статей
 
+    '~^search/(\d+)$~' => [\MyProject\Controllers\SearchController::class, 'page'], // Роут для поиска
+    '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'],                  // Роут для поиска               http://learnphp/search
 
-
-
-    //TODO Поправить:
-    '~^search/(\d+)$~' => [\MyProject\Controllers\SearchController::class, 'page'], // Роут конкретной страницы указанного номера c выводом до 5 статей    
-    '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'],                  // Роут для поиска статей                http://learnphp/search
-
+    //TODO Поправить:    
     '~^users/register$~' => [\MyProject\Controllers\UsersController::class, 'signUp'], // Роут для регистрации пользователей                 http://localhost:8080/users/register
     '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate'], // Роут успешной активации пользователя  http://localhost:8080/users/15/activate/9cfc33d83a2aef14058ecf1f850a73e1 Где user_id = 15 и code = длинный код в конце url взяты из таблицы users_activation_codes
     '~^users/login~' => [\MyProject\Controllers\UsersController::class, 'login'],                   // Роут для авторизации пользователя     http://localhost:8080/users/login

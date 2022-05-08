@@ -12,7 +12,7 @@ include __DIR__ . '/../header.php'; ?>
 <?php endif; ?>
 
 <?php if (!empty($image) && $image != "IA==") : ?>
-    <img class="imageBig" src="data:image/png;base64, <?= $image ?? null ?>  " />
+    <img class="image big" src="data:image/png;base64, <?= $image ?? null ?>  " />
 <?php endif; ?>
 
 <form action="buy.php" method="GET">

@@ -15,7 +15,7 @@ include __DIR__ . '/../header.php';
     <textarea name="text" id="text" rows="10" cols="80"><?= $_POST['text'] ?? $article->getText() ?></textarea><br>
 
     <?php if (!empty($image) && $image != "IA==") : ?>
-        <img class="imageMiddle" src="data:image/png;base64, <?= $image ?? null ?>  " />
+        <img class="image middle" src="data:image/png;base64, <?= $image ?? null ?>  " />
     <?php endif; ?>
     <br>
 

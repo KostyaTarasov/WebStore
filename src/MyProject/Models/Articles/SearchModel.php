@@ -82,7 +82,7 @@ class SearchModel
         return $this->id;
     }
 
-    public function getName(): string // Используется в templates/article/view.php
+    public function getName(): string
     {
         return htmlentities($this->name); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
     }
@@ -111,5 +111,10 @@ class SearchModel
         это называется LazyLoad (ленивая загрузка) – это когда данные не подгружаются до тех пор, пока их не запросят.
         */
         return User::getById($this->author_id);
+    }
+
+    public function getImage() // Используется в templates/main/main.php
+    {
+        return $this->content; // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
     }
 }
