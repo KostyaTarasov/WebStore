@@ -1,21 +1,6 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
-
-INSERT INTO `articles` (`id`, `author_id`, `name`, `text`, `created_at`, `content`) VALUES
-(1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
-(2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
-
 DROP TABLE IF EXISTS `catalog`;
 CREATE TABLE IF NOT EXISTS `catalog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -35,6 +20,7 @@ INSERT INTO `catalog` (`id`, `name_table`, `name`, `text`, `content`) VALUES
 (3, 'chajniki', 'Чайники', 'Дополнительное описание', 'chajniki'),
 (4, 'televizory', 'Телевизоры', 'Дополнительное описание', 'televizory'),
 (5, 'naushniki', 'Наушники', 'Дополнительное описание', 'naushniki');
+
 
 CREATE TABLE `users` (
     `id` int(11) NOT NULL,
@@ -59,7 +45,6 @@ ALTER TABLE `users`
 ALTER TABLE `users`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
-
 CREATE TABLE `users_activation_codes` (
     `id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL,
@@ -69,6 +54,77 @@ CREATE TABLE `users_activation_codes` (
 ALTER TABLE `users_activation_codes`
     ADD PRIMARY KEY (`id`);
 
-
 ALTER TABLE `users_activation_codes`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+DROP TABLE IF EXISTS `articles`;
+CREATE TABLE IF NOT EXISTS `articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `articles` (`id`, `author_id`, `name`, `text`, `created_at`, `content`) VALUES
+(1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
+(2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
+
+CREATE TABLE IF NOT EXISTS `holodilniki` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `holodilniki` (`id`, `author_id`, `name`, `text`, `created_at`, `content`) VALUES
+(1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
+(2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
+
+CREATE TABLE IF NOT EXISTS `chajniki` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `chajniki` (`id`, `author_id`, `name`, `text`, `created_at`, `content`) VALUES
+(1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
+(2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
+
+CREATE TABLE IF NOT EXISTS `televizory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `televizory` (`id`, `author_id`, `name`, `text`, `created_at`, `content`) VALUES
+(1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
+(2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
+
+CREATE TABLE IF NOT EXISTS `naushniki` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `naushniki` (`id`, `author_id`, `name`, `text`, `created_at`, `content`) VALUES
+(1, 1, 'Статья о себе.', 'Текст статьи 5', '2022-01-31 18:52:51', ''),
+(2, 1, 'Родился в городе Киров', 'Текст статьи 6', '2022-01-31 18:52:51', '');
