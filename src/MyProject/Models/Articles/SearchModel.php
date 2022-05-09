@@ -8,20 +8,28 @@ use MyProject\Models\Users\User;
 
 class SearchModel
 {
-    private const TABLE_ARTICLES = 'articles';
     private const TABLE_USERS = 'users';
     private const COLUMN_NAME = "(`name`,' ',`text`)"; // Чтобы искать в данных столбцах
 
     public static function countArticles(array $valueFromPost)
     {
+        $tableCatalogs = self::getNamesCatalogs();
+        $sql = "";
+        $sql = 'SELECT';
+        foreach ($tableCatalogs as $table) {
+            $sql .= '(SELECT COUNT(*) FROM ' . $table . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ')';
+            if (next($tableCatalogs)) { // Если не конец массива в цикле foreach
+                $sql .= " + ";
+            }
+        }
+        $sql .= ';';
         $value = $valueFromPost['search'];
         $db = Db::getInstance();
         $resultSearch = $db->query(
-            'SELECT COUNT(*) FROM `' . self::TABLE_ARTICLES . '` WHERE CONCAT ' . self::COLUMN_NAME . ' LIKE  ' . ':value' . ';',
+            $sql,
             [':value' => "%$value%"],
             static::class
         );
-
         foreach ($resultSearch[0] as $count) {
             if ($count == 0) { // Если ничего не найдено
                 throw new InvalidArgumentException(
@@ -44,17 +52,35 @@ class SearchModel
     }
 
 
+    public static function getNamesCatalogs() // Получаем имена каталогов(таблиц) заданные в общей таблице catalog
+    {
+        $db = Db::getInstance();
+        $allTable = $db->query(
+            "SELECT `name_table` FROM `catalog`;",
+        );
+        return array_column($allTable, 'name_table'); // Извлечь значения из ассоциативного массива и записать их в индексированный массив без ключа
+    }
+
     //* Получение статей на n-ой странице
     /** 
      * @return static[]
      */
     public static function getPage(int $pageNum, int $itemsPerPage, array $valueFromPost) // параметры: номер страницы, количество записей на одной странице .
     {
+        $tableCatalogs = self::getNamesCatalogs();
+        $sql = "";
+        foreach ($tableCatalogs as $table) {
+            $sql .= 'SELECT * FROM  ' . "$table" . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . '';
+            if (next($tableCatalogs)) { // Если не конец массива в цикле foreach
+                $sql .= " UNION ALL "; // Объединяем SELECT запросы для разных имён таблиц
+            }
+        }
         $skip = ($pageNum - 1) * $itemsPerPage;
+        $sql .= ' ORDER BY id DESC LIMIT ' . "$itemsPerPage" . ' OFFSET ' . "$skip" . ';';
         $value = $valueFromPost['search'];
         $db = Db::getInstance();
-        return  $db->query(
-            'SELECT * FROM `' . self::TABLE_ARTICLES . '` WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ' ORDER BY id DESC LIMIT ' . "$itemsPerPage" . ' OFFSET ' . "$skip" . ';',
+        return $db->query(
+            $sql,
             [':value' => "%$value%"],
             static::class
         );
