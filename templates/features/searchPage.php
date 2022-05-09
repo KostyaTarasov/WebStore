@@ -1,4 +1,4 @@
-<?php $title = "Результаты поиска - ShopKirov - магазин бытовой техники и электроники в Кирове";
+<?php $title = "Поиск: {$_SESSION['postSearch']['search']} - ShopKirov - магазин бытовой техники и электроники в Кирове";
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';
 ?>
@@ -20,7 +20,7 @@ include __DIR__ . '/../features/search.php';
                     <td>
                         <h2>
                             <a href=" /catalog/articles/<?= $article->getId()  //TODO изменить ссылку /catalog/articles/
-                              ?>/">
+                                                        ?>/">
                             <!-- Ccылка на статью для каждого id найденного foreach -->
                             <?= $article->getName() ?>
                             </a> <!-- Вывод имени -->
