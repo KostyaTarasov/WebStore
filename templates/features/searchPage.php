@@ -19,8 +19,7 @@ include __DIR__ . '/../features/search.php';
                     </td>
                     <td>
                         <h2>
-                            <a href=" /catalog/articles/<?= $article->getId()  //TODO изменить ссылку /catalog/articles/
-                                                        ?>/">
+                            <a href=" /catalog/<?= $article->getValueNewColTable() ?>/<?= $article->getId() ?>/">
                             <!-- Ccылка на статью для каждого id найденного foreach -->
                             <?= $article->getName() ?>
                             </a> <!-- Вывод имени -->
@@ -34,7 +33,7 @@ include __DIR__ . '/../features/search.php';
         <?php endforeach; ?>
 </div>
 
-<div style="text-align: center">
+<div style=" text-align: center">
     <section>
         <?php if ($previousPageLink !== null) : ?>
             <a href="<?= $previousPageLink ?>">&lt; Назад</a>
