@@ -26,7 +26,7 @@ include __DIR__ . '/../features/search.php';
                         <hr>
                         <form action="/catalog/articles/<?= $item->getId() ?>/">
                             <input type="hidden" />
-                            <button type="submit">Подробнее</button>
+                            <button class="buttonMore" type="submit">Подробнее</button>
                         </form>
                     </td>
                 <?php endforeach; ?>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title><?= preg_replace("/$/", ' ShopKirov - магазин бытовой техники и электроники в Кирове', $title); ?></title>
+    <title><?= $title ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/../www/styles.css">
@@ -32,11 +32,13 @@
             </td>
 
             <td colspan="1" class="accountLogin">
-                <?php if (!empty($user)) : ?>
-                    Привет, <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
-                <?php else : ?>
-                    <a href="/../users/login">Войти</a> | <a href="/../users/register">Зарегестрироваться</a>
-                <?php endif; ?>
+                <div class="underlining">
+                    <?php if (!empty($user)) : ?>
+                        Привет, <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
+                    <?php else : ?>
+                        <a href="/../users/login">Войти</a> | <a href="/../users/register">Зарегестрироваться</a>
+                    <?php endif; ?>
+                </div>
             </td>
         </tr>
 

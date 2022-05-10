@@ -23,7 +23,7 @@ include __DIR__ . '/../features/search.php';
 
                         <form action="/catalog/<?= $item->getNameTable() ?>">
                             <input type="hidden" />
-                            <button type="submit">Открыть</button>
+                            <button class="buttonMore" type="submit">Открыть</button>
                         </form>
                     </td>
                 <?php endforeach; ?>

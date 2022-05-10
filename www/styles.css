@@ -70,7 +70,10 @@
   text-align: center;
   padding: 20px;
   vertical-align: top;
-  border: 3mm solid rgb(238, 235, 235); 
+  border: 3mm solid rgb(237, 238, 235); 
+}
+.td2:hover {
+  box-shadow: inset 0 0 0 5px #fdf3bc;
 }
 
 a {
@@ -82,7 +85,8 @@ a:hover {
   color: #bd0f2c !important;
 }
 
-.link a { /* Кнопка Каталог товаров*/
+/* Кнопка Каталог товаров*/
+.link a {
   display:block;
   width:100%;
   margin:auto;
@@ -97,13 +101,26 @@ a:hover {
   color:#fff!important;
 }
 
+/* Ссылки в левом sidebar */
 .refSidebarCatalog {
-  font-size: 18px; /* Размер ссылок в левом sidebar */ 
+  font-size: 18px; /* Размер ссылок */ 
 }
-
 .refSidebarCatalog:hover {
   background: rgb(226, 212, 205); /* Цвет фона при наведении на ссылку курсора */
   color: rgb(70, 39, 11); /* Новый цвет текста */
+}
+
+/* Текст справа */
+.gain-right {
+  position:relative;
+  right:10;
+  left: 8px;
+  transition: 1s; /* Время эффекта */
+}
+.gain-right:hover {
+  position:relative;
+  left: 8px;
+  transform: scale(1.2); /* Увеличиваем масштаб */
 }
 
 .iconSearch {
@@ -112,5 +129,79 @@ a:hover {
 
 .buttonSearch {
   background: rgb(247, 202, 135) !important; /* Цвет фона при наведении на ссылку курсора */
+}
 
+/* Кнопка "Подробнее" */
+.buttonMore {
+  background-color:rgb(105, 105, 105);
+  color:rgb(255, 255, 255);
+}
+.buttonMore:hover {
+  box-shadow:
+    1px 1px #53ea93,
+    2px 2px #53ea93,
+    3px 3px #53ea93,
+    4px 4px #53ea93,
+    5px 5px #53ea93,
+    6px 6px #53ea93,
+    7px 7px #53ea93;
+  -webkit-transform: translateX(-7px);
+  transform: translateX(-7px);
+}
+
+/* Линия под a у элементов "Вход", "Выход", "Регистрация"*/
+.underlining a {
+  display: inline-block;
+  color: #00bfff !important; /* Цвет обычной ссылки */
+  line-height: 1;
+  text-decoration: none; /* Убираем подчеркивание */
+  cursor: pointer;
+}
+.underlining a:after {
+  background-color: #f66d52; /* Цвет линии при наведении на нее курсора мыши */
+  display: block;
+  content: "";
+  height: 2px; /* Высота линии */
+  width: 0%;
+  -webkit-transition: width .3s ease-in-out;
+  -moz--transition: width .3s ease-in-out;
+  transition: width .3s ease-in-out;
+}
+.underlining a:hover:after,
+.underlining a:focus:after {
+  width: 100%;
+}
+
+/* линия над заголовком "h3"*/
+h3{
+  font-size: 1em; /* Размер шрифта */
+  color: #5a5a5a; /* Цвет заголовка */
+  text-align: center; /* Текст по центру */
+}
+h3:before {
+  content: '';
+  display: block;
+  height: 1px; /* Высота линии */
+  width: 150px; /* Ширина линии до наведения */
+  margin: 0 auto 10px; /* Отступ с боков по центру и снизу */
+  transition: 1s; /* Время, за которое линия возвращается после наведения */
+}
+h3:hover:before {
+  background: #f66d52; /* Цвет линии */
+  width: 250px; /* Ширина линии при наведении */
+  transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
+}
+/*  CSS код для линии под заголовком */
+h3:after {
+  content: '';
+  display: block;
+  height: 1px; /* Высота линии */
+  width: 150px; /* Ширина линии до наведения */
+  margin: 10px auto 0; /* Отступ с боков по центру и сверху */
+  transition: 1s; /* Время, за которое линия возвращается после наведения */
+}
+h3:hover:after {
+  background: #f66d52; /* Цвет линии */
+  width: 250px; /* Ширина линии при наведении */
+  transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
 }
