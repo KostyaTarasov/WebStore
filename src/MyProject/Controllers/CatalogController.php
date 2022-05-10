@@ -22,7 +22,10 @@ class CatalogController extends AbstractController
     public function page(int $pageNum) // Экшн страницы определённого каталога товаров
     {
         $nameTableCatalog = Article::getTableName();
-        $amount = 8; // Количество статей на 1 странице
+        if (!$nameTableCatalog) {
+            throw new \MyProject\Exceptions\NotFoundException();
+        }
+        $amount = 8; // Количество статей на каждой странице
         $pagesCount = Article::getPagesCount($amount);
         $this->view->renderHtml('catalogs/products.php', [
             'nameCatalog' => Article::getNameCatalog($nameTableCatalog),
@@ -30,7 +33,6 @@ class CatalogController extends AbstractController
             'articles' => Article::getPage($pageNum, $amount),
             'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
-
             'previousPageLink' => $pageNum > 1
                 ? ($pageNum - 1)
                 : null,
