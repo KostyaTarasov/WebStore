@@ -10,16 +10,22 @@
         <br>
         <li><a href="/../hello/Kostya">Страница приветствия</a></li>
 
-        <?php
+        <?php // Отображение ссылки для добавления новых статей, товаров
         $rule = false;
         if ($_SERVER['REQUEST_URI'] == "/") { // Если главная страница
             $rule = true;
-        } else if ($templateName == 'catalogs/products.php') { // Если страница открытого каталога
-            $rule = true;
-        } else if ((preg_replace('/[0-9]/', '', $_SERVER['REDIRECT_URL']) == "/") == true) { // Если главная страница с номером. /1 /2 ...
-            $rule = true;
         }
-        if ((!empty($user) && $user->isAdmin()) && ($rule == true)) : // Ссылка будет доступна только админу для добавления статьи на глвной странице, странице открытых каталогов.
+        if (!empty($_SERVER['REDIRECT_URL'])) {
+            if ((preg_replace('/[0-9]/', '', $_SERVER['REDIRECT_URL']) == "/") == true) { // Если главная страница с номером. /1 /2 ...
+                $rule = true;
+            }
+        }
+        if (!empty($templateName)) {
+            if ($templateName == 'catalogs/products.php') { // Если страница открытого каталога
+                $rule = true;
+            }
+        }
+        if ((!empty($user) && $user->isAdmin()) && ($rule == true)) : // Ссылка будет доступна только админу для добавления статьи, товара на главной странице и на страницах открытых каталогов.
         ?>
             <li><a href="../add">Страница добавления статей</a></li>
         <?php endif; ?>
