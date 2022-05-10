@@ -12,7 +12,7 @@ include __DIR__ . '/../features/search.php';
                         <img class="image small" src="<?= $item->getPathImage() ?>" ">
 
                         <h2>
-                            <a href=" /catalog/<?= $item->getNameTable() ?>/page/1">
+                            <a href=" /catalog/<?= $item->getNameTable() ?>">
                         <!-- Ccылка на статью -->
                         <?= $item->getName() ?>
                         </a> <!-- Вывод имени -->
@@ -21,7 +21,7 @@ include __DIR__ . '/../features/search.php';
                         <p><?= $item->getText() ?></p>
                         <hr>
 
-                        <form action="/catalog/<?= $item->getNameTable() ?>/page/1">
+                        <form action="/catalog/<?= $item->getNameTable() ?>">
                             <input type="hidden" />
                             <button type="submit">Открыть</button>
                         </form>

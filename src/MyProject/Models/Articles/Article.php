@@ -20,7 +20,6 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     /** @var string */
     protected  $createdAt;
 
-
     protected  $content;
 
     # Cделаем геттеры для свойств id, name и text:
@@ -42,7 +41,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     }
 
     # Возвращает имя таблицы: articles в случае если адрес /catalog/articles, где хранятся статьи.
-    protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
+    public static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
     {
         if ($_SERVER['REQUEST_URI'] == "/" || preg_replace('/[0-9]/', '', $_SERVER['REQUEST_URI']) == "/") {
             return 'articles';

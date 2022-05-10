@@ -13,7 +13,7 @@
     foreach ($list as $item => $value) // Где $list массив, новые переменные: $item ключ, value значение ключа
     {
     ?>
-        <li><a class=" refSidebarCatalog" href="/catalog/<?= $value ?>/page/1"><?= $item ?> </a></li>
+        <li><a class=" refSidebarCatalog" href="/catalog/<?= $value ?>"><?= $item ?> </a></li>
     <?php
     }
     ?>

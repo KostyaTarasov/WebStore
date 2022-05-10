@@ -10,22 +10,22 @@
 */
 
 return [
-    // При создании нового файла, класса, метода прописываем информацию в этом файле
     // ключи-регулярка для адреса, [имя контроллера, имя метода]
 
-    '~^$~' => [\MyProject\Controllers\MainController::class, 'main'],  // Роут главной станицы (первой страницы со статьями)
-    '~^(\d+)$~' => [\MyProject\Controllers\MainController::class, 'page'], // Роут страниц конкретного каталога
-
+    '~^$~' => [\MyProject\Controllers\MainController::class, 'main'],  // Роут первой главной страницы 
+    '~^(\d+)$~' => [\MyProject\Controllers\MainController::class, 'page'], // Роут главной страницы
 
     '~^hello/(.*)$~' => [\MyProject\Controllers\MainController::class, 'sayHello'], // Роут страницы приветствия пользователя, где в конце адреса задаётся имя пользователя http://localhost:8080/hello/Kostya
 
-    '~^catalog$~' => [\MyProject\Controllers\CatalogController::class, 'catalog'],
-    '~^catalog/(.+)/page/(\d+)$~' => [\MyProject\Controllers\CatalogController::class, 'page'], // Роут страниц конкретного каталога
+    '~^catalog$~' => [\MyProject\Controllers\CatalogController::class, 'catalog'], // Роут страницы общего каталога
 
-    '~^catalog/(.+)/(\d+)/$~' => [\MyProject\Controllers\ArticlesController::class, 'view'], // Роут страницы конкретного товара
-    '~^catalog/(.+)/(\d+)/edit$~' => [\MyProject\Controllers\ArticlesController::class, 'edit'], // Роут для изменения статей
-    '~^catalog/(.+)/(\d+)/del$~' => [\MyProject\Controllers\ArticlesController::class, 'del'], // Роут для удаления статей
-    '~^catalog/(.+)/add$~' => [\MyProject\Controllers\ArticlesController::class, 'add'], // Роут для добавления статей
+    '~^catalog/(.+)/(\d+)/$~' => [\MyProject\Controllers\ArticlesController::class, 'view'], // Роут для просмотра товара
+    '~^catalog/(.+)/(\d+)/edit$~' => [\MyProject\Controllers\ArticlesController::class, 'edit'], // Роут для изменения товара
+    '~^catalog/(.+)/(\d+)/del$~' => [\MyProject\Controllers\ArticlesController::class, 'del'], // Роут для удаления товара
+    '~^catalog/(.+)/add$~' => [\MyProject\Controllers\ArticlesController::class, 'add'], // Роут для добавления товара
+
+    '~^catalog/(.+)/page/(\d+)$~' => [\MyProject\Controllers\CatalogController::class, 'page'], // Роут страницы определённого каталога товаров   
+    '~^catalog/(.+)$~' => [\MyProject\Controllers\CatalogController::class, 'firstPage'], // Роут первой страницы определённого каталога товаров
 
     '~^search/(\d+)$~' => [\MyProject\Controllers\SearchController::class, 'page'], // Роут для поиска
     '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'],                  // Роут для поиска               http://learnphp/search

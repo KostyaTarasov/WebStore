@@ -137,8 +137,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         $db = Db::getInstance();
         $db->query($sql, $params2values, static::class); // запрос (строка sql, готовый массив с параметрами, класс)
         $this->id = $db->getLastInsertId(); // Сохраняем текущее id, чтобы id не был null в выводе массива на экран
-        $f=$this->id;
-        $f=$this->id;
         //$this->refresh(); // Сохраняем текущее значение для вывода в массив на экран, в данном примере выводим дату вместо null для ["createdAt":protected]=>NULL
     }
 
@@ -288,5 +286,14 @@ abstract class ActiveRecordEntity implements \JsonSerializable
             [],
             static::class
         );
+    }
+
+    public static function getNameCatalog(string $nameTableCatalog) // Получаем имена каталогов заданные в общей таблице catalog
+    {
+        $db = Db::getInstance();
+        $allTable = $db->query(
+            "SELECT `name` FROM `catalog` WHERE `name_table`= '$nameTableCatalog';",
+        );
+        return $allTable[0]->name;
     }
 }

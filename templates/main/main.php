@@ -1,4 +1,4 @@
-<?php $title = "ShopKirov - магазин бытовой техники и электроники в Кирове";
+<?php $title = "";
 $h1 = "Главная страница";
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';

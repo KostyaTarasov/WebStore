@@ -14,11 +14,19 @@ class CatalogController extends AbstractController
         ]);
     }
 
-    public function page(int $pageNum) // Экшн страниц каталогов
+    public function firstPage() // Экшн первой страницы определённого каталога товаров
     {
+        $this->page(1);
+    }
+
+    public function page(int $pageNum) // Экшн страницы определённого каталога товаров
+    {
+        $nameTableCatalog = Article::getTableName();
         $amount = 8; // Количество статей на 1 странице
         $pagesCount = Article::getPagesCount($amount);
         $this->view->renderHtml('catalogs/products.php', [
+            'nameCatalog' => Article::getNameCatalog($nameTableCatalog),
+            'nameTableCatalog' => $nameTableCatalog,
             'articles' => Article::getPage($pageNum, $amount),
             'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон

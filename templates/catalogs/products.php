@@ -1,5 +1,5 @@
-<?php $title = "ShopKirov - магазин бытовой техники и электроники в Кирове";
-$h1 = "Каталог холодильников";
+<?php $title = "$nameCatalog купить в";
+$h1 = "$nameCatalog";
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';
 //TODO Вывести h1 открытого каталога. Проверять совпадает ли имя таблицы открытого каталога со значением столбца таблицы catalog. Если совпадает, то вывести имя стольца name таблицы catalog 
@@ -17,7 +17,7 @@ include __DIR__ . '/../features/search.php';
                 <?php foreach ($value as $item) : ?>
                     <td class="td2">
                         <h2>
-                            <a href="../<?= $item->getId() ?>/">
+                            <a href="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
                                 <?= $item->getName() ?>
                             </a> <!-- Вывод имени -->
@@ -30,7 +30,7 @@ include __DIR__ . '/../features/search.php';
                             <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
                         <?php endif; ?>
                         <hr>
-                        <form action="../<?= $item->getId() ?>/">
+                        <form action="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
                             <input type="hidden" />
                             <button type="submit">Подробнее</button>
                         </form>
@@ -48,13 +48,13 @@ SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
 <div style="text-align: center">
     <section>
         <?php if ($previousPageLink !== null) : ?>
-            <a href="<?= $previousPageLink ?>">&lt; Назад</a>
+            <a href="/catalog/<?= $nameTableCatalog ?>/page/<?= $previousPageLink ?>">&lt; Назад</a>
         <?php else : ?>
             <span style="color: grey">&lt; Назад</span>
         <?php endif; ?>
         &nbsp;&nbsp;&nbsp;
         <?php if ($nextPageLink !== null) : ?>
-            <a href="<?= $nextPageLink ?>">Вперёд &gt;</a>
+            <a href="/catalog/<?= $nameTableCatalog ?>/page/<?= $nextPageLink ?>">Вперёд &gt;</a>
         <?php else : ?>
             <span style="color: grey">Вперёд &gt;</span>
         <?php endif; ?>
@@ -65,7 +65,7 @@ SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
             <?php if ($currentPageNum === $pageNum) : ?>
                 <b><?= $pageNum ?></b>
             <?php else : ?>
-                <a href="<?= $pageNum ?>"><?= $pageNum ?></a>
+                <a href="/catalog/<?= $nameTableCatalog ?>/page/<?= $pageNum ?>"><?= $pageNum ?></a>
             <?php endif; ?>
         <?php endfor; ?>
     </section>

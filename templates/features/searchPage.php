@@ -1,4 +1,4 @@
-<?php $title = "Поиск: {$_SESSION['postSearch']['search']} - ShopKirov - магазин бытовой техники и электроники в Кирове";
+<?php $title = "Поиск: {$_SESSION['postSearch']['search']} в";
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';
 ?>

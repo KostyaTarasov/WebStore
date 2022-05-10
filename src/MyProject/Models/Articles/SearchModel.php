@@ -13,7 +13,7 @@ class SearchModel
 
     public static function countArticles(array $valueFromPost)
     {
-        $tableCatalogs = self::getNamesCatalogs();
+        $tableCatalogs = self::getNamesTableCatalogs();
         $sql = "";
         $sql = 'SELECT';
         foreach ($tableCatalogs as $table) {
@@ -52,7 +52,7 @@ class SearchModel
     }
 
 
-    public static function getNamesCatalogs() // Получаем имена каталогов(таблиц) заданные в общей таблице catalog
+    public static function getNamesTableCatalogs() // Получаем имена таблиц каталогов заданные в общей таблице catalog
     {
         $db = Db::getInstance();
         $allTable = $db->query(
@@ -67,7 +67,7 @@ class SearchModel
      */
     public static function getPage(int $pageNum, int $itemsPerPage, array $valueFromPost) // параметры: номер страницы, количество записей на одной странице, слова которые ищет пользователь.
     {
-        $tableCatalogs = self::getNamesCatalogs();
+        $tableCatalogs = self::getNamesTableCatalogs();
         $sql = "";
         foreach ($tableCatalogs as $table) {
             $sql .= 'SELECT *, ' . "'$table'" . ' AS `newColTable` FROM  ' . "$table" . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ''; // '$table' AS `newColTable` добавляем столбик содержащий имя таблицы к соответствующим данным. 
