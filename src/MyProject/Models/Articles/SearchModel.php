@@ -65,12 +65,13 @@ class SearchModel
     /** 
      * @return static[]
      */
-    public static function getPage(int $pageNum, int $itemsPerPage, array $valueFromPost) // параметры: номер страницы, количество записей на одной странице .
+    public static function getPage(int $pageNum, int $itemsPerPage, array $valueFromPost) // параметры: номер страницы, количество записей на одной странице, слова которые ищет пользователь.
     {
         $tableCatalogs = self::getNamesCatalogs();
         $sql = "";
         foreach ($tableCatalogs as $table) {
-            $sql .= 'SELECT * FROM  ' . "$table" . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . '';
+            $sql .= 'SELECT *, ' . "'$table'" . ' AS `newColTable` FROM  ' . "$table" . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ''; // '$table' AS `newColTable` добавляем столбик содержащий имя таблицы к соответствующим данным. 
+            // `newColTable` Добавляется не в бд, а только для вывода в шаблоне (используется в ссылке на продукт своего каталога и т.д.)
             if (next($tableCatalogs)) { // Если не конец массива в цикле foreach
                 $sql .= " UNION ALL "; // Объединяем SELECT запросы для разных имён таблиц
             }
@@ -125,22 +126,24 @@ class SearchModel
      */
     public function getText(): string
     {
-        return htmlentities($this->text); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return htmlentities($this->text);
     }
 
-    public function getAuthor() // Геттер для вывода автора статьи
+    public function getAuthor()
     {
-        /*
-        в геттере просим сущность юзера выполнить запрос в базу
-        и получить нужного пользователя по (authorId=author_id), который хранится в конкретной статье(articles) у которой свой id.
-        При этом запрос будет выполнен только если мы вызовем этот геттер,
-        это называется LazyLoad (ленивая загрузка) – это когда данные не подгружаются до тех пор, пока их не запросят.
-        */
         return User::getById($this->author_id);
     }
 
-    public function getImage() // Используется в templates/main/main.php
+    public function getImage()
     {
-        return $this->content; // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return $this->content;
+    }
+
+    /** Получаем имя таблицы каждого продукта из добавленного столбца newColTable. Столбец добавлен был в методе getPage()
+     * @return string
+     */
+    public function getValueNewColTable(): string
+    {
+        return htmlentities($this->newColTable);
     }
 }

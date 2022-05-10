@@ -8,7 +8,6 @@ require_once  "../templates/header.php";
 //*
 //!
 //?
-//TODO:
 
 /**
  * @param t
