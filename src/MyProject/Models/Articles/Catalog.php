@@ -11,9 +11,6 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
     /** @var string */
     protected $name_table; // protected чтобы к ним можно было достучаться из класса-родителя.
 
-    /** @var string */
-    protected $content;
-
     # Возвращает имя таблицы каталога:
     protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
     {
@@ -35,7 +32,7 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
      */
     public function getName(): string
     {
-        return htmlentities($this->name); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return htmlentities($this->name);
     }
 
     /**
@@ -60,9 +57,17 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
         return htmlentities($this->text); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
     }
 
-    public function getImage() // Используется в templates/main/main.php
+    /**
+     * @return int
+     */
+    public function getPrice(): int
     {
-        return $this->content; // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return htmlentities($this->price);
+    }
+
+    public function getImage()
+    {
+        return $this->content;
     }
 
     //* Получение записей на n-ой страничке

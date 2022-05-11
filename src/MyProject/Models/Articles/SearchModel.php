@@ -111,7 +111,7 @@ class SearchModel
 
     public function getName(): string
     {
-        return htmlentities($this->name); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return htmlentities($this->name);
     }
 
     //* Markdown-разметка. Будет прогонять текст статьи через парсер, прежде чем его вернуть
@@ -124,9 +124,17 @@ class SearchModel
     /**
      * @return string
      */
-    public function getText(): string
+    public function getText(): string  // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
     {
         return htmlentities($this->text);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return htmlentities($this->price);
     }
 
     public function getAuthor()

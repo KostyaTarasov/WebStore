@@ -25,7 +25,7 @@ include __DIR__ . '/../features/search.php';
                             </a> <!-- Вывод имени -->
                             </h2>
                             <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
-                            <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
+                            <p>Цена: <?= $article->getPrice() ?> ₽</p>
                             <hr>
                     </td>
                 </tr>

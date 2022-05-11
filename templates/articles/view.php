@@ -15,6 +15,7 @@ include __DIR__ . '/../header.php'; ?>
     <img class="image big" src="data:image/png;base64, <?= $image ?? null ?>  " />
 <?php endif; ?>
 
+<p>Цена: <?= $article->getPrice() ?> ₽</p>
 <form action="buy.php" method="GET">
     <!-- кнопка при помощи которой можно заказать  -->
     <input type="hidden" name="id" value="<?= $article->getId(); ?>" />

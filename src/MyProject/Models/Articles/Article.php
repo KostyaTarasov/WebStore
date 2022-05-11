@@ -14,6 +14,9 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     /** @var string */
     protected  $text;
 
+    /** @var int */
+    protected  $price;
+
     /** @var string */
     protected  $authorId;
 
@@ -29,7 +32,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
      */
     public function getName(): string // Используется в templates/article/view.php
     {
-        return htmlentities($this->name); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return htmlentities($this->name);
     }
 
     /**
@@ -38,6 +41,14 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     public function getText(): string
     {
         return htmlentities($this->text); // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return htmlentities($this->price);
     }
 
     # Возвращает имя таблицы: articles в случае если адрес /catalog/articles, где хранятся статьи.
@@ -67,9 +78,9 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         return User::getById($this->authorId);
     }
 
-    public function getImage() // Используется в templates/main/main.php
+    public function getImage()
     {
-        return $this->content; // htmlentities() чтобы обезопастить от XSS-атаки (например от комментах в виде <script>...)
+        return $this->content;
     }
 
     public function setName($name1): string // Устанавливаем новое значение для свойства $this->name
@@ -80,6 +91,11 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     public function setText($text1): string
     {
         return $this->text = $text1;
+    }
+
+    public function setPrice($price): string
+    {
+        return $this->price = $price;
     }
 
     public function setImages()
@@ -112,7 +128,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         $this->authorId = $author->getId();
     }
 
-    //* Создание новой статьи
+    //* Создание новой статьи на странице add
     public static function createFromArray(array $fields, User $author): Article
     {
         if (empty($fields['name'])) {
@@ -128,6 +144,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         $article->setAuthor($author);
         $article->setName($fields['name']);
         $article->setText($fields['text']);
+        $article->setPrice($fields['price']);
         $article->setImages(); // Загруженное изображение кладём в массив данных
 
         $article->save();
@@ -135,7 +152,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         return $article;
     }
 
-    // Обновление таблицы БД после ручного редактирования статьи на странице
+    // Обновление таблицы БД после ручного редактирования статьи на странице edit
     public function updateFromArray(array $fields): Article
     {
         if (empty($fields['name'])) {
@@ -148,6 +165,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
 
         $this->setName($fields['name']);
         $this->setText($fields['text']);
+        $this->setPrice($fields['price']);
         $this->setImages(); // Загруженное изображение кладём в массив данных
         $this->save();
 

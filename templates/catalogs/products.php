@@ -2,7 +2,6 @@
 $h1 = "$nameCatalog";
 include __DIR__ . '/../header.php';
 include __DIR__ . '/../features/search.php';
-//TODO Добавить столбик цена, сделать возможность редактирования цены также как редактируется столбик текст
 ?>
 
 <div>
@@ -25,6 +24,7 @@ include __DIR__ . '/../features/search.php';
                             <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
                         <?php endif; ?>
                         <hr>
+                        <p>Цена: <?= $item->getPrice() ?> ₽</p>
                         <form action="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
                             <input type="hidden" />
                             <button class="buttonMore" type="submit">Подробнее</button>
