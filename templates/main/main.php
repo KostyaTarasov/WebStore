@@ -24,6 +24,7 @@ include __DIR__ . '/../features/search.php';
                             <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
                         <?php endif; ?>
                         <hr>
+                        <p>Цена: <?= $item->getPrice() ?> ₽</p>
                         <form action="/catalog/articles/<?= $item->getId() ?>/">
                             <input type="hidden" />
                             <button class="buttonMore" type="submit">Подробнее</button>
