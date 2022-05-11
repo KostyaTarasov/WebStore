@@ -23,7 +23,7 @@
         if ((!empty($user) && $user->isAdmin()) && (!empty($templateName))) {
             if ($templateName == 'catalogs/products.php') : // Если страница открытого каталога
         ?>
-                <li><a href="../add">Страница добавления статей</a></li>
+                <li><a href="catalog/<?= $nameTableCatalog ?>/add">Страница добавления статей</a></li>
             <?php endif;
         }
         if ((!empty($user) && $user->isAdmin()) && ($rule == true)) : // Ссылка будет доступна только админу для добавления статьи, товара на главной странице и на страницах открытых каталогов.
