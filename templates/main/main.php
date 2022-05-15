@@ -21,7 +21,9 @@ include __DIR__ . '/../features/search.php';
                         <?php
                         $image = base64_encode($item->getImage());
                         if (!empty($image) && $image != "IA==") : ?>
-                            <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
+                            <img class="image small" src="data:image/png;base64, <?= $image ?> ">
+                        <?php else : ?>
+                            <img class="image small" src="/images/catalog/no-image.png ">
                         <?php endif; ?>
                         <hr>
                         <p>Цена: <?= $item->getPrice() ?> ₽</p>
@@ -36,7 +38,7 @@ include __DIR__ . '/../features/search.php';
 <!-- Пагинация, выводить на каждой странице по 8 записей
 SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
 -->
-<div style="text-align: center">
+<div style=" text-align: center">
     <section>
         <?php if ($previousPageLink !== null) : ?>
             <a href="<?= $previousPageLink ?>">&lt; Назад</a>

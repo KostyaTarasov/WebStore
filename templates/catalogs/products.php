@@ -21,7 +21,9 @@ include __DIR__ . '/../features/search.php';
                         <?php
                         $image = base64_encode($item->getImage());
                         if (!empty($image) && $image != "IA==") : ?>
-                            <img class="image small" src="data:image/png;base64, <?= $image ?? null ?>  " />
+                            <img class="image small" src="data:image/png;base64, <?= $image ?>">
+                        <?php else : ?>
+                            <img class="image small" src="/images/catalog/no-image.png ">
                         <?php endif; ?>
                         <hr>
                         <p>Цена: <?= $item->getPrice() ?> ₽</p>
