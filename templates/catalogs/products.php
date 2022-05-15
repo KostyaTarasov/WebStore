@@ -9,7 +9,7 @@ include __DIR__ . '/../features/search.php';
         <?php foreach (array_chunk($articles, 4) as $value) : ?>
             <tr>
                 <?php foreach ($value as $item) : ?>
-                    <td class="td2">
+                    <td class="td2" onclick="location.href='/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/'">
                         <h2>
                             <a href="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
@@ -25,10 +25,6 @@ include __DIR__ . '/../features/search.php';
                         <?php endif; ?>
                         <hr>
                         <p>Цена: <?= $item->getPrice() ?> ₽</p>
-                        <form action="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
-                            <input type="hidden" />
-                            <button class="buttonMore" type="submit">Подробнее</button>
-                        </form>
                     </td>
                 <?php endforeach; ?>
             </tr>

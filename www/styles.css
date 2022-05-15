@@ -73,6 +73,7 @@
   border: 3mm solid rgb(237, 238, 235); 
 }
 .td2:hover {
+  cursor: pointer;
   box-shadow: inset 0 0 0 5px #fdf3bc;
 }
 
@@ -131,7 +132,7 @@ a:hover {
   background: rgb(247, 202, 135) !important; /* Цвет фона при наведении на ссылку курсора */
 }
 
-/* Кнопка "Подробнее" */
+/* Трёхмерная кнопка "Подробнее", (не используется) */
 .buttonMore {
   background-color:rgb(105, 105, 105);
   color:rgb(255, 255, 255);
