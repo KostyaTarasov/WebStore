@@ -88,14 +88,9 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         }
         # Cформируем запрос
         $sql = 'UPDATE ' . static::getTableName() . ' SET ' . implode(', ', $columns2params) . ' WHERE id = ' . $this->id;
-        var_dump($sql);
 
         $db = Db::getInstance(); // При вызове метода, вернётся объект класса Db
         $db->query($sql, $params2values, static::class); // Передаём параметры, где $sql-строка запроса, $params2values содержит новое передаваемое значение (для столбика name), класс
-
-        echo "<pre>";
-        var_dump($params2values);
-        echo "</pre>";
 
         // Cоздали универсальный метод, который позволит обновлять записи в бд для любых объектов, 
         // являющимися наследниками класса ActiveRecordEntity.

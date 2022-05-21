@@ -32,7 +32,7 @@ return [
 
     //TODO Поправить:    
     '~^users/register$~' => [\MyProject\Controllers\UsersController::class, 'signUp'], // Роут для регистрации пользователей                 http://localhost:8080/users/register
-    '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate'], // Роут успешной активации пользователя  http://localhost:8080/users/15/activate/9cfc33d83a2aef14058ecf1f850a73e1 Где user_id = 15 и code = длинный код в конце url взяты из таблицы users_activation_codes
+    '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate'], // Роут успешной активации пользователя  Где user_id и code взяты из таблицы users_activation_codes
     '~^users/login~' => [\MyProject\Controllers\UsersController::class, 'login'],                   // Роут для авторизации пользователя     http://localhost:8080/users/login
     '~^users/logOut~' => [\MyProject\Controllers\UsersController::class, 'logOut'],                 // Роут для выхода пользователя          http://localhost:8080/users/login
 

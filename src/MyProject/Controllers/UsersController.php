@@ -38,7 +38,7 @@ class UsersController extends AbstractController
 
                 $code = UserActivationService::createActivationCode($user);
 
-                EmailSender::send($user, 'Активация', 'userActivation.php', [ // Отправляем параметры в метод класса EmailSender
+                EmailSender::send($user, 'Добро пожаловать!', 'userActivation.php', [ // Отправляем параметры в метод класса EmailSender
                     'userId' => $user->getId(),
                     'code' => $code
                 ]);
@@ -58,12 +58,11 @@ class UsersController extends AbstractController
         $isCodeValid = UserActivationService::checkActivationCode($user, $activationCode);
         if ($isCodeValid) {
             $user->activate();
-            //Для доступа к этой странице нужно <a href="/users/login">войти на сайт</a>
 ?>
-            <h1>Активация прошла успешно!</h1>
-            <h2>Перейти на страницу авторизации:</h2> <a href="/users/login">войти на сайт</a>
+            <h2>Активация прошла успешно!</h2>
 <?php
-        } else  echo 'Ошибка';
+            self::login();
+        } else  echo 'Произошла ошибка при активации аккаунта!';
     }
 
     # Авторизация пользователя
