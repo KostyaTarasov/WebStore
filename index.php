@@ -64,7 +64,11 @@ try {
         throw new \MyProject\Exceptions\NotFoundException(); // Бросаем исключение
     }
 
-    $matches = array_slice($matches, -1, 1); // Срез массива, иначе передадутся лишние значения в вызываемый метод контроллера
+    if (strpos($matches[0], "catalog") !== false) { // Если каталоговая страница, то очищаем имя каталога из массива передаваемых значений в вызываемый контроллер
+        unset($matches[1]);
+    }
+    unset($matches[0]);
+
 
     $controllerName = $controllerAndAction[0];
     $actionName = $controllerAndAction[1];
