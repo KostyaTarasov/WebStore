@@ -29,8 +29,7 @@ return [
 
     '~^search/(\d+)$~' => [\MyProject\Controllers\SearchController::class, 'page'], // Роут для поиска
     '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'],                  // Роут для поиска               http://learnphp/search
-
-    //TODO Поправить:    
+  
     '~^users/register$~' => [\MyProject\Controllers\UsersController::class, 'signUp'], // Роут для регистрации пользователей                 http://localhost:8080/users/register
     '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate'], // Роут успешной активации пользователя  Где user_id и code взяты из таблицы users_activation_codes
     '~^users/login~' => [\MyProject\Controllers\UsersController::class, 'login'],                   // Роут для авторизации пользователя     http://localhost:8080/users/login

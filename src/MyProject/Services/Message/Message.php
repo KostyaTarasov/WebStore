@@ -12,7 +12,6 @@ class Message
     public const WARNING = 'warning';
     public const ERROR = 'error';
     public const INFO = 'info';
-    public const CONTENT = 'content';
 
     private $text;
     private $type;
