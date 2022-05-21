@@ -6,7 +6,7 @@
 
 .header {
   text-align: center;
-  border: solid 1px rgb(110, 67, 179);
+  border: solid 1px rgb(250, 163, 64);
 }
 
 .footer {
@@ -91,7 +91,7 @@ a:hover {
   margin:auto;
   text-align: center;
   padding:10px 10px;
-  background:#5d9cee;
+  background:rgb(250, 163, 64);
   color:rgb(0, 0, 0)!important;
   font-size:20px;
 }
@@ -127,7 +127,7 @@ a:hover {
 }
 
 .buttonSearch {
-  background: rgb(247, 202, 135) !important; /* Цвет фона при наведении на ссылку курсора */
+  background: rgb(250, 163, 64) !important; /* Цвет фона при наведении на ссылку курсора */
 }
 
 /* Трёхмерная кнопка "Подробнее", (не используется) */
