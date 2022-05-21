@@ -204,3 +204,25 @@ h3:hover:after {
   width: 250px; /* Ширина линии при наведении */
   transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
 }
+
+.notice{
+  text-align: center;
+  font-size:20px;
+  padding:16px;
+  border-radius:4px;
+  border:2px solid;
+  border-color: rgb(250, 163, 64);
+  color:rgb(0, 0, 0);
+  }
+
+.notice_success{
+  background-color:rgb(227, 247, 225);
+}
+
+.notice_warning{
+  background-color:rgb(250, 182, 127);
+}
+
+.notice_error{
+  background-color:rgb(255, 204, 196);
+}

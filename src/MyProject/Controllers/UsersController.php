@@ -7,6 +7,8 @@ use MyProject\Exceptions\InvalidArgumentException;
 use MyProject\Models\Users\UserActivationService;
 use MyProject\Services\EmailSender;
 use MyProject\Services\UsersAuthService;
+use MyProject\Services\Message\SuccessMessage;
+use MyProject\Services\Message\ErrorMessage;
 /*
 Нам нужно обработать данные, пришедшие от пользователя. 
 Принимать данные из запроса мы будем внутри контроллера, однако вся логика по проверке этих данных будет находиться внутри модели пользователя. 
@@ -58,11 +60,9 @@ class UsersController extends AbstractController
         $isCodeValid = UserActivationService::checkActivationCode($user, $activationCode);
         if ($isCodeValid) {
             $user->activate();
-?>
-            <h2>Активация прошла успешно!</h2>
-<?php
+            $this->view->renderHtml('messages/message.php', ['message' => new SuccessMessage("Активация прошла успешно!")]);
             self::login();
-        } else  echo 'Произошла ошибка при активации аккаунта!';
+        } else $this->view->renderHtml('messages/message.php', ['message' => new ErrorMessage("Произошла ошибка при активации аккаунта!")]);
     }
 
     # Авторизация пользователя
