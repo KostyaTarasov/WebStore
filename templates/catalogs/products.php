@@ -10,7 +10,7 @@ include __DIR__ . '/../features/search.php';
             <tr>
                 <?php foreach ($value as $item) : ?>
                     <td class="td2" onclick="location.href='/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/'">
-                        <h2>
+                        <h2 class="td2-text-head">
                             <a href="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
                                 <?= $item->getName() ?>

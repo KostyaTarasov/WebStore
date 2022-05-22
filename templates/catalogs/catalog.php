@@ -11,14 +11,12 @@ include __DIR__ . '/../features/search.php';
                 <?php foreach ($value as $item) : ?>
                     <td class="td2" onclick="location.href='/catalog/<?= $item->getNameTable() ?>'">
                         <img class="image small" src="<?= $item->getPathImage() ?>" ">
-
-                        <h2>
+                        <h3>
                             <a href=" /catalog/<?= $item->getNameTable() ?>">
                         <!-- Ccылка на статью -->
                         <?= $item->getName() ?>
                         </a> <!-- Вывод имени -->
-                        </h2>
-
+                        </h3>
                         <p><?= $item->getText() ?></p>
                     </td>
                 <?php endforeach; ?>

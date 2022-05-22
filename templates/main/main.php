@@ -6,16 +6,17 @@ include __DIR__ . '/../features/search.php';
 
 <div>
     <table class="table2">
+        <h2 style="padding: 10px;">Популярные товары</h2>
         <?php foreach (array_chunk($articles, 4) as $value) : ?>
             <tr>
                 <?php foreach ($value as $item) : ?>
                     <td class="td2" onclick="location.href='/catalog/articles/<?= $item->getId() ?>/'">
-                        <h2>
+                        <h3 class="td2-text-head">
                             <a href="/catalog/articles/<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
                                 <?= $item->getName() ?>
                             </a> <!-- Вывод имени -->
-                        </h2>
+                        </h3>
                         <p><?= $item->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
                         <p>Автор: <?= $item->getAuthor()->getNickname() ?></p>
                         <?php

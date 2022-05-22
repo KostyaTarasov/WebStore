@@ -18,10 +18,10 @@ include __DIR__ . '/../features/search.php';
                         <?php endif; ?>
                     </td>
                     <td>
-                        <h2>
+                        <h2 class=" td2-text-head td2-text-head-bold">
                             <a href=" /catalog/<?= $article->getValueNewColTable() ?>/<?= $article->getId() ?>/">
-                            <!-- Ccылка на статью для каждого id найденного foreach -->
-                            <?= $article->getName() ?>
+                                <!-- Ccылка на статью для каждого id найденного foreach -->
+                                <?= $article->getName() ?>
                             </a> <!-- Вывод имени -->
                             </h2>
                             <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->

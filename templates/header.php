@@ -26,9 +26,9 @@
             </td>
 
             <td colspan="1" class="header">
-                <h3><?php if (!empty($h1)) {
-                        echo $h1;
-                    } ?></h3>
+                <h2 class="header-h"><?php if (!empty($h1)) {
+                    echo $h1;
+                    } ?></h2>
             </td>
 
             <td colspan="1" class="accountLogin">
