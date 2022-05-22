@@ -20,7 +20,7 @@ INSERT INTO `catalog` (`id`, `name_table`, `name`, `text`, `content`) VALUES
 (3, 'chajniki', 'Чайники', 'Дополнительное описание', 'chajniki'),
 (4, 'televizory', 'Телевизоры', 'Дополнительное описание', 'televizory'),
 (5, 'naushniki', 'Наушники', 'Дополнительное описание', 'naushniki');
-
+(6, 'popular_products', 'Популярные товары', 'Дополнительное описание', 'popular_products');
 
 CREATE TABLE `users` (
     `id` int(11) NOT NULL,
@@ -74,6 +74,46 @@ CREATE TABLE IF NOT EXISTS `articles` (
 INSERT INTO `articles` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
 (1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
 (2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
+
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `news` (`id`, `name`, `text`, `created_at`, `content`) VALUES
+(1, 'Заголовок новости 1', 'Текст новости 1', '2022-05-22 19:30:21', ''),
+(2, 'Заголовок новости 2', 'Текст новости 2', '2022-05-22 19:32:21', '');
+
+CREATE TABLE IF NOT EXISTS `question` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `question` (`id`, `name`, `text`, `created_at`) VALUES
+(1, 'Антон', 'Подскажите, какой срок доставки у данного товара?', '2022-05-22 19:30:21'),
+(2, 'Василиса', 'Кто является производителем у товара?', '2022-05-22 19:30:21');
+
+CREATE TABLE IF NOT EXISTS `popular_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `popular_products` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
+(1, 1, 'Популярный товар 1', 'Информация о товаре', '66', '2022-05-22 19:30:21', ''),
+(2, 1, 'Популярный товар 2', 'Информация о товаре', '77', '2022-05-22 19:30:21', '');
 
 CREATE TABLE IF NOT EXISTS `holodilniki` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
