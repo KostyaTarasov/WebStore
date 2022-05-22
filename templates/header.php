@@ -13,11 +13,28 @@
 
 <body>
     <!--<div class="container mt-5"> -->
-    <header style="text-align: center">
-        <br>
-        <a href="/">Главная</a> |
-        <a href="/../templates/pages/about.php">О себе</a>
-        <a href="/../manual.php">Документация по PHP</a>
+    <header>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="text-header text-header-left">
+                    <a>Адрес: г.Киров, ул.Ленина 1</a>
+                    <a>С 08-00 до 18-00</a>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="text-header text-header-middle">
+                    <a href="/">Главная</a>
+                    <a href="/../templates/pages/about.php">О себе</a>
+                    <a href="/../manual.php">Документация по PHP</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="text-header text-header-right">
+                    <a>Тел: 8-800-800-8888</a>
+                </div>
+            </div>
+        </div>
     </header>
     <table class="layout">
 
@@ -25,10 +42,12 @@
             <td colspan="1" class="sidebar">
             </td>
 
-            <td colspan="1" class="header">
-                <h2 class="header-h"><?php if (!empty($h1)) {
-                    echo $h1;
-                    } ?></h2>
+            <td colspan="1" class="header-lower">
+                <h2 class="header-h">
+                    <?php if (!empty($h1)) {
+                        echo $h1;
+                    } ?>
+                </h2>
             </td>
 
             <td colspan="1" class="accountLogin">

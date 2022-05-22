@@ -4,9 +4,35 @@
   margin:auto;
 }
 
-.header {
+header {
+  background-color: #333;
+}
+
+.header-lower {
   text-align: center;
-  border: solid 1px rgb(250, 163, 64);
+  background-color: #f5f5f6;
+}
+
+/* текст из шапки сайта */
+.text-header a {
+  color: #ffffff !important;
+  line-height: 38px;
+  padding: 10px;
+}
+
+/* текст из шапки сайта */
+.text-header-left {
+  text-align: right;
+}
+
+/* текст из шапки сайта */
+.text-header-middle{
+  text-align: center;
+}
+
+/* текст из шапки сайта */
+.text-header-right {
+  text-align: left;
 }
 
 .footer {
