@@ -6,7 +6,7 @@ include __DIR__ . '/../features/search.php';
 
 <div>
     <table class="table2">
-        <h2 style="padding: 10px;">Популярные товары</h2>
+        <h2 style="padding: 10px;">Хиты продаж</h2>
         <?php foreach (array_chunk($articles, 4) as $value) : ?>
             <tr>
                 <?php foreach ($value as $item) : ?>
