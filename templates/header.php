@@ -31,7 +31,7 @@
             </div>
             <div class="col-4">
                 <div class="text-header text-header-right">
-                    <a>Тел: 8-800-800-8888</a>
+                    <a><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</a>
                 </div>
             </div>
         </div>
@@ -43,11 +43,18 @@
             </td>
 
             <td colspan="1" class="header-lower">
-                <h2 class="header-h">
-                    <?php if (!empty($h1)) {
-                        echo $h1;
-                    } ?>
-                </h2>
+                <div class="row">
+                    <div class="col-4">
+                        <h2 class="header-h">
+                            <?php if (!empty($h1)) {
+                                echo $h1;
+                            } ?>
+                        </h2>
+                    </div>
+                    <div class="col-8">
+                        <?php include __DIR__ . '/features/search.php'; ?>
+                    </div>
+                </div>
             </td>
 
             <td colspan="1" class="accountLogin">

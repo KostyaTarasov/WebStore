@@ -35,6 +35,40 @@ header {
   text-align: center;
 }
 
+/* линия над заголовком "h3"*/
+.header-h{
+  font-size: 30px; /* Размер шрифта */
+  color: #5a5a5a; /* Цвет заголовка */
+  text-align: center; /* Текст по центру */
+}
+.header-h:before {
+  content: '';
+  display: block;
+  height: 1px; /* Высота линии */
+  width: 150px; /* Ширина линии до наведения */
+  margin: 0 auto 0px; /* Отступ с боков по центру и снизу */
+  transition: 1s; /* Время, за которое линия возвращается после наведения */
+}
+.header-h:hover:before {
+  background: #f66d52; /* Цвет линии */
+  width: 250px; /* Ширина линии при наведении */
+  transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
+}
+/*  CSS код для линии под заголовком */
+.header-h:after {
+  content: '';
+  display: block;
+  height: 1px; /* Высота линии */
+  width: 150px; /* Ширина линии до наведения */
+  margin: 10px auto 0; /* Отступ с боков по центру и сверху */
+  transition: 1s; /* Время, за которое линия возвращается после наведения */
+}
+.header-h:hover:after {
+  background: #f66d52; /* Цвет линии */
+  width: 250px; /* Ширина линии при наведении */
+  transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
+}
+
 .footer {
   text-align: center;
   padding: 20px;
@@ -130,7 +164,7 @@ a:hover {
   margin:auto;
   text-align: center;
   padding:10px 10px;
-  background:rgb(250, 163, 64);
+  background:rgb(255, 199, 32);
   color:rgb(0, 0, 0)!important;
   font-size:20px;
 }
@@ -161,12 +195,23 @@ a:hover {
   transform: scale(1.2); /* Увеличиваем масштаб */
 }
 
+.iconSmall {
+  width:20px;
+  vertical-align:text-bottom;
+}
+
 .iconSearch {
   width:25px;
 }
 
+.iconSearch2 {
+  width:20px;
+  vertical-align:text-bottom;
+}
+
 .buttonSearch {
-  background: rgb(250, 163, 64) !important; /* Цвет фона при наведении на ссылку курсора */
+  background: rgb(250, 163, 64);
+  border-radius: 4px;
 }
 
 /* Трёхмерная кнопка "Подробнее", (не используется) */
@@ -208,41 +253,6 @@ a:hover {
 .underlining a:hover:after,
 .underlining a:focus:after {
   width: 100%;
-}
-
-/* линия над заголовком "h3"*/
-.header-h{
-  font-size: 30px; /* Размер шрифта */
-  color: #5a5a5a; /* Цвет заголовка */
-  text-align: center; /* Текст по центру */
-  padding-top: 8px;
-}
-.header-h:before {
-  content: '';
-  display: block;
-  height: 1px; /* Высота линии */
-  width: 150px; /* Ширина линии до наведения */
-  margin: 0 auto 10px; /* Отступ с боков по центру и снизу */
-  transition: 1s; /* Время, за которое линия возвращается после наведения */
-}
-.header-h:hover:before {
-  background: #f66d52; /* Цвет линии */
-  width: 250px; /* Ширина линии при наведении */
-  transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
-}
-/*  CSS код для линии под заголовком */
-.header-h:after {
-  content: '';
-  display: block;
-  height: 1px; /* Высота линии */
-  width: 150px; /* Ширина линии до наведения */
-  margin: 10px auto 0; /* Отступ с боков по центру и сверху */
-  transition: 1s; /* Время, за которое линия возвращается после наведения */
-}
-.header-h:hover:after {
-  background: #f66d52; /* Цвет линии */
-  width: 250px; /* Ширина линии при наведении */
-  transition: ease-out 1s; /* Время, за которое линия расширяется при наведении */
 }
 
 .notice{

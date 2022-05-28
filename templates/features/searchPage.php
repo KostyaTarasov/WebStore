@@ -1,6 +1,5 @@
 <?php $title = "Поиск: {$_SESSION['postSearch']['search']} в";
 include __DIR__ . '/../header.php';
-include __DIR__ . '/../features/search.php';
 ?>
 
 <div style="margin: 15px;">

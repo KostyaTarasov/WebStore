@@ -1,7 +1,6 @@
 <?php $title = "Каталог товаров";
 $h1 = $title;
 include __DIR__ . '/../header.php';
-include __DIR__ . '/../features/search.php';
 ?>
 
 <div>

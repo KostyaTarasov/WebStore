@@ -1,7 +1,6 @@
 <?php $title = "";
 $h1 = "Главная страница";
 include __DIR__ . '/../header.php';
-include __DIR__ . '/../features/search.php';
 ?>
 
 <div>
