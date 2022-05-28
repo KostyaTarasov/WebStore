@@ -34,33 +34,36 @@ include __DIR__ . '/../header.php';
 </div>
 
 
-<!-- Пагинация, выводить на каждой странице по 8 записей
-SELECT * FROM articles ORDER BY id DESC LIMIT 8 OFFSET 0;
--->
-<div style="text-align: center">
-    <section>
-        <?php if ($previousPageLink !== null) : ?>
-            <a href="/catalog/<?= $nameTableCatalog ?>/page/<?= $previousPageLink ?>">&lt; Назад</a>
+<nav aria-label="Пацинация страниц">
+    <ul class="pagination justify-content-center">
+        <?php if ($previousPageLink != null) : ?>
+            <li class="page-item">
+                <a class="page-link" href="/catalog/<?= $nameTableCatalog ?>/page/<?= $previousPageLink ?>">&lt;</a>
+            </li>
         <?php else : ?>
-            <span style="color: grey">&lt; Назад</span>
+            <li class="page-item disabled">
+                <a class="page-link">&lt;</a>
+            </li>
         <?php endif; ?>
-        &nbsp;&nbsp;&nbsp;
-        <?php if ($nextPageLink !== null) : ?>
-            <a href="/catalog/<?= $nameTableCatalog ?>/page/<?= $nextPageLink ?>">Вперёд &gt;</a>
-        <?php else : ?>
-            <span style="color: grey">Вперёд &gt;</span>
-        <?php endif; ?>
-    </section>
-
-    <section>
         <?php for ($pageNum = 1; $pageNum <= $pagesCount; $pageNum++) : ?>
             <?php if ($currentPageNum === $pageNum) : ?>
-                <b><?= $pageNum ?></b>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link"><?= $pageNum ?></a>
+                </li>
             <?php else : ?>
-                <a href="/catalog/<?= $nameTableCatalog ?>/page/<?= $pageNum ?>"><?= $pageNum ?></a>
+                <li class="page-item"><a class="page-link " href="/catalog/<?= $nameTableCatalog ?>/page/<?= $pageNum ?>"><?= $pageNum ?></a></li>
             <?php endif; ?>
         <?php endfor; ?>
-    </section>
-</div>
+        <?php if ($nextPageLink !== null) : ?>
+            <li class="page-item">
+                <a class="page-link" href="/catalog/<?= $nameTableCatalog ?>/page/<?= $nextPageLink ?>">&gt;</a>
+            </li>
+        <?php else : ?>
+            <li class="page-item disabled">
+                <a class="page-link">&gt;</a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
 
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

@@ -2,8 +2,10 @@
 include __DIR__ . '/../header.php';
 ?>
 
-<div style="margin: 15px;">
-    <?php if (empty($error)) : ?>
+<?php if (!empty($error)) : ?>
+    <div style="background-color: rgba(255, 255, 128, .5); padding: 5px; margin: 15px"><?= $error ?></div>
+<?php else : ?>
+    <div style="margin: 15px;">
         <?php foreach ($articles as $article) : ?>
             <table>
                 <tr>
@@ -17,7 +19,7 @@ include __DIR__ . '/../header.php';
                         <?php endif; ?>
                     </td>
                     <td>
-                        <h2 class=" td2-text-head td2-text-head-bold">
+                        <h2 class=" td2-text-head td2-text-head-bold a-edit">
                             <a href=" /catalog/<?= $article->getValueNewColTable() ?>/<?= $article->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного foreach -->
                                 <?= $article->getName() ?>
@@ -30,37 +32,39 @@ include __DIR__ . '/../header.php';
                 </tr>
             </table>
         <?php endforeach; ?>
-</div>
+    </div>
 
-<div style=" text-align: center">
-    <section>
-        <?php if ($previousPageLink !== null) : ?>
-            <a href="<?= $previousPageLink ?>">&lt; Назад</a>
-        <?php else : ?>
-            <span style="color: grey">&lt; Назад</span>
-        <?php endif; ?>
-        &nbsp;&nbsp;&nbsp;
-        <?php if ($nextPageLink !== null) : ?>
-            <a href="<?= $nextPageLink ?>">Вперёд &gt;</a>
-        <?php else : ?>
-            <span style="color: grey">Вперёд &gt;</span>
-        <?php endif; ?>
-    </section>
-
-    <section>
-        <?php for ($pageNum = 1; $pageNum <= $pagesCount; $pageNum++) : ?>
-            <?php if ($currentPageNum === $pageNum) : ?>
-                <b><?= $pageNum ?></b>
+    <nav aria-label="Пацинация страниц">
+        <ul class="pagination justify-content-center">
+            <?php if ($previousPageLink != null) : ?>
+                <li class="page-item">
+                    <a class="page-link" href="<?= $previousPageLink ?>">&lt;</a>
+                </li>
             <?php else : ?>
-                <a href="/search/<?= $pageNum === 1 ? '1' : $pageNum ?>"><?= $pageNum ?></a>
+                <li class="page-item disabled">
+                    <a class="page-link">&lt;</a>
+                </li>
             <?php endif; ?>
-        <?php endfor; ?>
-    </section>
-</div>
-<?php endif; ?>
-
-<?php if (!empty($error)) : ?>
-    <div style="background-color: rgba(255, 255, 128, .5); padding: 5px; margin: 15px"><?= $error ?></div>
+            <?php for ($pageNum = 1; $pageNum <= $pagesCount; $pageNum++) : ?>
+                <?php if ($currentPageNum === $pageNum) : ?>
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link"><?= $pageNum ?></a>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item"><a class="page-link " href="/search/<?= $pageNum ?>"><?= $pageNum ?></a></li>
+                <?php endif; ?>
+            <?php endfor; ?>
+            <?php if ($nextPageLink !== null) : ?>
+                <li class="page-item">
+                    <a class="page-link" href="<?= $nextPageLink ?>">&gt;</a>
+                </li>
+            <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link">&gt;</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </nav>
 <?php endif; ?>
 
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
