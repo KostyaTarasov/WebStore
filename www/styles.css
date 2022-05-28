@@ -152,26 +152,24 @@ a {
   color: #000000 !important;
   text-decoration: none !important;
 }
-
 a:hover {
   color: #bd0f2c !important;
 }
 
+.text-white {
+  color: #ffffff !important;
+}
+.text-white:hover {
+  color: #ffffff !important;
+}
+
 /* Кнопка Каталог товаров*/
 .link a {
-  display:block;
-  width:100%;
-  margin:auto;
-  text-align: center;
-  padding:10px 10px;
-  background:rgb(255, 199, 32);
-  color:rgb(0, 0, 0)!important;
   font-size:20px;
-}
-  
-.link a:hover {
-  color:#fff!important;
-}
+  color:rgb(0, 0, 0)!important;
+  width:100%;
+  padding:10px 10px;
+} 
 
 /* Ссылки в левом sidebar */
 .refSidebarCatalog {
@@ -200,12 +198,12 @@ a:hover {
   vertical-align:text-bottom;
 }
 
-.iconSearch {
-  width:25px;
+.iconSearch1 {
+  width:22px;
 }
 
 .iconSearch2 {
-  width:20px;
+  width:18px;
   vertical-align:text-bottom;
 }
 

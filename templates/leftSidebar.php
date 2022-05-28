@@ -1,5 +1,5 @@
 <div class="link">
-    <a class="link" href="/catalog">Каталог товаров <img class="iconSearch" src="/images/icons/find.png"></a>
+    <a class="btn btn-warning" href=" /catalog">Каталог товаров <img class="iconSearch1" src="/images/svg/search.svg"></a>
 </div>
 <ul style="margin: 5px;">
     <?php
