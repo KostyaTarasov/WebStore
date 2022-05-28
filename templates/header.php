@@ -16,13 +16,13 @@
     <header>
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-4">
                 <div class="text-header text-header-left">
                     <a>Адрес: г.Киров, ул.Ленина 1</a>
                     <a>С 08-00 до 18-00</a>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <div class="text-header text-header-middle">
                     <a href="/">Главная</a>
                     <a href="/../templates/pages/about.php">О себе</a>

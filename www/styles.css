@@ -22,7 +22,7 @@ header {
 
 /* текст из шапки сайта */
 .text-header-left {
-  text-align: right;
+  text-align: center;
 }
 
 /* текст из шапки сайта */
@@ -32,7 +32,7 @@ header {
 
 /* текст из шапки сайта */
 .text-header-right {
-  text-align: left;
+  text-align: center;
 }
 
 .footer {
