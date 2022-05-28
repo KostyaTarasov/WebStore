@@ -7,8 +7,8 @@ include __DIR__ . '/../header.php'; ?>
 <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
 <?php if ($user !== null && $user->isAdmin()) : // if (!empty($article) ) : // Любой сможет увидеть ссылки без условия $user->isAdmin(). А если вручную открыть ссылку, то всё равно не получится выполнять действия из-за запрета в контроллере статей Forbidden... 
 ?>
-    <a class="btn btn-primary text-white" href="edit">Редактировать статью</a>
-    <a class="btn btn-danger text-white" href="del">Удалить статью</a>
+    <a class="btn btn-primary" href="edit">Редактировать статью</a>
+    <a class="btn btn-danger" href="del">Удалить статью</a>
 <?php endif; ?>
 
 <?php if (!empty($image) && $image != "IA==") : ?>

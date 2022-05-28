@@ -4,7 +4,7 @@ include __DIR__ . '/../header.php';
 ?>
 
 <div>
-    <table class="table2">
+        <table class="table2 a-edit">
         <h2 style="padding: 10px;">Хиты продаж</h2>
         <?php foreach (array_chunk($articles, 4) as $value) : ?>
             <tr>

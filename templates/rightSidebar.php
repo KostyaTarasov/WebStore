@@ -1,6 +1,6 @@
 </td>
 
-<td class="sidebar">
+<td class="sidebar a-edit">
     <div class="sidebarHeader">Меню</div>
     <br>
     <ul>
