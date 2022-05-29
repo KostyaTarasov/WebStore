@@ -67,7 +67,7 @@
 
         <tr>
             <td class="sidebar">
-                <?php if (empty($_REQUEST) || $_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
+                <?php if (empty($_REQUEST['route']) || $_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
             </td>
 
             <td>
