@@ -1,4 +1,4 @@
-<?php $title = "$nameCatalog купить в";
+<?php $title = "$nameCatalog купить в KirovShop";
 $h1 = "$nameCatalog";
 include __DIR__ . '/../header.php';
 ?>
