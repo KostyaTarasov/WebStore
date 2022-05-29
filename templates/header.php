@@ -13,8 +13,7 @@
 
 <body>
     <!--<div class="container mt-5"> -->
-    <header>
-
+    <header class="sticky-top">
         <div class="row">
             <div class="col-4">
                 <div class="text-header text-header-left">
