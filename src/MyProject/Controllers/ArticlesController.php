@@ -53,9 +53,11 @@ class ArticlesController extends AbstractController
         // var_dump($propertiesNames);
         // echo "</pre>";
 
+
         # Получение нужного юзера:
         //$articleAuthor = User::getById($article->getAuthorId());
         $this->view->renderHtml('articles/view.php', [
+            'nameTableCatalog' => Article::getTableName(),
             'article' => $article,
             'image' => Images::loadImage($articleId), // Для рендеринга изображения из бд
             //'author' => $articleAuthor
