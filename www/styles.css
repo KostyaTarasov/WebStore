@@ -194,6 +194,10 @@ a:hover {
   vertical-align:text-bottom;
 }
 
+.vertical-bottom {
+  vertical-align:text-bottom;
+}
+
 .iconSearch1 {
   width:22px;
 }
@@ -251,4 +255,12 @@ a:hover {
 
 .notice{
   text-align: center;
+}
+
+.my-pagination {
+  color: #000000 !important;
+}
+.my-pagination-active {
+  background-color: #ffc107 !important;
+  border-color: #eca712 !important;
 }
