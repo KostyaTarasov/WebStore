@@ -9,7 +9,7 @@ if (!empty($message)) {
 ?>
 
 <div style="text-align: center;">
-    На указанный email выслано сообщение о заказе.<br>
+    На указанный email отправлено сообщение с деталями заказа.<br>
     Обычно заявки рассматриваются в течение суток.
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

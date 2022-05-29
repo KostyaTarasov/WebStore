@@ -10,29 +10,6 @@ use MyProject\Models\Users\User;
 # наследуемся от ActiveRecordEntity
 class Order extends ActiveRecordEntity
 {
-
-    /** @var string */
-    public $nickname;
-
-    /** @var string */
-    public $email;
-
-    /** @var int */
-    public $isConfirmed;
-
-    /** @var string */
-    public $role;
-
-    /** @var string */
-    public $passwordHash;
-
-    /** @var string */
-    public $createdAt;
-
-    /** @var string */
-    public $authToken;
-
-
     public function __construct()
     {
         $this->email = "kostet-karate@yandex.ru";
@@ -71,7 +48,6 @@ class Order extends ActiveRecordEntity
         if (!preg_match('/[0-9]+/', $_POST['phone'])) {
             throw new InvalidArgumentException('Поле "Телефон" может состоять только из цифр');
         }
-
         self::mailOrder();
     }
 
