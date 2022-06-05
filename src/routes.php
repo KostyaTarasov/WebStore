@@ -11,11 +11,8 @@
 
 return [
     // ключи-регулярка для адреса, [имя контроллера, имя метода]
-
     '~^$~' => [\MyProject\Controllers\MainController::class, 'main'],  // Роут первой главной страницы 
     '~^(\d+)$~' => [\MyProject\Controllers\MainController::class, 'page'], // Роут главной страницы
-
-    '~^hello/(.*)$~' => [\MyProject\Controllers\MainController::class, 'sayHello'], // Роут страницы приветствия пользователя, где в конце адреса задаётся имя пользователя http://localhost:8080/hello/Kostya
 
     '~^catalog$~' => [\MyProject\Controllers\CatalogController::class, 'catalog'], // Роут страницы общего каталога
 

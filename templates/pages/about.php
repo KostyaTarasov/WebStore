@@ -4,7 +4,8 @@ $title = "О себе";
 // _once  Произойдёт единожды вызов header.php при нескольких вызовах
 ?>
 <?php include __DIR__ . '/../header.php'; ?>
-<h1>Подготовлен материал в 2022 году </h1>
+<h1>История магазина</h1>
+<h3></h3>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
 <?php
 //echo "<br>";
