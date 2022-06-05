@@ -11,63 +11,60 @@
 </head>
 
 <body>
-    <header class="sticky-top">
-        <div class="row">
-            <div class="col-4">
-                <div class="text-header text-header-left">
-                    <a>Адрес: г.Киров, ул.Ленина 1</a>
-                    <a>С 08-00 до 18-00</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="text-header text-header-middle">
-                    <a href="/">Главная</a>
-                    <a href="/../templates/pages/about.php">О себе</a>
-                    <a href="/../manual.php">Документация по PHP</a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="text-header text-header-right">
-                    <a><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <table class="layout">
-
-        <tr>
-            <td colspan="1" class="sidebar">
-            </td>
-
-            <td colspan="1" class="header-lower">
-                <div class="row">
-                    <div class="col-4">
-                        <h2 class="header-h">
-                            <?php if (!empty($h1)) {
-                                echo $h1;
-                            } ?>
-                        </h2>
-                    </div>
-                    <div class="col-8">
-                        <?php include __DIR__ . '/features/search.php'; ?>
+    <div class="content">
+        <header>
+            <div class="row header-top">
+                <div class="col-4">
+                    <div class="text-header text-header-left">
+                        <a>Адрес: г.Киров, ул.Ленина 1</a>
+                        <a>С 08-00 до 18-00</a>
                     </div>
                 </div>
-            </td>
+                <div class="col-4">
+                    <div class="text-header text-header-middle">
+                        <a href="/">Главная</a>
+                        <a href="/../templates/pages/about.php">О себе</a>
+                        <a href="/../manual.php">Документация по PHP</a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="text-header text-header-right">
+                        <a><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</a>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-            <td colspan="1" class="accountLogin">
-                <div class="underlining">
+        <div class="header-bottom-common">
+            <div class="row sticky-top header-bottom">
+                <div class="col-2">
+                </div>
+                <div class="col-2">
+                    <h2 class="header-h">
+                        <?php if (!empty($h1)) {
+                            echo $h1;
+                        } ?>
+                    </h2>
+                </div>
+
+                <div class="col-6">
+                    <?php include __DIR__ . '/features/search.php'; ?>
+                </div>
+
+                <div class="col-2 underlining">
                     <?php if (!empty($user)) : ?>
                         Привет, <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
                     <?php else : ?>
                         <a href="/../users/login"><img class="iconSmall" src="/images/svg/person-circle.svg"> Войти</a> | <a href="/../users/register">Регистрация</a>
                     <?php endif; ?>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </div>
 
-        <tr>
-            <td class="sidebar">
-                <?php if (empty($_REQUEST['route']) || $_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
-            </td>
+        <table class="layout">
+            <tr>
+                <td class="sidebar">
+                    <?php if (empty($_REQUEST['route']) || $_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
+                </td>
 
-            <td>
+                <td>
