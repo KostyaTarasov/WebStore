@@ -59,7 +59,7 @@
                     <?php if (!empty($user)) : ?>
                         Привет, <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
                     <?php else : ?>
-                        <a href="/../users/login">Войти</a> | <a href="/../users/register">Зарегестрироваться</a>
+                        <a href="/../users/login"><img class="iconSmall" src="/images/svg/person-circle.svg"> Войти</a> | <a href="/../users/register">Регистрация</a>
                     <?php endif; ?>
                 </div>
             </td>

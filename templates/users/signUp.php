@@ -11,7 +11,7 @@ include __DIR__ . '/../header.php'; ?>
     <?php endif; ?>
 
     <form action="/users/register" method="post">
-        <label>Nickname <input type="text" name="nickname" value="<?= $_POST['nickname'] ?? '' ?>" </label>
+        <label>Nickname <input type="text" name="nickname" value="<?= $_POST['nickname'] ?? '' ?>"> </label>
             <!-- Где атрибут value используем для вывода данных, которые были переданы в запросе, (чтобы их не терять при отправки данных (К примеру пользователь не ввёл email, при обновленнии страницы значение nickname сохранится (Пользоваетль не будет вводить все данные заново))) -->
             <br><br>
             <label>Email <input type="text" name="email" value="<?= $_POST['email'] ?? '' ?>"></label>
@@ -20,5 +20,10 @@ include __DIR__ . '/../header.php'; ?>
             <br><br>
             <input type="submit" class="btn btn-success" value="Зарегистрироваться">
     </form>
+    <hr>
+    <div class="underlining">Уже зарегистрировались?
+        <a href="/../users/login">Войти</a>
+    </div>
+    <hr>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

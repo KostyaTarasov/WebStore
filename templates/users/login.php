@@ -13,5 +13,10 @@ include __DIR__ . '/../header.php'; ?>
         <br><br>
         <input type="submit" class="btn btn-success" value="Войти">
     </form>
+    <hr>
+    <div class="underlining">
+        <a href="/../users/register">Зарегистрироваться</a>
+    </div>
+    <hr>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

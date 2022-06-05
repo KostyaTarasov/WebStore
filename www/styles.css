@@ -17,7 +17,6 @@ header {
 .text-header a {
   color: #ffffff !important;
   line-height: 38px;
-  padding: 10px;
 }
 
 /* текст из шапки сайта */
@@ -37,16 +36,16 @@ header {
 
 /* линия над заголовком "h3"*/
 .header-h{
+  line-height: 52px;
   font-size: 30px; /* Размер шрифта */
   color: #5a5a5a; /* Цвет заголовка */
-  text-align: center; /* Текст по центру */
 }
 .header-h:before {
   content: '';
   display: block;
   height: 1px; /* Высота линии */
   width: 150px; /* Ширина линии до наведения */
-  margin: 0 auto 0px; /* Отступ с боков по центру и снизу */
+  margin: 6px auto -8px;
   transition: 1s; /* Время, за которое линия возвращается после наведения */
 }
 .header-h:hover:before {
@@ -60,7 +59,7 @@ header {
   display: block;
   height: 1px; /* Высота линии */
   width: 150px; /* Ширина линии до наведения */
-  margin: 10px auto 0; /* Отступ с боков по центру и сверху */
+  margin: 0px auto 0px;
   transition: 1s; /* Время, за которое линия возвращается после наведения */
 }
 .header-h:hover:after {
