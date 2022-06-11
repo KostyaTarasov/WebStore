@@ -86,4 +86,28 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
             static::class
         );
     }
+
+    //* Получение (создание) ЧПУ, имён каталогов
+    /**
+     * @return static[]
+     */
+    public static function getCPU() : array
+    {
+        $db = Db::getInstance();
+        $arrCatalogs = $db->query(
+            sprintf(
+                'SELECT `id`, `name`, `name_table` FROM `%s` ORDER BY id',
+                static::getTableName()
+            ),
+            [],
+            static::class
+        );
+        foreach ($arrCatalogs as $value) {
+            if (empty($value->name_table)) { // Если в базе данных для данного каталога нету ЧПУ
+                $value->name_table = self::slugify($value->name); // Транслитерация из кириллицы в латиницу для ЧПУ, замена промежутков и лишних символов на '-', Lower
+                $value->save(); // Создание нового ЧПУ в базе данных
+            }
+        }
+        return $arrCatalogs;
+    }
 }
