@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS `catalog` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
-/*Обязательно сделать уникальным столбец name_table*/
-ALTER TABLE `catalog` ADD UNIQUE(`name_table`);
+/*Уникальный столбец name*/
+ALTER TABLE `catalog` ADD UNIQUE(`name`);
 
 INSERT INTO `catalog` (`id`, `name_table`, `name`, `text`, `content`) VALUES
 (1, 'articles', 'Статьи', 'Дополнительное описание', ''),

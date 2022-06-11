@@ -12,6 +12,7 @@ namespace MyProject\Controllers;
 use MyProject\Models\Users\User;
 use MyProject\Services\UsersAuthService;
 use MyProject\View\View;
+use MyProject\Models\Articles\Catalog;
 
 abstract class AbstractController
 {
@@ -26,6 +27,7 @@ abstract class AbstractController
         $this->user = UsersAuthService::getUserByToken(); // токен юзера
         $this->view = new View(__DIR__ . '/../../../templates');
         $this->view->setVar('user', $this->user); // задаём нужные переменные во View (имя пользователя авторизованного, для отображения имени пользователя на странице конкретной статьи)
+        $this->view->setVar('cpuCatalogs', Catalog::getCPU()); // задаём нужные переменные во View (имя пользователя авторизованного, для отображения имени пользователя на странице конкретной статьи)
     }
 
     # функционал чтения входных данных для JSON:
