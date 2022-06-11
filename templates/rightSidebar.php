@@ -1,8 +1,7 @@
 </td>
-
-<?php // Админское меню только для пользователя с ролью админ
-if ((!empty($user) && $user->isAdmin())) : ?>
-    <td class="sidebar a-edit">
+<td class="sidebar a-edit">
+    <?php // Админское меню только для пользователя с ролью админ
+    if ((!empty($user) && $user->isAdmin())) : ?>
         <div class="sidebarHeader">Меню</div>
         <br>
         <ul>
@@ -13,8 +12,8 @@ if ((!empty($user) && $user->isAdmin())) : ?>
                 </div>
             <?php } ?>
         </ul>
-    </td>
-<?php endif; ?>
+    <?php endif; ?>
+</td>
 </tr>
 </table>
 </div>
