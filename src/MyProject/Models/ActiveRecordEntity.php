@@ -291,4 +291,17 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         );
         return $allTable[0]->name;
     }
+
+    //* Транслитерация из кириллицы в латиницу для ЧПУ, замена промежутков и лишних символов на '-', Lower
+    /**
+     * @return string
+     */
+    public static function slugify($string): string
+    {
+        $translit = "Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();";
+        $string = transliterator_transliterate($translit, $string);
+        $string = preg_replace('/[^\s\d\w]/', '', $string); // удаляем все симфолы кроме \s промежутков, \d - цифр, \w символов образующих слово
+        $string = preg_replace('/[-\s]+/', '-', $string); // замена промежутков на '-'
+        return trim($string, '-'); // Убрать вначале и в конце строки '-'
+    }
 }
