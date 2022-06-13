@@ -285,9 +285,10 @@ abstract class ActiveRecordEntity implements \JsonSerializable
 
     public static function getNameCatalog(string $nameTableCatalog) // Получаем имена каталогов заданные в общей таблице catalog
     {
+        $nameTableCatalog = self::replaceuUderline($nameTableCatalog); // Заменяем имя таблицы на '-', чтобы соответстовать ЧПУ из таблицы catalog
         $db = Db::getInstance();
         $allTable = $db->query(
-            "SELECT `name` FROM `catalog` WHERE `name_table`= '$nameTableCatalog';",
+            "SELECT `name` FROM `catalog` WHERE `cpu_name_catalog`= '$nameTableCatalog';",
         );
         return $allTable[0]->name;
     }
@@ -303,5 +304,21 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         $string = preg_replace('/[^\s\d\w]/', '', $string); // удаляем все симфолы кроме \s промежутков, \d - цифр, \w символов образующих слово
         $string = preg_replace('/[-\s]+/', '-', $string); // замена промежутков на '-'
         return trim($string, '-'); // Убрать вначале и в конце строки '-'
+    }
+
+    /** Замена '-' из полученного значения ЧПУ на '_', чтобы соответствовать имени таблицы в БД)
+     * @return string
+     */
+    public static function replaceDash($nameTable): string
+    {
+        return preg_replace('/-/', '_', $nameTable);;
+    }
+
+    /** Замена '_' из имени таблицы на '-', чтобы соответствовать ЧПУ хранимому в таблице catalog
+     * @return string
+     */
+    public static function replaceuUderline($nameTable): string
+    {
+        return preg_replace('/_/', '-', $nameTable);;
     }
 }

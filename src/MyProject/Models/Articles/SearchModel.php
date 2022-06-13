@@ -4,6 +4,7 @@ namespace MyProject\Models\Articles;
 
 use MyProject\Exceptions\InvalidArgumentException;
 use MyProject\Services\Db;
+use MyProject\Models\ActiveRecordEntity;
 use MyProject\Models\Users\User;
 
 class SearchModel
@@ -17,6 +18,7 @@ class SearchModel
         $sql = "";
         $sql = 'SELECT';
         foreach ($tableCatalogs as $table) {
+            $table = ActiveRecordEntity::replaceDash($table);
             $sql .= '(SELECT COUNT(*) FROM ' . $table . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ')';
             if (next($tableCatalogs)) { // Если не конец массива в цикле foreach
                 $sql .= " + ";
@@ -56,9 +58,9 @@ class SearchModel
     {
         $db = Db::getInstance();
         $allTable = $db->query(
-            "SELECT `name_table` FROM `catalog`;",
+            "SELECT `cpu_name_catalog` FROM `catalog`;",
         );
-        return array_column($allTable, 'name_table'); // Извлечь значения из ассоциативного массива и записать их в индексированный массив без ключа
+        return array_column($allTable, 'cpu_name_catalog'); // Извлечь значения из ассоциативного массива и записать их в индексированный массив без ключа
     }
 
     //* Получение статей на n-ой странице
@@ -70,6 +72,7 @@ class SearchModel
         $tableCatalogs = self::getNamesTableCatalogs();
         $sql = "";
         foreach ($tableCatalogs as $table) {
+            $table = ActiveRecordEntity::replaceDash($table);
             $sql .= 'SELECT *, ' . "'$table'" . ' AS `newColTable` FROM  ' . "$table" . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ''; // '$table' AS `newColTable` добавляем столбик содержащий имя таблицы к соответствующим данным. 
             // `newColTable` Добавляется не в бд, а только для вывода в шаблоне (используется в ссылке на продукт своего каталога и т.д.)
             if (next($tableCatalogs)) { // Если не конец массива в цикле foreach

@@ -57,8 +57,9 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         if ($_SERVER['REQUEST_URI'] == "/" || preg_replace('/[0-9]/', '', $_SERVER['REQUEST_URI']) == "/") {
             return 'articles';
         }
-
-        return preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route'])); // заменяем цифры и слова на пустое значение чтобы вернуть имя таблицы
+        $pregRetult = preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route'])); // заменяем цифры и слова на пустое значение чтобы вернуть имя таблицы
+        $pregRetult = ActiveRecordEntity::replaceDash($pregRetult);
+        return $pregRetult;
     }
 
     /**

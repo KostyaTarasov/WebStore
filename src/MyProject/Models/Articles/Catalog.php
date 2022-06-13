@@ -9,7 +9,7 @@ use MyProject\Services\Db;
 class Catalog extends ActiveRecordEntity  // Наследуемся от полученного класса
 {
     /** @var string */
-    protected $name_table; // protected чтобы к ним можно было достучаться из класса-родителя.
+    protected $cpu_name_catalog; // protected чтобы к ним можно было достучаться из класса-родителя.
 
     # Возвращает имя таблицы каталога:
     protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
@@ -22,7 +22,7 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
      */
     public function getNameTable(): string  // Возвращает имена таблиц каталогов из таблицы общего каталога
     {
-        return htmlentities($this->name_table);
+        return htmlentities($this->cpu_name_catalog);
     }
 
     # Cделаем геттеры для свойств id, name и text:
@@ -96,15 +96,15 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
         $db = Db::getInstance();
         $arrCatalogs = $db->query(
             sprintf(
-                'SELECT `id`, `name`, `name_table` FROM `%s` ORDER BY id',
+                'SELECT `id`, `name`, `cpu_name_catalog` FROM `%s` ORDER BY id',
                 static::getTableName()
             ),
             [],
             static::class
         );
         foreach ($arrCatalogs as $value) {
-            if (empty($value->name_table)) { // Если в базе данных для данного каталога нету ЧПУ
-                $value->name_table = self::slugify($value->name); // Транслитерация из кириллицы в латиницу для ЧПУ, замена промежутков и лишних символов на '-', Lower
+            if (empty($value->cpu_name_catalog)) { // Если в базе данных для данного каталога нету ЧПУ
+                $value->cpu_name_catalog = self::slugify($value->name); // Транслитерация из кириллицы в латиницу для ЧПУ, замена промежутков и лишних символов на '-', Lower
                 $value->save(); // Создание нового ЧПУ в базе данных
             }
         }

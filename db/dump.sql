@@ -4,7 +4,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `catalog`;
 CREATE TABLE IF NOT EXISTS `catalog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name_table` char(20) NOT NULL,
+  `cpu_name_catalog` char(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `content` mediumblob NOT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE IF NOT EXISTS `catalog` (
 /*Уникальный столбец name*/
 ALTER TABLE `catalog` ADD UNIQUE(`name`);
 
-INSERT INTO `catalog` (`id`, `name_table`, `name`, `text`, `content`) VALUES
+INSERT INTO `catalog` (`id`, `cpu_name_catalog`, `name`, `text`, `content`) VALUES
 (1, 'articles', 'Статьи', 'Дополнительное описание', ''),
 (2, 'holodilniki', 'Холодильники', 'Дополнительное описание', 'holodilniki');
 (3, 'chajniki', 'Чайники', 'Дополнительное описание', 'chajniki'),
 (4, 'televizory', 'Телевизоры', 'Дополнительное описание', 'televizory'),
 (5, 'naushniki', 'Наушники', 'Дополнительное описание', 'naushniki');
-(6, 'popular_products', 'Популярные товары', 'Дополнительное описание', 'popular_products');
+(6, 'popular-products', 'Популярные товары', 'Дополнительное описание', 'popular-products');
 
 CREATE TABLE `users` (
     `id` int(11) NOT NULL,
