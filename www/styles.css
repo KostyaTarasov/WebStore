@@ -21,13 +21,13 @@ body {
 
 .header-bottom-common {
   display: grid;
+  border-bottom: 1px solid #d1d4d4;
 }
 
 .header-bottom {
   width: 85%;
 	justify-self: center;
   background-color: #ffffff;
-  border-bottom: 1px solid #d1d4d4;
 }
 
 .header-bottom-center {
@@ -38,11 +38,13 @@ body {
 .text-header a {
   color: #ffffff !important;
   line-height: 38px;
+  padding: 10px;
 }
 
 /* текст из шапки сайта */
 .text-header-left {
-  text-align: center;
+  margin-left:135px;
+  text-align: middle;
 }
 
 /* текст из шапки сайта */
@@ -52,13 +54,15 @@ body {
 
 /* текст из шапки сайта */
 .text-header-right {
+  margin-left: 24px;
   text-align: center;
 }
 
 /* линия над заголовком "h3"*/
 .header-h{
-  line-height: 52px;
-  font-size: 30px; /* Размер шрифта */
+  text-align: center;
+  line-height: 38px;
+  font-size: 29px; /* Размер шрифта */
   color: #5a5a5a; /* Цвет заголовка */
 }
 .header-h:before {
@@ -66,7 +70,7 @@ body {
   display: block;
   height: 1px; /* Высота линии */
   width: 150px; /* Ширина линии до наведения */
-  margin: 6px auto -8px;
+  margin: 11px auto -6px;
   transition: 1s; /* Время, за которое линия возвращается после наведения */
 }
 .header-h:hover:before {
@@ -80,7 +84,7 @@ body {
   display: block;
   height: 1px; /* Высота линии */
   width: 150px; /* Ширина линии до наведения */
-  margin: 0px auto 0px;
+  margin: 2px auto 0px;
   transition: 1s; /* Время, за которое линия возвращается после наведения */
 }
 .header-h:hover:after {
@@ -253,7 +257,7 @@ a:hover {
 .underlining a {
   display: inline-block;
   color: #00bfff !important; /* Цвет обычной ссылки */
-  line-height: 1;
+  line-height: 56px;
   text-decoration: none; /* Убираем подчеркивание */
   cursor: pointer;
 }
