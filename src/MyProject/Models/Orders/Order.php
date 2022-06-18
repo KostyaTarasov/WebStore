@@ -10,11 +10,6 @@ use MyProject\Models\Users\User;
 # наследуемся от ActiveRecordEntity
 class Order extends ActiveRecordEntity
 {
-    public function __construct()
-    {
-        $this->email = "kostet-karate@yandex.ru";
-    }
-
     public function setEmail($name1): string // Устанавливаем новое значение для свойства $this->name
     {
         return $this->email = $name1;
@@ -23,12 +18,17 @@ class Order extends ActiveRecordEntity
     # Возвращает имя таблицы: users, где хранятся пользователи.
     protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
     {
-        return 'users';
+        return 'orders';
     }
 
     public static function checkOrder()
     {
-        # Проверки на то, что все данные были переданы
+        # Проверка на то, что цена товара не равна 0
+        if (empty($_POST['price']) || $_POST['price'] == 0) {
+            throw new InvalidArgumentException('В настоящее время данный товар недоступен, пожалуйста, свяжитесь с нами для уточнения деталей заказа!'); // вызываем исключение
+        }
+
+        # Проверка на то, что данные пользователем заполнены корректно
         if (empty($_POST['nickname'])) { // если пустое значение
             throw new InvalidArgumentException('Необходимо заполнить поле: "Имя"'); // вызываем исключение
         }
@@ -48,7 +48,23 @@ class Order extends ActiveRecordEntity
         if (!preg_match('/[0-9]+/', $_POST['phone'])) {
             throw new InvalidArgumentException('Поле "Телефон" может состоять только из цифр');
         }
-        self::mailOrder();
+    }
+
+    public static function saveOrder()
+    {
+        $dataOrder = new Order();
+        $dataOrder->id_product = $_POST['id_product'];
+        $dataOrder->name_catalog = $_POST['name_catalog'];
+        $dataOrder->price = $_POST['price'];
+        $dataOrder->nickname = $_POST['nickname'];
+        $dataOrder->email = $_POST['email'];
+        $dataOrder->phone = $_POST['phone'];
+        if ($_POST['comment'] == "") { // чтобы не отфильтровало array_filter в методе insert()
+            $dataOrder->comment = "-";
+        } else {
+            $dataOrder->comment = $_POST['comment'];
+        }
+        $dataOrder->save();
     }
 
     public static function mailOrder()

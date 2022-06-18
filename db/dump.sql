@@ -174,3 +174,20 @@ CREATE TABLE IF NOT EXISTS `naushniki` (
 INSERT INTO `naushniki` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
 (1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
 (2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
+
+CREATE TABLE `orders` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id_product` int(11) NOT NULL DEFAULT '0',
+    `name_catalog` varchar(255) NOT NULL,
+    `comment` text NOT NULL,
+    `price` int(11) NOT NULL DEFAULT '0',
+    `nickname` varchar(255) NOT NULL,
+    `email` varchar(255) NOT NULL,
+    `phone` varchar(255) NOT NULL,
+    `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `orders` (`id`, `id_product`, `name_catalog`, `comment`, `price`, `nickname`, `email`, `phone`, `created_at`) VALUES
+(1, '3', 'televizory', 'Тестовый комментарий клиента 1', '360', 'Павел Барабанов', 'user@gmail.com', '+7 999 999 99 99','2022-06-18 14:15:33'),
+(2, '4', 'televizory', 'Тестовый комментарий клиента 2', '460', 'Иван Александрович', 'user@gmail.com', '+7 999 999 99 99','2022-06-18 14:15:33');

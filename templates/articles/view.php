@@ -18,8 +18,8 @@ include __DIR__ . '/../header.php'; ?>
 <p>Цена: <?= $article->getPrice() ?> ₽</p>
 
 <form action="/order" method="post">
-    <input type="hidden" name="catalog" value="<?= $nameTableCatalog; ?>" />
-    <input type="hidden" name="id" value="<?= $article->getId(); ?>" />
+    <input type="hidden" name="id_product" value="<?= $article->getId(); ?>" />
+    <input type="hidden" name="name_catalog" value="<?= $nameTableCatalog; ?>" />
     <input type="hidden" name="price" value="<?= $article->getPrice(); ?>" />
     <input type="hidden" name="name" value="<?= $getName; ?>" />
     <input type="hidden" name="text" value="<?= $article->getParsedText(); ?>" />

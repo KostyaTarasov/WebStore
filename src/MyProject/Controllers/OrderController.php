@@ -36,7 +36,9 @@ class OrderController extends AbstractController
         if (!empty($_POST)) { // если пришел POST-запрос
             # Обрабатываем исключения!
             try {
-                Order::checkOrder(); // вызываем метод из Модели в Контроллер.
+                Order::checkOrder(); // вызов метода проверки переданных данных.
+                Order::saveOrder(); // вызов метода сохранения в бд данных оформленного заказа.
+                Order::mailOrder(); // вызов метода отправки сообщения клиенту.
                 $this->view->renderHtml('features/orderSuccessful.php', ['message' => new SuccessMessage("Заказ успешно оформлен!")]);
                 exit();
             } catch (InvalidArgumentException $e) {

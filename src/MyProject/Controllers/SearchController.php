@@ -31,7 +31,7 @@ class SearchController extends AbstractController
         $this->page(1);
     }
 
-    public function page(int $pageNum) // Экшн страниц статей
+    public function page(int $pageNum) // Экшн страниц с найденными товарами
     {
         $pagesCount = SearchModel::getPagesCount(5, $_SESSION['countArticle']);
         $this->view->renderHtml('features/searchPage.php', [

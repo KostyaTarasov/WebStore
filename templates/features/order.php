@@ -15,7 +15,7 @@ if (!empty($message)) {
         <p>Стоимость: <?= $_POST['price'] ?> Рублей</p>
         <br>
         <label>Ниже предлагаем оставить комментарий, вопросы к продавцу либо свои пожелания к заказу.</label><br>
-        <textarea name="text" id="text" rows="4" cols="92"></textarea><br>
+        <textarea name="comment" id="comment" rows="4" cols="92"></textarea><br>
         <br>
         <label for="nickname">Имя:</label><br>
         <input id="nickname" type="text" name="nickname" value="<?= (isset($user)) ? $user->getNickname() : "" ?>">
@@ -27,6 +27,8 @@ if (!empty($message)) {
         <input id="phone" type="tel" name="phone" placeholder="+7 999 999 99 99" maxlength="12" value="<?= $_POST['phone'] ?? '' ?>">
         </label>
         <br><br>
+        <input type="hidden" name="id_product" value="<?= $_POST['id_product'] ?>" />
+        <input type="hidden" name="name_catalog" value="<?= $_POST['name_catalog'] ?>" />
         <input type="hidden" name="price" value="<?= $_POST['price'] ?>" />
         <input type="hidden" name="name" value="<?= $_POST['name'] ?>" />
         <input type="submit" class="btn btn-success" value="Оформить заказ">
