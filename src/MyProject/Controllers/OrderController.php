@@ -37,8 +37,9 @@ class OrderController extends AbstractController
             # Обрабатываем исключения!
             try {
                 Order::checkOrder(); // вызов метода проверки переданных данных.
-                Order::saveOrder(); // вызов метода сохранения в бд данных оформленного заказа.
-                Order::mailOrder(); // вызов метода отправки сообщения клиенту.
+                $dataOrder = Order::saveOrder(); // вызов метода сохранения в бд данных оформленного заказа.
+                Order::mailYourselfOrder($dataOrder); // вызов метода отправки сообщения себе.
+                Order::mailOrder($dataOrder); // вызов метода отправки сообщения клиенту.
                 $this->view->renderHtml('features/orderSuccessful.php', ['message' => new SuccessMessage("Заказ успешно оформлен!")]);
                 exit();
             } catch (InvalidArgumentException $e) {

@@ -10,11 +10,6 @@ use MyProject\Models\Users\User;
 # наследуемся от ActiveRecordEntity
 class Order extends ActiveRecordEntity
 {
-    public function setEmail($name1): string // Устанавливаем новое значение для свойства $this->name
-    {
-        return $this->email = $name1;
-    }
-
     # Возвращает имя таблицы: users, где хранятся пользователи.
     protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
     {
@@ -65,17 +60,43 @@ class Order extends ActiveRecordEntity
             $dataOrder->comment = $_POST['comment'];
         }
         $dataOrder->save();
+        $dataOrder->name = $_POST['name'];
+        return $dataOrder;
     }
 
-    public static function mailOrder()
+    # Отправка сообщения менеджеру сайта
+    public static function mailYourselfOrder($dataOrder)
     {
+        $idOrder = $dataOrder->id;
         $user = new User();
-        $user->email = $_POST['email'];
+        $user->email = 'k.a.tarasov@yandex.ru';
         $date = new \DateTime('now', new \DateTimeZone('EUROPE/Moscow'));
         $date->format('d-m-Y H:i:s');
-        EmailSender::send($user, 'Добро пожаловать!', 'orderMessage.php', [ // Отправляем параметры в метод класса EmailSender
-            'name' => $_POST['name'],
-            'price' => $_POST['price'],
+        EmailSender::send($user, "Заказ № $idOrder", 'orderYourselfMessage.php', [
+            'idOrder' => $idOrder,
+            'nickname' => $dataOrder->nickname,
+            'email' => $dataOrder->email,
+            'phone' => $dataOrder->phone,
+            'idProduct' => $dataOrder->idProduct,
+            'nameCatalog' => $dataOrder->nameCatalog,
+            'name' => $dataOrder->name,
+            'price' => $dataOrder->price,
+            'date' => $date->format('d-m-Y H:i:s'),
+        ]);
+    }
+
+    # Отправка сообщения клиенту
+    public static function mailOrder($dataOrder)
+    {
+        $idOrder = $dataOrder->id;
+        $user = new User();
+        $user->email = $dataOrder->email;
+        $date = new \DateTime('now', new \DateTimeZone('EUROPE/Moscow'));
+        $date->format('d-m-Y H:i:s');
+        EmailSender::send($user, "Заказ № $idOrder", 'orderMessage.php', [
+            'idOrder' => $idOrder,
+            'name' => $dataOrder->name,
+            'price' => $dataOrder->price,
             'date' => $date->format('d-m-Y H:i:s'),
         ]);
     }
