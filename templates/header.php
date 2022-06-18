@@ -36,8 +36,8 @@
             </div>
         </header>
 
-        <div class="header-bottom-common">
-            <div class="row sticky-top header-bottom">
+        <div class="header-bottom-common sticky-top">
+            <div class="row header-bottom">
                 <div class="col-2">
                     <img class="logo" src="/images/personal/logo.png ">
                 </div>
