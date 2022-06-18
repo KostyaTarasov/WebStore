@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/../www/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/images/personal/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -38,6 +39,7 @@
         <div class="header-bottom-common">
             <div class="row sticky-top header-bottom">
                 <div class="col-2">
+                    <img class="logo" src="/images/personal/logo.png ">
                 </div>
                 <div class="col-2">
                     <h2 class="header-h">

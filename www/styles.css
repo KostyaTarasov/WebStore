@@ -124,6 +124,11 @@ body {
   display: block; /* тег img – это строковый элемент. Нужно сделать его блоковым*/
 }
 
+.logo {
+  width: 80%; 
+  margin: 0.5em 0 0.5em 0.6em;
+}
+
 .image.small {
   margin: auto;
 }
