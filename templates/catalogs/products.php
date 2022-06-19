@@ -9,7 +9,7 @@ include __DIR__ . '/../header.php';
             <tr>
                 <?php foreach ($value as $item) : ?>
                     <td class="td2" onclick="location.href='/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/'">
-                        <h2 class="td2-text-head">
+                        <h2 class="td2-text-head text-big">
                             <a href="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
                                 <!-- Ccылка на статью для каждого id найденного -->
                                 <?= $item->getName() ?>

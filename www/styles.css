@@ -152,6 +152,11 @@ body {
   vertical-align: top;
 }
 
+.tdJust {
+  width: 33%;
+  vertical-align: top;
+}
+
 .td2 {
   width: 25%;
   text-align: center;
@@ -168,12 +173,27 @@ body {
 }
 
 .td2-text-head {
-  font-size: 25px;
   font-family:"Proxima Nova";
 }
 
-.td2-text-head-bold {
+.text-middle {
+  font-size: 20px;
+}
+
+.text-big {
+  font-size: 25px;
+}
+
+.td2-text-bold {
   font-weight:bold;
+}
+
+.td2-text-bold {
+  font-weight:bold;
+}
+
+.text-grey {
+  color: #8c8c8c;
 }
 
 a{
@@ -291,4 +311,9 @@ a:hover {
 .my-pagination-active {
   background-color: #ffc107 !important;
   border-color: #eca712 !important;
+}
+
+.link-all-news {
+  color:#00bfff;
+  font-size: 20px;
 }

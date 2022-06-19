@@ -75,8 +75,15 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         */
 
         $this->authorId;
-
         return User::getById($this->authorId);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return mb_substr($this->createdAt, 0, 10);
     }
 
     public function getImage()

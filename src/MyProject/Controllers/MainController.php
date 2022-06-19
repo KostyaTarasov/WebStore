@@ -3,6 +3,7 @@
 namespace MyProject\Controllers;
 
 use MyProject\Models\Articles\Article;
+use MyProject\Models\Articles\News;
 
 class MainController extends AbstractController
 {
@@ -24,7 +25,8 @@ class MainController extends AbstractController
                 : null,
             'nextPageLink' => $pageNum < $pagesCount
                 ? ($pageNum + 1)
-                : null
+                : null,
+            'news' => News::getPage(1, 3),
         ]);
     }
 

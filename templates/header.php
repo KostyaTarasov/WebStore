@@ -26,6 +26,7 @@
                         <a href="/">Главная</a>
                         <a href="/../templates/pages/about.php">О себе</a>
                         <a href="/../manual.php">Документация по PHP</a>
+                        <a href="/news">Новости</a>
                     </div>
                 </div>
                 <div class="col-4">

@@ -11,7 +11,7 @@ include __DIR__ . '/../header.php';
                 <tr>
                     <?php foreach ($value as $item) : ?>
                         <td class="td2" onclick="location.href='/catalog/articles/<?= $item->getId() ?>/'">
-                            <h3 class="td2-text-head">
+                            <h3 class="td2-text-head text-big">
                                 <a href="/catalog/articles/<?= $item->getId() ?>/">
                                     <!-- Ccылка на статью для каждого id найденного -->
                                     <?= $item->getName() ?>
@@ -66,5 +66,29 @@ include __DIR__ . '/../header.php';
             <?php endif; ?>
         </ul>
     </nav>
+</section>
+
+<section aria-label="Последние новости">
+    <div>
+        <table class="table2 a-edit">
+            <h2 style="padding: 10px;">Новости</h2>
+            <?php foreach (array_chunk($news, 4) as $value) : ?>
+                <tr>
+                    <?php foreach ($value as $item) : ?>
+                        <td class="tdJust">
+                            <p class="text-grey"><?= $item->getCreatedAt() ?></p>
+                            <a class="td2-text-head text-middle">
+                                <?= $item->getName() ?>
+                            </a>
+                            <a><?= $item->getParsedText() ?></a> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <div>
+        <a class="link-all-news" href="/news">Все новости</a>
+    </div>
 </section>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
