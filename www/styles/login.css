@@ -1,0 +1,63 @@
+.form-group{ 
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  bottom: 0px;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffc107;
+  padding: 0px 0px 2.5px 12px;
+}
+
+.login-text-head {
+	text-align:center;
+	margin:25px;
+	color:#515151;
+    font-size: 20px;
+	font-family: cursive;
+    font-weight:bold;
+}
+
+.body-login {
+	background: url('/images/login/background.png');
+}
+
+#login_container {
+	width: 365px;
+	height: 392px;
+	margin: 100px auto;
+	background: url('/images/login/login_bg.png') top left no-repeat;
+}
+
+#form_container {
+	width: 300px;
+	height: 200px;
+	margin: 0px auto;
+	padding-top: 80px;
+}
+
+.text_input {
+	border: 0;
+	margin: 5px 35px 0 44px;
+	padding: 0px 0px 0px 10px;
+	width: 229px;
+	height: 32px;
+	background: url('/images/login/text_input.png') top left no-repeat;
+}
+
+#login {
+	margin: 20px 108px;
+	border: 0;
+	width: 83px;
+	height: 30px;
+	background: url('/images/login/login_btn.png') top left no-repeat;
+	cursor:pointer;
+}
+
+#login:hover {opacity:0.9;}
+
+#login:active {
+	background: url('/images/login/login_btn_hov.png') top left no-repeat;
+}

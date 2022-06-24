@@ -1,20 +1,35 @@
 <?php
 $title = "Авторизация";
 include __DIR__ . '/../header.php'; ?>
-<div style="text-align: center;">
+<link rel="stylesheet" href="/../www/styles/login.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+<div class="body-login">
+    <div style="text-align: center;">
+        <h1>Авторизация на сайте</h1>
         <?php if (!empty($message)) {
             include __DIR__ . '/../messages/message.php';
         } ?>
-        <label>Email <input type="text" name="email" value="<?= $_POST['email'] ?? '' ?>"></label>
-        <br><br>
-        <label>Пароль <input type="password" name="password" value="<?= $_POST['password'] ?? '' ?>"></label>
-        <br><br>
-        <input type="submit" class="btn btn-success" value="Войти">
-    </form>
-    <hr>
-    <div class="underlining">
-        <a href="/../users/register">Зарегистрироваться</a>
+        <div id="login_container">
+            <div id="form_container">
+                <p class="login-text-head">Авторизация на сайте</p>
+                <form action="/users/login" method="post">
+                    <div class="form-group mt-2">
+                        <i class="input-icon uil-at"></i>
+                        <input type='text' class='text_input form-style' placeholder="Email" name='email' value="<?= $_POST['email'] ?? '' ?>" />
+                    </div>
+                    <div class="form-group mt-2">
+                        <i class="input-icon uil-lock-alt"></i>
+                        <input type='password' class='text_input form-style' placeholder="Пароль" name="password" value="<?= $_POST['password'] ?? '' ?>" />
+                    </div>
+                    <input type='submit' value='' id='login' />
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="underlining">
+            <a href="/../users/register">Зарегистрироваться</a>
+        </div>
+        <hr>
     </div>
-    <hr>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
