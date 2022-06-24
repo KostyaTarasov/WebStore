@@ -6,9 +6,9 @@ include __DIR__ . '/../header.php'; ?>
 
     <!-- В случае исключения в контроллере UsersController.php метода signUp()
         Выводим переменную error, если она не пустая -->
-    <?php if (!empty($error)) : ?>
-        <div style="background-color: red;padding: 5px;margin: 15px"><?= $error ?></div>
-    <?php endif; ?>
+    <?php if (!empty($message)) {
+        include __DIR__ . '/../messages/message.php';
+    } ?>
 
     <form action="/users/register" method="post">
         <label>Nickname <input type="text" name="nickname" value="<?= $_POST['nickname'] ?? '' ?>"> </label>

@@ -2,11 +2,9 @@
 $title = "Авторизация";
 include __DIR__ . '/../header.php'; ?>
 <div style="text-align: center;">
-    <h1>Вход</h1>
-    <?php if (!empty($error)) : ?>
-        <div style="background-color: red; padding: 5px; margin: 15px"><?= $error ?></div>
-    <?php endif; ?>
-    <form action="/users/login" method="post">
+        <?php if (!empty($message)) {
+            include __DIR__ . '/../messages/message.php';
+        } ?>
         <label>Email <input type="text" name="email" value="<?= $_POST['email'] ?? '' ?>"></label>
         <br><br>
         <label>Пароль <input type="password" name="password" value="<?= $_POST['password'] ?? '' ?>"></label>

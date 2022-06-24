@@ -32,7 +32,7 @@ class UsersController extends AbstractController
             try {
                 $user = User::signUp($_POST); // вызываем метод из Модели в Контроллер.
             } catch (InvalidArgumentException $e) {
-                $this->view->renderHtml('users/signUp.php', ['error' => $e->getMessage()]); // Передаём в шаблон переменную error содержащая имя вызванной ошибки (к примеру nickname если пользователь его не ввёл )
+                $this->view->renderHtml('users/signUp.php', ['message' => new DangerMessage($e->getMessage())]); // Передаём в шаблон переменную message содержащая имя вызванной ошибки (к примеру nickname если пользователь его не ввёл )
                 return;
             }
 
@@ -75,7 +75,7 @@ class UsersController extends AbstractController
                 header('Location: /'); // Открытие главной страницы сайта
                 exit();
             } catch (InvalidArgumentException $e) {
-                $this->view->renderHtml('users/login.php', ['error' => $e->getMessage()]);
+                $this->view->renderHtml('users/login.php', ['message' => new DangerMessage($e->getMessage())]);
                 return;
             }
         }
