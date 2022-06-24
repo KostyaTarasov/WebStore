@@ -40,7 +40,7 @@
         <div class="header-bottom-common sticky-top">
             <div class="row header-bottom">
                 <div class="col-2">
-                    <img class="logo" src="/images/personal/logo.png ">
+                    <a href="/"><img class="logo" src="/images/personal/logo.png "></a>
                 </div>
                 <div class="col-2">
                     <h2 class="header-h">
