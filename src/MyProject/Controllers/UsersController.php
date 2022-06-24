@@ -22,12 +22,9 @@ use MyProject\Services\Message\SuccessMessage;
 //* Контроллер для регистрации пользователей
 class UsersController extends AbstractController
 {
-
     public function signUp()
     {
-
         if (!empty($_POST)) { // если пришел POST-запрос
-
             # Обрабатываем исключения!
             try {
                 $user = User::signUp($_POST); // вызываем метод из Модели в Контроллер.
@@ -37,19 +34,15 @@ class UsersController extends AbstractController
             }
 
             if ($user instanceof User) { // Если пользователь успешно создан
-
                 $code = UserActivationService::createActivationCode($user);
-
                 EmailSender::send($user, 'Добро пожаловать!', 'userActivation.php', [ // Отправляем параметры в метод класса EmailSender
                     'userId' => $user->getId(),
                     'code' => $code
                 ]);
-
                 $this->view->renderHtml('users/signUpSuccessful.php'); // Рендерим на форме регистрации информацию об успешной регистрации
                 return;
             }
         }
-
         $this->view->renderHtml('users/signUp.php'); // отрендерим шаблон
     }
 
