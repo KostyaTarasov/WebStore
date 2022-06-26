@@ -6,7 +6,7 @@
     <title><?= $title ?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/../www/styles.css">
+    <link rel="stylesheet" href="/../www/styles/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="shortcut icon" href="/images/personal/favicon.ico" type="image/x-icon">
 </head>
