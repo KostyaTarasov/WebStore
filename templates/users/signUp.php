@@ -1,29 +1,41 @@
 <?php
 $title = "Регистрация";
 include __DIR__ . '/../header.php'; ?>
-<div style="text-align: center;">
-    <h1>Регистрация</h1>
-
-    <!-- В случае исключения в контроллере UsersController.php метода signUp()
-        Выводим переменную error, если она не пустая -->
-    <?php if (!empty($message)) {
-        include __DIR__ . '/../messages/message.php';
-    } ?>
-
-    <form action="/users/register" method="post">
-        <label>Nickname <input type="text" name="nickname" value="<?= $_POST['nickname'] ?? '' ?>"> </label>
-        <!-- Где атрибут value используем для вывода данных, которые были переданы в запросе, (чтобы их не терять при отправки данных (К примеру пользователь не ввёл email, при обновленнии страницы значение nickname сохранится (Пользоваетль не будет вводить все данные заново))) -->
-        <br><br>
-        <label>Email <input type="text" name="email" value="<?= $_POST['email'] ?? '' ?>"></label>
-        <br><br>
-        <label>Пароль <input type="password" name="password" value="<?= $_POST['password'] ?? '' ?>"></label>
-        <br><br>
-        <input type="submit" class="btn btn-success" value="Зарегистрироваться">
-    </form>
-    <hr>
-    <div class="underlining">Уже зарегистрировались?
-        <a href="/../users/login">Войти</a>
+<link rel="stylesheet" href="/../www/styles/login.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+<div class="body-login">
+    <div style="text-align: center;">
+        <h1>Регистрация</h1>
+        <?php if (!empty($message)) {
+            include __DIR__ . '/../messages/message.php';
+        } ?>
+        <div id="login_container">
+            <div id="form_container">
+                <p class="login-text-head">Регистрация</p>
+                <form action="/users/register" method="post">
+                    <div class="form-group mt-2">
+                        <i class="input-icon uil-at"></i>
+                        <input type='text' class='text_input form-style' placeholder="Имя" name='nickname' value="<?= $_POST['nickname'] ?? '' ?>" />
+                    </div>
+                    <div class="form-group mt-2">
+                        <i class="input-icon uil-at"></i>
+                        <input type='text' class='text_input form-style' placeholder="Email" name='email' value="<?= $_POST['email'] ?? '' ?>" />
+                    </div>
+                    <div class="form-group mt-2">
+                        <i class="input-icon uil-lock-alt"></i>
+                        <input type='password' class='text_input form-style' placeholder="Пароль" name="password" value="<?= $_POST['password'] ?? '' ?>" />
+                    </div>
+                    <br><br>
+                    <input type='submit' class="btn btn-success" value="Зарегистрироваться" id='login' />
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="underlining">Уже зарегистрировались?
+            <a href="/../users/login">Войти</a>
+        </div>
+        <hr>
     </div>
-    <hr>
+    </form>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
