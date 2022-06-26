@@ -25,8 +25,7 @@ include __DIR__ . '/../header.php'; ?>
                         <i class="input-icon uil-lock-alt"></i>
                         <input type='password' class='text_input form-style' placeholder="Пароль" name="password" value="<?= $_POST['password'] ?? '' ?>" />
                     </div>
-                    <br><br>
-                    <input type='submit' class="btn btn-success" value="Зарегистрироваться" id='login' />
+                    <input type='submit' class="btn btn-success" value="" id='login' />
                 </form>
             </div>
         </div>
