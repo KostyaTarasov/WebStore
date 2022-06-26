@@ -2,7 +2,7 @@
 $title = "Авторизация";
 include __DIR__ . '/../header.php'; ?>
 <link rel="stylesheet" href="/../www/styles/login.css">
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <div class="body-login">
     <div style="text-align: center;">
         <h1>Авторизация на сайте</h1>

@@ -2,7 +2,7 @@
 $title = "Регистрация";
 include __DIR__ . '/../header.php'; ?>
 <link rel="stylesheet" href="/../www/styles/login.css">
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <div class="body-login">
     <div style="text-align: center;">
         <h1>Регистрация</h1>
@@ -14,7 +14,7 @@ include __DIR__ . '/../header.php'; ?>
                 <p class="login-text-head">Регистрация</p>
                 <form action="/users/register" method="post">
                     <div class="form-group mt-2">
-                        <i class="input-icon uil-at"></i>
+                        <i class="input-icon uil-user"></i>
                         <input type='text' class='text_input form-style' placeholder="Имя" name='nickname' value="<?= $_POST['nickname'] ?? '' ?>" />
                     </div>
                     <div class="form-group mt-2">
