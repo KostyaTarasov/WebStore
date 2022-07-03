@@ -5,8 +5,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .content {
   flex: 1 0 auto;
+}
+
+.content-container {
+  margin-bottom: 80px;
 }
 
 .layout {

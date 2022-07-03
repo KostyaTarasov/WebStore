@@ -1,8 +1,8 @@
 <?php $title = "Новости";
 include __DIR__ . '/../header.php';
 ?>
-
-<div style="margin: 15px;">
+<div style="padding-left: 10px;">
+    <h2 style="padding-bottom: 10px">Новости</h2>
     <?php foreach ($articles as $article) : ?>
         <h2 class=" td2-text-head text-big td2-text-bold a-edit">
             <?= $article->getName() ?>

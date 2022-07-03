@@ -3,10 +3,10 @@ $h1 = "Главная страница";
 include __DIR__ . '/../header.php';
 ?>
 
-<section aria-label="Популярные товары">
+<section aria-label="Популярные товары" class="content-container">
     <div>
         <table class="table2 a-edit">
-            <h2 style="padding: 10px;">Хиты продаж</h2>
+            <h2 style="padding-left: 10px;">Хиты продаж</h2>
             <?php foreach (array_chunk($articles, 4) as $value) : ?>
                 <tr>
                     <?php foreach ($value as $item) : ?>
@@ -68,10 +68,10 @@ include __DIR__ . '/../header.php';
     </nav>
 </section>
 
-<section aria-label="Последние новости">
+<section aria-label="Последние новости" class="content-container">
     <div>
         <table class="table2 a-edit">
-            <h2 style="padding: 10px;">Новости</h2>
+            <h2 style="padding-left: 10px;">Новости</h2>
             <?php foreach (array_chunk($news, 4) as $value) : ?>
                 <tr>
                     <?php foreach ($value as $item) : ?>

@@ -70,4 +70,4 @@
                     <?php if (empty($_REQUEST['route']) || $_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
                 </td>
 
-                <td>
+                <td style="padding-top: 40px;">
