@@ -91,4 +91,9 @@ include __DIR__ . '/../header.php';
         <a class="link-all-news" href="/news">Все новости</a>
     </div>
 </section>
+
+<section aria-label="Контакты">
+    <?php include __DIR__ . '/../pages/contact.php'; ?>
+</section>
+
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

@@ -34,7 +34,8 @@ return [
 
     '~^order(.*)$~' => [\MyProject\Controllers\OrderController::class, 'order'],                  // Роут для заказа                http://learnphp/order
     '~^formOrder(.*)$~' => [\MyProject\Controllers\OrderController::class, 'formOrder'],                  // Роут для оформления заказа             http://learnphp/orderForm
-    
+
     '~^news/(\d+)$~' => [\MyProject\Controllers\NewsController::class, 'newsPage'], // Роут новостей
     '~^news(.*)$~' => [\MyProject\Controllers\NewsController::class, 'newsFirstPage'], // Роут первой страницы новостей
+    '~^contact$~' => [\MyProject\Controllers\СontactController::class, 'contact'], // Роут первой страницы новостей
 ];

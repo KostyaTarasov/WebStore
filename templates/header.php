@@ -17,7 +17,7 @@
             <div class="row header-top">
                 <div class="col-4">
                     <div class="text-header text-header-left">
-                        <a>Адрес: г.Киров, ул.Ленина 1</a>
+                        <a href="http://learnphp/contact">Адрес: г.Киров, ул.Ленина 1</a>
                         <a>С 08-00 до 18-00</a>
                     </div>
                 </div>
