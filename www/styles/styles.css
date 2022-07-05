@@ -322,3 +322,37 @@ a:hover {
   color:#00bfff;
   font-size: 20px;
 }
+
+.products__list {
+  padding-left: 1rem;
+  display: grid;
+  gap: 10px 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.products__item {
+  text-align: center;
+  list-style-type: none;
+  border-radius: 7px;
+  box-shadow: 0 1px 7px #d3d3d3;
+  border: 3mm solid rgb(255, 255, 255);
+}
+.products__item:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+  border: 3mm solid rgb(244, 245, 247); 
+}
+
+.products__title {
+  padding-top: 5px;
+}
+
+.products img {
+  /*width: 100%;*/
+  display: block;
+  margin-top: auto;
+}
+
+.margin-null { 
+  margin: 0em;
+}
