@@ -4,7 +4,7 @@ include __DIR__ . '/../header.php';
 <div style="padding-left: 10px;">
     <h2 style="padding-bottom: 10px">Новости</h2>
     <?php foreach ($articles as $article) : ?>
-        <h2 class=" td2-text-head text-big td2-text-bold a-edit">
+        <h2 class=" font-text-head text-big td2-text-bold a-edit">
             <?= $article->getName() ?>
         </h2>
         <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
