@@ -7,9 +7,9 @@ include __DIR__ . '/../header.php';
         <h2 style="padding-left: 1rem; padding-bottom: 10px">Хиты продаж</h2>
         <ul class="products-list">
             <?php foreach ($articles as $item) : ?>
-                <li class="products-item a-edit" onclick="location.href='/catalog/articles/<?= $item->getId() ?>/'">
+                <li class="products-item a-edit" onclick="location.href='/catalog/popularnye_tovary/<?= $item->getId() ?>/'">
                     <h2 class="font-text-head products-title text-big">
-                        <a href="/catalog/articles/<?= $item->getId() ?>/">
+                        <a href="/catalog/popularnye_tovary/<?= $item->getId() ?>/">
                             <!-- Ccылка на статью для каждого id найденного -->
                             <?= $item->getName() ?>
                         </a> <!-- Вывод имени -->

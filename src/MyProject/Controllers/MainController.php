@@ -14,7 +14,7 @@ class MainController extends AbstractController
     
     public function page(int $pageNum) // Экшн страниц каталогов
     {
-        $amount = 4; // Количество статей на 1 странице
+        $amount = 5; // Количество статей на 1 странице
         $pagesCount = Article::getPagesCount($amount);
         $this->view->renderHtml('main/main.php', [
             'articles' => Article::getPage($pageNum, $amount),

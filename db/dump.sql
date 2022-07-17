@@ -100,7 +100,7 @@ INSERT INTO `question` (`id`, `name`, `text`, `created_at`) VALUES
 (1, 'Антон', 'Подскажите, какой срок доставки у данного товара?', '2022-05-22 19:30:21'),
 (2, 'Василиса', 'Кто является производителем у товара?', '2022-05-22 19:30:21');
 
-CREATE TABLE IF NOT EXISTS `popular_products` (
+CREATE TABLE IF NOT EXISTS `popularnye_tovary` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -111,9 +111,13 @@ CREATE TABLE IF NOT EXISTS `popular_products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `popular_products` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
+INSERT INTO `popularnye_tovary` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
 (1, 1, 'Популярный товар 1', 'Информация о товаре', '66', '2022-05-22 19:30:21', ''),
 (2, 1, 'Популярный товар 2', 'Информация о товаре', '77', '2022-05-22 19:30:21', '');
+(3, 1, 'Популярный товар 3', 'Информация о товаре', '88', '2022-05-22 19:30:21', '');
+(4, 1, 'Популярный товар 4', 'Информация о товаре', '99', '2022-05-22 19:30:21', '');
+(5, 1, 'Популярный товар 5', 'Информация о товаре', '105', '2022-05-22 19:30:21', '');
+(6, 1, 'Популярный товар 6', 'Информация о товаре', '107', '2022-05-22 19:30:21', '');
 
 CREATE TABLE IF NOT EXISTS `holodilniki` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
