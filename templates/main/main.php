@@ -2,7 +2,7 @@
 $h1 = "Главная страница";
 include __DIR__ . '/../header.php';
 ?>
-<div class="main-grid">
+<div class="main">
     <section aria-label="Популярные товары" class="content-container">
         <h2 style="padding-left: 1rem; padding-bottom: 10px">Хиты продаж</h2>
         <ul class="products-list">

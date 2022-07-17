@@ -14,7 +14,7 @@
 <body>
     <div>
         <div class="site">
-            <div class="header-grid sticky-top">
+            <div class="header sticky-top">
                 <header>
                     <div class="row header-top">
                         <div class="col-4">

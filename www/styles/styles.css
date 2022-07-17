@@ -326,22 +326,22 @@ a:hover {
 
 .site {
   display: grid;
-  grid-template-areas: "header-grid" "main-grid" "left-sidebar" "right-sidebar" "footer";     
+  grid-template-areas: "header" "main" "left-sidebar" "right-sidebar" "footer";     
   gap: 1rem;
   min-height: 100vh;
 }
 
 @media (min-width: 1280px) {
   .site {
-    grid-template: "header-grid      header-grid        header-grid"    min-content
-                   "left-sidebar     main-grid          right-sidebar"  1fr
+    grid-template: "header           header             header"         min-content
+                   "left-sidebar     main               right-sidebar"  1fr
                    "footer           footer             footer"         min-content
                / minmax(auto, 250px) minmax(250px, 1fr) minmax(auto, 250px);    
   }
 }
 
-.header-grid {
-  grid-area: header-grid;
+.header {
+  grid-area: header;
   overflow: hidden;
 }
 
@@ -353,8 +353,8 @@ a:hover {
   grid-area: right-sidebar;
 }
 
-.main-grid {
-  grid-area: main-grid;
+.main {
+  grid-area: main;
 }
 
 footer {

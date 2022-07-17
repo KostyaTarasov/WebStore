@@ -2,7 +2,7 @@
 $h1 = "$nameCatalog";
 include __DIR__ . '/../header.php';
 ?>
-<div class="main-grid">
+<div class="main">
     <ul class="products-list">
         <?php foreach ($articles as $item) : ?>
             <li class="products-item a-edit" onclick="location.href='/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/'">
