@@ -195,17 +195,11 @@ a:hover {
   color: rgb(70, 39, 11); /* Новый цвет текста */
 }
 
-/* Текст справа */
 .gain-right {
-  position:relative;
-  right:10;
-  left: 8px;
   transition: 1s; /* Время эффекта */
 }
 .gain-right:hover {
-  position:relative;
-  left: 8px;
-  transform: scale(1.2); /* Увеличиваем масштаб */
+  transform: scale(1.05); /* Увеличиваем масштаб */
 }
 
 .iconSmall {
