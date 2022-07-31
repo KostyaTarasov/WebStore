@@ -119,7 +119,7 @@ body {
 }
 
 .logo {
-  width: 80%; 
+  max-width: 180px;
   margin: 0.5em 0 0.5em 0.6em;
 }
 
@@ -419,4 +419,24 @@ footer {
 }
 .font-menu-profile-li:hover {
   background: rgb(244, 245, 247)!important;
+}
+
+/* Всплывающая карточка при наведении курсора*/
+.overlay{
+  display:none;
+  position:fixed!important;
+  color:black;
+  width: 300px;
+}
+a:hover .overlay{
+  display: block;
+}
+.overlay .card-body{
+  padding-top: 24px!important;
+  padding-bottom: 24px!important;
+  padding-left: 32px!important;
+  line-height: 1.7!important;
+  border-radius: 9px!important;
+  box-shadow: 0 1px 7px #d3d3d3;
+  list-style-type: none!important; 
 }

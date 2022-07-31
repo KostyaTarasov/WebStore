@@ -107,8 +107,18 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="text-header text-header-left">
-                                        <a href="http://learnphp/contact">Адрес: г.Киров, ул.Ленина 1</a>
-                                        <a>С 08-00 до 18-00</a>
+                                        <a style="font-weight:normal;">г.Киров, ул.Ленина 1
+                                            <div class="overlay">
+                                                <ul class="card card-body">
+                                                    <li>г.Киров, ул.Ленина 1</li>
+                                                    <li>Пн. - Пт 08:00 - 18:00</li>
+                                                    <li>Сб. - Вс выходной</li>
+                                                    <br>
+                                                    <li>8-800-800-8888</li>
+                                                    <li>k.tarasov@yandex.ru</li>
+                                                </ul>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-4">
