@@ -407,7 +407,18 @@ footer {
 .navbar-text {
   color: #ffffff!important;
 }
+.container-fluid svg:hover {
+  fill:rgb(255, 255, 255);
+}
 
+/* Иконка профиля */
+.icon-profile svg {
+  fill:#d1d4d4;
+  padding-right: 0.75rem;
+}
+.icon-profile svg:hover {
+  fill:rgb(255, 255, 255);
+}
 /* Стилизация мобильного всплывающего списка профиля */
 .font-menu-profile-li{
   font-family:"Proxima Nova";
