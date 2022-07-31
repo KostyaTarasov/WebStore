@@ -420,6 +420,14 @@ footer {
 .font-menu-profile-li:hover {
   background: rgb(244, 245, 247)!important;
 }
+.lower-pointer {
+  position: absolute;
+  right: 17px;
+  margin-top: -8px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent rgb(255, 255, 255);
+}
 
 /* Всплывающая карточка при наведении курсора*/
 .overlay{
