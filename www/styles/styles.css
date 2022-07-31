@@ -375,6 +375,7 @@ footer {
 .products-item-properties {
   overflow: hidden;
 }
+
 .close-icon {
   display: inline-block;
 }
@@ -405,4 +406,17 @@ footer {
 }
 .navbar-text {
   color: #ffffff!important;
+}
+
+/* Стилизация мобильного всплывающего списка профиля */
+.font-menu-profile-li{
+  font-family:"Proxima Nova";
+  line-height: 56px;
+  font-size: 18px;
+  margin: left 56px;
+  background-color: white!important;
+  border-bottom: 1px solid #ddd!important;
+}
+.font-menu-profile-li:hover {
+  background: rgb(244, 245, 247)!important;
 }

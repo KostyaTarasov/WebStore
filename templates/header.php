@@ -27,7 +27,41 @@
                                         </button>
                                     </div>
                                 </nav>
+                                <a href="/"><img class="logo" src="/images/personal/logo.png "></a>
+                                <div class="icon-profile">
+                                    <a href="/../users/login" data-bs-toggle="collapse" data-bs-target="#collapseProfile">
+                                        <svg width="40" height="40" viewBox="0 0 15 15">
+                                            <use xlink:href="/images/svg/person.svg#icon-profile-id"></use>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
+
+                            <ul class="collapse" id="collapseProfile" style="list-style-type: none; padding-left: 0;">
+                                <div class="lower-pointer"></div>
+                                <?php if (!empty($user)) : ?>
+                                    <li>
+                                        <a class="dropdown-item font-menu-profile-li">
+                                            <svg width="22" height="22" viewBox="0 2 16 16" style="margin-right: 10px">
+                                                <use xlink:href="/images/svg/person.svg#icon-profile-id"></use>
+                                            </svg>
+                                            <?= $user->getNickname() ?>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/../users/logOut" class="dropdown-item font-menu-profile-li">
+                                            <svg width="1em" height="1em" viewBox="0 130 900 900" style="margin-right: 10px">
+                                                <use xlink:href="/images/svg/close-icon.svg#icon-close-id"></use>
+                                            </svg>
+                                            Выйти
+                                        </a>
+                                    </li>
+                                <?php else : ?>
+                                    <li><a href="/../users/login" class="dropdown-item font-menu-profile-li">Войти</a></li>
+                                    <li><a href="/../users/register" class="dropdown-item font-menu-profile-li">Зарегистрироваться</a></li>
+                                <?php endif; ?>
+                            </ul>
+
                             <div class="collapse navigation-menu" id="navbarToggleMenu">
                                 <nav class="navbar navbar-dark">
                                     <div class="container-fluid">
