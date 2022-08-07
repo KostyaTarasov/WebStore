@@ -104,9 +104,9 @@
                         </div>
 
                         <div class="header-pc header-top">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="text-header text-header-left">
+                            <div style="display: flex; justify-content: center;">
+                                <div class="header-pc-common text-header" style="display: flex; justify-content: space-between;">
+                                    <div>
                                         <a style="font-weight:normal;">г.Киров, ул.Ленина 1
                                             <div class="overlay">
                                                 <ul class="card card-body">
@@ -120,17 +120,13 @@
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-header text-header-middle">
+                                    <div>
                                         <a href="/">Главная</a>
                                         <a href="/../templates/pages/about.php">О себе</a>
-                                        <a href="/../manual.php">Документация по PHP</a>
+                                        <a href="/../manual.php">Док. по PHP</a>
                                         <a href="/news">Новости</a>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-header text-header-right">
+                                    <div>
                                         <a><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</a>
                                     </div>
                                 </div>

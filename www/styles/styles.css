@@ -42,19 +42,7 @@ body {
 }
 
 /* текст из шапки сайта */
-.text-header-left {
-  margin-left:135px;
-  text-align: middle;
-}
-
-/* текст из шапки сайта */
 .text-header-middle{
-  text-align: center;
-}
-
-/* текст из шапки сайта */
-.text-header-right {
-  margin-left: 24px;
   text-align: center;
 }
 
@@ -331,6 +319,15 @@ a:hover {
                    "left-sidebar     main               right-sidebar"  1fr
                    "footer           footer             footer"         min-content
                / minmax(auto, 250px) minmax(250px, 1fr) minmax(auto, 250px);    
+  }
+  .header-pc-common {
+    width: calc(100% - 540px);
+  }
+}
+
+@media (max-width: 1280px) {
+  .header-pc-common {
+    width: calc(100% - 0px);
   }
 }
 
