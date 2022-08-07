@@ -20,18 +20,15 @@ body {
 }
 
 .header-bottom-common {
-  display: grid;
+  display: flex;
+  justify-content: center;
   border-bottom: 1px solid #d1d4d4;
-}
-
-.header-bottom {
-  width: 85%;
-	justify-self: center;
   background-color: #ffffff;
 }
 
-.header-bottom-center {
-  text-align: center;
+.header-bottom-pc {
+  display: flex;
+  align-items: center;
 }
 
 /* текст из шапки сайта */
@@ -234,7 +231,7 @@ a:hover {
 /* Линия под a у элементов "Вход", "Выход", "Регистрация"*/
 .underlining a {
   display: inline-block;
-  color: #00bfff !important; /* Цвет обычной ссылки */
+  color: #000000 !important; /* Цвет обычной ссылки */
   line-height: 56px;
   text-decoration: none; /* Убираем подчеркивание */
   cursor: pointer;

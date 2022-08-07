@@ -135,28 +135,36 @@
                     </div>
 
                     <div class="header-pc header-bottom-common">
-                        <div class="row header-bottom">
-                            <div class="col-2">
-                                <a href="/"><img class="logo" src="/images/personal/logo.png "></a>
-                            </div>
-                            <div class="col-2">
-                                <h2 class="header-h">
-                                    <?php if (!empty($h1)) {
-                                        echo $h1;
-                                    } ?>
-                                </h2>
-                            </div>
-
-                            <div class="col-6">
-                                <?php include __DIR__ . '/features/search.php'; ?>
-                            </div>
-
-                            <div class="col-2 underlining">
-                                <?php if (!empty($user)) : ?>
-                                    <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
-                                <?php else : ?>
-                                    <a href="/../users/login"><img class="iconSmall" src="/images/svg/person-circle.svg"> Войти</a> | <a href="/../users/register">Регистрация</a>
-                                <?php endif; ?>
+                        <div class="header-bottom header-pc-common">
+                            <div class="header-bottom-pc">
+                                <div class="col-auto">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <a href="/"><img class="logo" src="/images/personal/logo.png"></a>
+                                        </div>
+                                        <div class="col-5">
+                                            <a class="btn btn-warning" style="margin: 0.5em 0 0.5em 0" href="/catalog">
+                                                <img class="iconSmall" src="/images/svg/menu.svg"> Каталог
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <?php include __DIR__ . '/features/search.php'; ?>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="underlining" style="padding-right:10px;">
+                                        <?php if (!empty($user)) : ?>
+                                            <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
+                                        <?php else : ?>
+                                            <a href="/../users/login">
+                                                <svg width="22" height="22" viewBox="0 1 16 16">
+                                                    <use xlink:href="/images/svg/person.svg#icon-profile-id"></use>
+                                                </svg>Войти
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
