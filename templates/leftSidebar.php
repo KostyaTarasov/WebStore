@@ -1,8 +1,6 @@
 <?php if (!empty($cpuCatalogs)) : ?>
     <aside class="left-sidebar">
-        <div class="link">
-            <a class="btn btn-warning" href=" /catalog">Каталог товаров <img class="iconSearch1" src="/images/svg/search.svg"></a>
-        </div>
+        <h5 style="padding-left:35px; font-size: 21px;">Каталог товаров</h5>
         <ul style="margin: 5px;">
             <?php
             foreach ($cpuCatalogs as $value) { ?>

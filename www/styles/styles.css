@@ -163,14 +163,6 @@ a:hover {
   color: #000000 !important;
 }
 
-/* Кнопка Каталог товаров*/
-.link a {
-  font-size:20px;
-  color:rgb(0, 0, 0)!important;
-  width:100%;
-  padding:10px 10px;
-} 
-
 /* Ссылки в левом sidebar */
 .refSidebarCatalog {
   font-size: 18px; /* Размер ссылок */ 
