@@ -88,7 +88,7 @@
                                         </li>
                                     </div>
                                     <li><a class="dropdown-item navbar-text" href="/../templates/pages/about.php">О себе</a></li>
-                                    <li><a class="dropdown-item navbar-text" href="http://learnphp/contact">Контакты</a></li>
+                                    <li><a class="dropdown-item navbar-text" href="/contact">Контакты</a></li>
                                     <li><a class="dropdown-item navbar-text" href="/news">Новости</a></li>
                                 </ul>
                                 <br>
