@@ -5,7 +5,6 @@ include __DIR__ . '/../header.php'; ?>
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <div class="body-login">
     <div style="text-align: center;">
-        <h1>Регистрация</h1>
         <?php if (!empty($message)) {
             include __DIR__ . '/../messages/message.php';
         } ?>
