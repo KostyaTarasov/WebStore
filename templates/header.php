@@ -49,7 +49,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/../users/logOut" class="dropdown-item font-menu-profile-li">
+                                        <a href="/../users/log-out" class="dropdown-item font-menu-profile-li">
                                             <svg width="1em" height="1em" viewBox="0 130 900 900" style="margin-right: 10px">
                                                 <use xlink:href="/images/svg/close-icon.svg#icon-close-id"></use>
                                             </svg>
@@ -155,7 +155,7 @@
                                 <div class="col-auto">
                                     <div class="underlining" style="padding-right:10px;">
                                         <?php if (!empty($user)) : ?>
-                                            <?= $user->getNickname() ?> | <a href="/../users/logOut">Выйти</a>
+                                            <?= $user->getNickname() ?> | <a href="/../users/log-out">Выйти</a>
                                         <?php else : ?>
                                             <a href="/../users/login">
                                                 <svg width="22" height="22" viewBox="0 1 16 16">
