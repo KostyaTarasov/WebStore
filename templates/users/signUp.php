@@ -5,13 +5,12 @@ include __DIR__ . '/../header.php'; ?>
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <div class="body-login">
     <div style="text-align: center;">
-        <h1>Регистрация</h1>
         <?php if (!empty($message)) {
             include __DIR__ . '/../messages/message.php';
         } ?>
         <div id="login_container">
             <div id="form_container">
-                <p class="login-text-head">Регистрация</p>
+                <h1 class="login-text-head">Регистрация</h1>
                 <form action="/users/register" method="post">
                     <div class="form-group mt-2">
                         <i class="input-icon uil-user"></i>
