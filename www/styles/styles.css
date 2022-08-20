@@ -163,6 +163,12 @@ a:hover {
   color: #000000 !important;
 }
 
+.text-a-underline {
+  color: #000000 !important;
+  text-decoration-line:underline !important;
+  font-family: sans-serif;
+}
+
 /* Ссылки в левом sidebar */
 .refSidebarCatalog {
   font-size: 18px; /* Размер ссылок */ 

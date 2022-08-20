@@ -17,10 +17,13 @@ include __DIR__ . '/../header.php'; ?>
                         <input type='text' class='text_input form-style' placeholder="Email" name='email' value="<?= $_POST['email'] ?? '' ?>" />
                     </div>
                     <div class="form-group mt-2">
-                        <i class="input-icon uil-lock-alt"></i>
+                        <i class="input-icon uil-lock-alt" style="bottom:22px;"></i>
                         <input type='password' class='text_input form-style' placeholder="Пароль" name="password" value="<?= $_POST['password'] ?? '' ?>" />
+                        <label style="display: block; text-align:right; font-size: 14px; padding-right: 40px;" for="password">
+                            <a class="text-a-underline" href="/../users/passwordrec">Забыли пароль?</a>
+                        </label>
                     </div>
-                    <input type='submit' value='' id='login' />
+                    <input style="top:19px; position:relative;" type='submit' value='' id='login' />
                 </form>
             </div>
         </div>
