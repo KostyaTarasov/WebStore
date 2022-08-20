@@ -20,7 +20,7 @@ include __DIR__ . '/../header.php'; ?>
                         <i class="input-icon uil-lock-alt" style="bottom:22px;"></i>
                         <input type='password' class='text_input form-style' placeholder="Пароль" name="password" value="<?= $_POST['password'] ?? '' ?>" />
                         <label style="display: block; text-align:right; font-size: 14px; padding-right: 40px;" for="password">
-                            <a class="text-a-underline" href="/../users/passwordrec">Забыли пароль?</a>
+                            <a class="text-a-underline" type="button" data-bs-toggle="modal" data-bs-target="#passwordRec">Забыли пароль?</a>
                         </label>
                     </div>
                     <input style="top:19px; position:relative;" type='submit' value='' id='login' />
@@ -32,6 +32,32 @@ include __DIR__ . '/../header.php'; ?>
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="passwordRec" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Укажите свой email, и мы отправим на него ссылку для восстановления пароля.
+                    </div>
+                    <form action="/users/password-rec" method="post">
+                        <div class="form-group">
+                            <i class="input-icon uil-at"></i>
+                            <input type='text' class='text_input form-style' placeholder="Email" name='email' value="<?= $_POST['email'] ?? '' ?>" />
+                        </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button type='submit' class="btn btn-warning" data-bs-dismiss="modal">СБРОСИТЬ ПАРОЛЬ <img src="/images/svg/arrow-right.svg"> </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>
