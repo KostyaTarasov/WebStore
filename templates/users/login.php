@@ -26,12 +26,12 @@ include __DIR__ . '/../header.php'; ?>
                     <input style="top:19px; position:relative;" type='submit' value='' id='login' />
                 </form>
             </div>
+            <div style="top:175px; position:relative;">
+                <div>
+                    <a class="text-a-underline" href="/../users/register">У вас нет аккаунта? Зарегистрируйтесь сейчас.</a>
+                </div>
+            </div>
         </div>
-        <hr>
-        <div class="underlining">
-            <a href="/../users/register">Зарегистрироваться</a>
-        </div>
-        <hr>
     </div>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

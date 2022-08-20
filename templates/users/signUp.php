@@ -26,13 +26,13 @@ include __DIR__ . '/../header.php'; ?>
                     </div>
                     <input type='submit' class="btn btn-success" value="" id='login' />
                 </form>
+                <div style="top:40px; position:relative;">
+                    <div>
+                        У вас уже есть учетная запись? <a class="text-a-underline" href="/../users/login">Войти</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="underlining">Уже зарегистрировались?
-            <a href="/../users/login">Войти</a>
-        </div>
-        <hr>
     </div>
     </form>
 </div>
