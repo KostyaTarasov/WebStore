@@ -8,11 +8,10 @@ include __DIR__ . '/../header.php';
             <li class="products-item a-edit" onclick="location.href='/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/'">
                 <h2 class="font-text-head products-title text-big">
                     <a href="/catalog/<?= $nameTableCatalog ?>/<?= $item->getId() ?>/">
-                        <!-- Ccылка на статью для каждого id найденного -->
                         <?= $item->getName() ?>
-                    </a> <!-- Вывод имени -->
+                    </a>
                 </h2>
-                <p class="margin-null"><?= $item->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
+                <p class="margin-null"><?= $item->getParsedText() ?></p>
                 <hr class="margin-null" />
                 <p class="margin-null">Цена: <?= $item->getPrice() ?> ₽</p>
                 <?php

@@ -1,4 +1,4 @@
-<?php // Для соединения и работы с базой данных
+<?php
 
 namespace MyProject\Services;
 

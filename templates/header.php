@@ -123,7 +123,6 @@
                                     <div>
                                         <a href="/">Главная</a>
                                         <a href="/../templates/pages/about.php">О себе</a>
-                                        <a href="/../manual.php">Док. по PHP</a>
                                         <a href="/news">Новости</a>
                                     </div>
                                     <div>

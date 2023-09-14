@@ -5,10 +5,10 @@ $title = "Главная страница";
 <?php
 // Получает на вход адрес, а на выходе возвращает имя контроллера, метод и параметры.
 // $startTime = microtime(true); // таймер генерации страницы
-require __DIR__ . '/vendor/autoload.php'; // Для загрузки пакетов, которые были скачаны composer-ом.
+require __DIR__ . '/vendor/autoload.php';
 try {
     $route = $_GET['route'] ?? ''; // имя экшена текущей страницы
-    $routes = require __DIR__ . './src/routes.php'; // Все руты из файла routes.php
+    $routes = require __DIR__ . './src/routes.php';
     $isRouteFound = false;
     foreach ($routes as $pattern => $controllerAndAction) {
         preg_match($pattern, $route, $matches);

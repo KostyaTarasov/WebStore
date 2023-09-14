@@ -15,43 +15,23 @@ class ArticlesController extends AbstractController
 {
 
     # Запрос в базу, в котором получим статью с нужным id
-    public function view(int $articleId) // Для http://localhost:8080/articles/1 и articles/2
+    public function view(int $articleId)
     {
-        // $result = $this->db->query(
-        //     'SELECT * FROM `articles` WHERE id = :id;',
-        //     [':id' => $articleId]
-        // );
-        // // var_dump($result);
-
-        // if ($result === []) { // Здесь обрабатываем ошибку при articles/не 1, не 2 (в базе данных нету такого id, а значит и результата не будет)
-        //     $this->view->renderHtml('errors/404.php', [], 404);
-        //     return;
-        // }
-
-        // $this->view->renderHtml('articles/view.php', ['article' => $result[0]]); // $this->view это папка templates
-
-        # Согласно паттерну Active Record, логика бд перенесана в Models
-
         $article = Article::getById($articleId);
 
         if ($article === null) {
             // $this->view->renderHtml('errors/404.php', [], 404);
             // return;
-            throw new NotFoundException(); // Бросаем исключение (не найдена страница, ошибка 404), оно всплывет через все слои нашей программы до фронт-контроллера, где будет успешно поймано!
+            throw new NotFoundException();
         }
 
-        # (doc26) Рефлектор для вывода свойств объекта Article
+        # Рефлектор для вывода свойств объекта Article
         $reflector = new \ReflectionObject($article);
-        $properties = $reflector->getProperties(); // getProperties() возвращает свойства
-        // echo "<pre>";
-        // var_dump($properties); // Они содержат два свойства - имя свойство и имя класса, в котором оно объявлено       
-        // echo "</pre>";
+        $properties = $reflector->getProperties();
+
         foreach ($properties as $property) {
             $propertiesNames[] = $property->getName(); // getName() возвращает имя класса
         }
-        // echo "<pre>";
-        // var_dump($propertiesNames);
-        // echo "</pre>";
 
 
         # Получение нужного юзера:
@@ -68,16 +48,16 @@ class ArticlesController extends AbstractController
     # Обновление БД через Active Record, в routes.php прописывается edit()
     public function edit(int $articleId): void // Экшн http://localhost:8080/articles/1/edit
     {
-        $article = Article::getById($articleId); // получаем статью по индексу
+        $article = Article::getById($articleId);
 
         if ($article === null) {
             // $this->view->renderHtml('errors/404.php', [], 404);
             // return;
-            throw new NotFoundException(); // Бросаем исключение (не найдена страница, ошибка 404)
+            throw new NotFoundException();
         }
 
         if ($this->user === null) {
-            throw new UnauthorizedException(); // Бросаем исключение (пользователь не авторизован, ошибка 401) 
+            throw new UnauthorizedException();
         }
 
         //* Исключение, чтобы редактировать могли только администраторы
@@ -159,7 +139,7 @@ class ArticlesController extends AbstractController
     public function del(int $delArticleId): void // Экшн http://localhost:8080/articles/1/edit
     {
         if ($this->user === null) {
-            throw new UnauthorizedException(); // Бросаем исключение (пользователь не авторизован, ошибка 401) 
+            throw new UnauthorizedException(); // 401) 
         }
 
         //* Исключение, чтобы удалять статью могли только администраторы
@@ -169,7 +149,7 @@ class ArticlesController extends AbstractController
 
         $article = Article::getById($delArticleId);
         if ($article === null) {
-            throw new NotFoundException(); // Бросаем исключение (не найдена страница, ошибка 404)
+            throw new NotFoundException(); // 404
         }
 
         $article->delete(); // Вызов метода удаления статьи

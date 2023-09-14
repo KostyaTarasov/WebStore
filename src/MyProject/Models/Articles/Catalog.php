@@ -6,13 +6,13 @@ use MyProject\Models\ActiveRecordEntity;
 use MyProject\Exceptions\InvalidArgumentException;
 use MyProject\Services\Db;
 
-class Catalog extends ActiveRecordEntity  // Наследуемся от полученного класса
+class Catalog extends ActiveRecordEntity
 {
     /** @var string */
-    protected $cpu_name_catalog; // protected чтобы к ним можно было достучаться из класса-родителя.
+    protected $cpu_name_catalog;
 
     # Возвращает имя таблицы каталога:
-    protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
+    protected static function getTableName(): string
     {
         return 'catalog';
     }
@@ -25,8 +25,6 @@ class Catalog extends ActiveRecordEntity  // Наследуемся от пол�
         return htmlentities($this->cpu_name_catalog);
     }
 
-    # Cделаем геттеры для свойств id, name и text:
-    #Теперь мы можем работать с этими объектами в коде. Например – обращаться к геттерам в шаблонах
     /**
      * @return string
      */

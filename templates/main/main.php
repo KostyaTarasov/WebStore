@@ -10,9 +10,8 @@ include __DIR__ . '/../header.php';
                 <li class="products-item a-edit" onclick="location.href='/catalog/popularnye_tovary/<?= $item->getId() ?>/'">
                     <h2 class="font-text-head products-title text-big">
                         <a href="/catalog/popularnye_tovary/<?= $item->getId() ?>/">
-                            <!-- Ccылка на статью для каждого id найденного -->
                             <?= $item->getName() ?>
-                        </a> <!-- Вывод имени -->
+                        </a>
                     </h2>
                     <p class="margin-null"><?= $item->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
                     <p class="margin-null">Автор: <?= $item->getAuthor()->getNickname() ?></p>
@@ -74,7 +73,7 @@ include __DIR__ . '/../header.php';
                                 <a class="font-text-head text-middle">
                                     <?= $item->getName() ?>
                                 </a>
-                                <a><?= $item->getParsedText() ?></a> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
+                                <a><?= $item->getParsedText() ?></a>
                             </td>
                         <?php endforeach; ?>
                     </tr>

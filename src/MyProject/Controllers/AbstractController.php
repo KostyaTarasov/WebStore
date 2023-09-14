@@ -1,12 +1,5 @@
 <?php
 
-/*
-Абстрактный контроллер, чтобы не дублировать код в контроллерах.
-
-Достаточно просто отнаследоваться в наших контроллерах от этого класса и можно удалить в них конструкторы и свойства private view и private user – они будут унаследованы от AbstractController. 
-Это существенно упростит их код.
-*/
-
 namespace MyProject\Controllers;
 
 use MyProject\Models\Users\User;
@@ -17,7 +10,7 @@ use MyProject\Models\Articles\Catalog;
 abstract class AbstractController
 {
     /** @var View */
-    protected $view; // свойства view и  user теперь с типом protected – они будут доступны в наследниках
+    protected $view;
 
     /** @var User|null */
     protected $user;

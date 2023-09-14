@@ -21,9 +21,8 @@ include __DIR__ . '/../header.php';
                     <td>
                         <h2 class=" font-text-head text-big td2-text-bold a-edit">
                                 <a href=" /catalog/<?= $article->getValueNewColTable() ?>/<?= $article->getId() ?>/">
-                                    <!-- Ccылка на статью для каждого id найденного foreach -->
                                     <?= $article->getName() ?>
-                                </a> <!-- Вывод имени -->
+                                </a>
                                 </h2>
                                 <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
                                 <p>Цена: <?= $article->getPrice() ?> ₽</p>

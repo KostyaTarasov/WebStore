@@ -9,9 +9,8 @@ include __DIR__ . '/../header.php';
                 <img class="image small" src="<?= $item->getPathImage() ?>" ">
                     <h2 class=" font-text-head products-title text-big">
                 <a href="/catalog/<?= $item->getNameTable() ?>">
-                    <!-- Ccылка на статью -->
                     <?= $item->getName() ?>
-                </a> <!-- Вывод имени -->
+                </a>
                 </h2>
                 <p class="margin-null"><?= $item->getText() ?></p>
             </li>

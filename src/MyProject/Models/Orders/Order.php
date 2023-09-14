@@ -7,25 +7,21 @@ use MyProject\Models\ActiveRecordEntity;
 use MyProject\Services\EmailSender;
 use MyProject\Models\Users\User;
 
-# наследуемся от ActiveRecordEntity
 class Order extends ActiveRecordEntity
 {
-    # Возвращает имя таблицы: users, где хранятся пользователи.
-    protected static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
+    protected static function getTableName(): string
     {
         return 'orders';
     }
 
     public static function checkOrder()
     {
-        # Проверка на то, что цена товара не равна 0
         if (empty($_POST['price']) || $_POST['price'] == 0) {
-            throw new InvalidArgumentException('В настоящее время данный товар недоступен, пожалуйста, свяжитесь с нами для уточнения деталей заказа!'); // вызываем исключение
+            throw new InvalidArgumentException('В настоящее время данный товар недоступен, пожалуйста, свяжитесь с нами для уточнения деталей заказа!');
         }
 
-        # Проверка на то, что данные пользователем заполнены корректно
-        if (empty($_POST['nickname'])) { // если пустое значение
-            throw new InvalidArgumentException('Необходимо заполнить поле: "Имя"'); // вызываем исключение
+        if (empty($_POST['nickname'])) {
+            throw new InvalidArgumentException('Необходимо заполнить поле: "Имя"');
         }
 
         if (empty($_POST['email'])) {
@@ -35,9 +31,8 @@ class Order extends ActiveRecordEntity
             throw new InvalidArgumentException('Email некорректен');
         }
 
-        # Проверки на то, что все данные были переданы
-        if (empty($_POST['phone'])) { // если пустое значение
-            throw new InvalidArgumentException('Необходимо заполнить поле: "Телефон"'); // вызываем исключение
+        if (empty($_POST['phone'])) {
+            throw new InvalidArgumentException('Необходимо заполнить поле: "Телефон"');
         }
         # Проверка данных на валидность
         if (!preg_match('/[0-9]+/', $_POST['phone'])) {

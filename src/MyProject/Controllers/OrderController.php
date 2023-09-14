@@ -33,13 +33,13 @@ class OrderController extends AbstractController
 
     public function formOrder()
     {
-        if (!empty($_POST)) { // если пришел POST-запрос
-            # Обрабатываем исключения!
+        if (!empty($_POST)) {
+            # Обрабатываем исключения
             try {
-                Order::checkOrder(); // вызов метода проверки переданных данных.
-                $dataOrder = Order::saveOrder(); // вызов метода сохранения в бд данных оформленного заказа.
-                Order::mailYourselfOrder($dataOrder); // вызов метода отправки сообщения себе.
-                Order::mailOrder($dataOrder); // вызов метода отправки сообщения клиенту.
+                Order::checkOrder(); // метод проверки переданных данных.
+                $dataOrder = Order::saveOrder(); // метод сохранения в бд данных оформленного заказа.
+                Order::mailYourselfOrder($dataOrder); // метод отправки сообщения себе.
+                Order::mailOrder($dataOrder); // метод отправки сообщения клиенту.
                 $this->view->renderHtml('features/orderSuccessful.php', ['message' => new SuccessMessage("Заказ успешно оформлен!")]);
                 exit();
             } catch (InvalidArgumentException $e) {

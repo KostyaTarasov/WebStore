@@ -1,25 +1,13 @@
 <?php
-// универсальность ( скопировано из Article)
 namespace MyProject\Models;
 
 use MyProject\Services\Db;
 
-# Так как создание самого этого класса нам не нужно, то делаем его абстрактным. А теперь переносим в него универсальный код из класса Article.
-/*
-О JsonSerializable:
-json_encode во View не умеет преобразовывать в JSON объекты. 
-Однако, можно её «научить». 
-Для этого нужно чтобы класс реализовывал специальный интерфейс – JsonSerializable и содержал метод jsonSerialize(). 
-*/
-
 abstract class ActiveRecordEntity implements \JsonSerializable
 {
-    // у всех сущностей id, и нет необходимости писать это каждый раз в каждой сущности – можно просто унаследовать;
     /** @var int */
     protected $id;
 
-    # Cделаем геттер для свойства id:
-    #Теперь мы можем работать с этим объектом в коде. Например – обращаться к геттерам в шаблонах: templates/main/main.php
     /**
      * @return int
      */
@@ -57,9 +45,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         } else { // Иначе id нет в бд
             $this->insert($mappedProperties); // Вставить в бд
         }
-        // echo "<pre>";
-        // var_dump($mappedProperties);
-        // "</pre>";
     }
 
     private function update(array $mappedProperties): void // Обновление БД
@@ -73,7 +58,7 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         /*
         будет содержать строки: column1 = :param1
         будет содержать ключ => значение вида: [:param1 => value1]
-        и собрать из этих частей готовый запрос!
+        и собрать из этих частей готовый запрос
         */
 
         //здесь мы обновляем существующую запись в базе
@@ -99,11 +84,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
 
     private function insert(array $mappedProperties): void // Вставка в БД
     {
-        //здесь мы создаём новую запись в базе, идентичную этим:
-        // INSERT INTO <имя таблицы> (<имя столбца 1>, <имя столбца 2>,...) VALUES (<значение столбца 1>, <значение столбца 2>,…);
-        // INSERT INTO `articles`    (`author_id`, `name`, `text`) VALUES (:author_id, :name, :text)
-        // Затем нужно будет передать массив с параметрами в стиле: [':author_id' => 1, ':name' => 'Название', ':text' => 'Текст']
-
         $filteredProperties = array_filter($mappedProperties); // отфильтруем элементы в массиве от тех, значение которых = NULL
 
         $columns = [];
@@ -115,22 +95,13 @@ abstract class ActiveRecordEntity implements \JsonSerializable
             $paramsNames[] = $paramName; //подготовим массив с именами подстановок, вроде :author_id и :name
             $params2values[$paramName] = $value; // подготовим параметры, которые нужно будет подставить в запрос (значения)
         }
-        $columnsViaSemicolon = implode(', ', $columns); // Добавляем запятую
+        $columnsViaSemicolon = implode(', ', $columns);
         $paramsNamesViaSemicolon = implode(', ', $paramsNames);
         // пишем запрос аналогичный: INSERT INTO `articles`    (`author_id`, `name`, `text`) VALUES (:author_id, :name, :text)
         $sql = 'INSERT INTO ' . static::getTableName() . ' (' . $columnsViaSemicolon . ') VALUES (' . $paramsNamesViaSemicolon . ');';
 
-        // echo "<pre>"; // Отобразим полный путь преобразования
-        // var_dump($mappedProperties); // Массив изначально
-        // var_dump($columns); // `author_id`
-        // var_dump($paramsNames); // :author_id
-        // var_dump($params2values); // Готовый массив с параметрами
-        // var_dump($sql); // Полученная строка SQL
-        // echo "</pre>";
-
-        # Остаётся выполнить запрос, подставив нужные параметры.
         $db = Db::getInstance();
-        $db->query($sql, $params2values, static::class); // запрос (строка sql, готовый массив с параметрами, класс)
+        $db->query($sql, $params2values, static::class);
         $this->id = $db->getLastInsertId(); // Сохраняем текущее id, чтобы id не был null в выводе массива на экран
         //$this->refresh(); // Сохраняем текущее значение для вывода в массив на экран, в данном примере выводим дату вместо null для ["createdAt":protected]=>NULL
     }
@@ -185,26 +156,13 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         */
     }
 
-    // для паттерна AR
-    // обратиться к сущности, не создавая её, но чтобы она при этом вернула нам созданные сущности. Статические методы можно вызывать, не создавая объекта.
     /**
      * @return static[]
      */
-    public static function findAll(): array // будет доступен во всех классах-наследниках
+    public static function findAll(): array
     {
-        // $db = new Db(); // Чтобы не создавать каждый раз объект необходимо заменить на $db = Db::getInstance();, согласно Паттерну Singleton
         $db = Db::getInstance();
-        /*
-        return $db->query('SELECT * FROM `articles`;', [], Article::class);
-        можно заменить Article::class на self::class – и сюда автоматически подставится класс, в котором этот метод определен. 
-        А можно заменить его и вовсе на static::class – тогда будет подставлено имя класса, у которого этот метод был вызван. 
-        В чём разница? Если мы создадим класс-наследник SuperArticle, он унаследует этот метод от родителя. 
-        Если будет использоваться self:class, то там будет значение “Article”, а если мы напишем static::class, то там уже будет значение “SuperArticle”. 
-        Это называется поздним статическим связыванием – благодаря нему мы можем писать код, который будет зависеть от класса, в котором он вызывается, а не в котором он описан.
-        */
-        // return $db->query('SELECT * FROM `articles`;', [], static::class);
 
-        # Далее избавляемся от зависимости имени таблицы articles:
         return $db->query('SELECT * FROM `' . static::getTableName() . '`;', [], static::class);
     }
 
@@ -217,7 +175,7 @@ abstract class ActiveRecordEntity implements \JsonSerializable
     {
         $db = Db::getInstance();
         $entities = $db->query(
-            'SELECT * FROM `' . static::getTableName() . '` WHERE id=:id;', // SQL код выбора строки из таблицы
+            'SELECT * FROM `' . static::getTableName() . '` WHERE id=:id;',
             [':id' => $id], // Параметры
             static::class   // Имя класса
         );
@@ -239,15 +197,14 @@ abstract class ActiveRecordEntity implements \JsonSerializable
             [':value' => $value],
             static::class
         );
-        if ($result === []) { // Если ничего не найдено
-            return null; // вернётся null
+        if ($result === []) {
+            return null;
         }
         return $result[0];
     }
 
     /*
-    Этот метод должен возвращать представление объекта в виде массива. 
-    Сделаем метод на уровне ActiveRecordEntity, чтобы все его наследники автоматически могли преобразовываться в JSON.
+    Все наследники класса смогут автоматически преобразовываться в JSON.
     добавим метод jsonSerialize(), который представит объект в виде массива.
     */
     public function jsonSerialize()
@@ -301,7 +258,7 @@ abstract class ActiveRecordEntity implements \JsonSerializable
     {
         $translit = "Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();";
         $string = transliterator_transliterate($translit, $string);
-        $string = preg_replace('/[^\s\d\w]/', '', $string); // удаляем все симфолы кроме \s промежутков, \d - цифр, \w символов образующих слово
+        $string = preg_replace('/[^\s\d\w]/', '', $string); // удаляем все символы кроме \s промежутков, \d - цифр, \w символов образующих слово
         $string = preg_replace('/[-\s]+/', '-', $string); // замена промежутков на '-'
         return trim($string, '-'); // Убрать вначале и в конце строки '-'
     }

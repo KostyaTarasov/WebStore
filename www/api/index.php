@@ -1,21 +1,6 @@
 <?php
-# фронт-контроллер для API
 
 require __DIR__ . '/../../vendor/autoload.php';
-/*
-$entity = [
-    'kek' => 'cheburek',
-    'lol' => [
-        'foo' => 'bar'
-    ]
-];
-header('Content-type: application/json; charset=utf-8');
-
- // позволяет представить какую-то сущность в json-формате
- // чтобы удобнее было в браузере видеть ответ стоит установить в браузере расширение https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en
-
-echo json_encode($entity);
-*/
 
 try {
     $route = $_GET['route'] ?? '';

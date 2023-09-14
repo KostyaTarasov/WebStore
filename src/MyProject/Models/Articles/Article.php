@@ -3,13 +3,13 @@
 namespace MyProject\Models\Articles;
 
 use MyProject\Models\ActiveRecordEntity;
-use MyProject\Models\Users\User; //Либо же указать в начале файла о каком классе идёт речь, когда мы используем в коде только слово User. Делается это с помощью слова use после указания текущего неймспейса, но перед описанием класса.
+use MyProject\Models\Users\User;
 use MyProject\Exceptions\InvalidArgumentException;
 
-class Article extends ActiveRecordEntity  // Наследуемся от полученного класса
+class Article extends ActiveRecordEntity
 {
     /** @var string */
-    protected $name; // protected чтобы к ним можно было достучаться из класса-родителя.
+    protected $name;
 
     /** @var string */
     protected  $text;
@@ -25,12 +25,10 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
 
     protected  $content;
 
-    # Cделаем геттеры для свойств id, name и text:
-    #Теперь мы можем работать с этими объектами в коде. Например – обращаться к геттерам в шаблонах: templates/main/main.php
     /**
      * @return string
      */
-    public function getName(): string // Используется в templates/article/view.php
+    public function getName(): string
     {
         return htmlentities($this->name);
     }
@@ -65,15 +63,8 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
     /**
      * @return int
      */
-    public function getAuthor(): User // Геттер для вывода автора статьи
+    public function getAuthor(): User
     {
-        /*
-        в геттере просим сущность юзера выполнить запрос в базу 
-        и получить нужного пользователя по (authorId=author_id), который хранится в конкретной статье(articles) у которой свой id. 
-        При этом запрос будет выполнен только если мы вызовем этот геттер, 
-        это называется LazyLoad (ленивая загрузка) – это когда данные не подгружаются до тех пор, пока их не запросят.
-        */
-
         $this->authorId;
         return User::getById($this->authorId);
     }
@@ -91,7 +82,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         return $this->content;
     }
 
-    public function setName($name1): string // Устанавливаем новое значение для свойства $this->name
+    public function setName($name1): string
     {
         return $this->name = $name1;
     }
@@ -153,7 +144,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         $article->setName($fields['name']);
         $article->setText($fields['text']);
         $article->setPrice($fields['price']);
-        $article->setImages(); // Загруженное изображение кладём в массив данных
+        $article->setImages();
 
         $article->save();
 
@@ -174,7 +165,7 @@ class Article extends ActiveRecordEntity  // Наследуемся от пол�
         $this->setName($fields['name']);
         $this->setText($fields['text']);
         $this->setPrice($fields['price']);
-        $this->setImages(); // Загруженное изображение кладём в массив данных
+        $this->setImages();
         $this->save();
 
         return $this;

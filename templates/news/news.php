@@ -8,7 +8,7 @@ include __DIR__ . '/../header.php';
             <h2 class=" font-text-head text-big td2-text-bold a-edit">
                 <?= $article->getName() ?>
             </h2>
-            <p><?= $article->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
+            <p><?= $article->getParsedText() ?></p>
             <a class="text-grey"><?= $article->getCreatedAt() ?></a>
             <hr>
         <?php endforeach; ?>

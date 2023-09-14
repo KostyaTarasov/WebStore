@@ -10,7 +10,7 @@ use MyProject\Models\Users\User;
 class SearchModel
 {
     private const TABLE_USERS = 'users';
-    private const COLUMN_NAME = "(`name`,' ',`text`)"; // Чтобы искать в данных столбцах
+    private const COLUMN_NAME = "(`name`,' ',`text`)";
 
     public static function countArticles(array $valueFromPost)
     {
@@ -20,7 +20,7 @@ class SearchModel
         foreach ($tableCatalogs as $table) {
             $table = ActiveRecordEntity::replaceDash($table);
             $sql .= '(SELECT COUNT(*) FROM ' . $table . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ')';
-            if (next($tableCatalogs)) { // Если не конец массива в цикле foreach
+            if (next($tableCatalogs)) {
                 $sql .= " + ";
             }
         }
@@ -33,7 +33,7 @@ class SearchModel
             static::class
         );
         foreach ($resultSearch[0] as $count) {
-            if ($count == 0) { // Если ничего не найдено
+            if ($count == 0) {
                 throw new InvalidArgumentException(
                     "По запросу <b>$value</b>  ничего не найдено. <br><br>
             Рекомендации:<br><br>
@@ -74,8 +74,8 @@ class SearchModel
         foreach ($tableCatalogs as $table) {
             $table = ActiveRecordEntity::replaceDash($table);
             $sql .= 'SELECT *, ' . "'$table'" . ' AS `newColTable` FROM  ' . "$table" . '  WHERE CONCAT ' . self::COLUMN_NAME . '  LIKE  ' . ':value' . ''; // '$table' AS `newColTable` добавляем столбик содержащий имя таблицы к соответствующим данным. 
-            // `newColTable` Добавляется не в бд, а только для вывода в шаблоне (используется в ссылке на продукт своего каталога и т.д.)
-            if (next($tableCatalogs)) { // Если не конец массива в цикле foreach
+            // `newColTable` для вывода в шаблоне (используется в ссылке на продукт своего каталога и т.д.)
+            if (next($tableCatalogs)) {
                 $sql .= " UNION ALL "; // Объединяем SELECT запросы для разных имён таблиц
             }
         }
@@ -95,15 +95,13 @@ class SearchModel
         $db = Db::getInstance();
 
         $entities = $db->query(
-            'SELECT * FROM `' . self::TABLE_USERS . '` WHERE id=:id;', // SQL код выбора строки из таблицы
-            [':id' => $id], // Параметры
-            static::class   // Имя класса
+            'SELECT * FROM `' . self::TABLE_USERS . '` WHERE id=:id;',
+            [':id' => $id],
+            static::class
         );
         return $entities ? $entities[0] : null; // Этот метод вернёт либо один объект, если он найдётся в базе, либо null – что будет говорить об его отсутствии.
     }
 
-    # Cделаем геттер для свойства id:
-    #Теперь мы можем работать с этим объектом в коде. Например – обращаться к геттерам в шаблонах: templates/main/main.php
     /**
      * @return int
      */
