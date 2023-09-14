@@ -71,4 +71,44 @@ class UsersController extends AbstractController
         setcookie('token', '', -1, '/', '', false, true);
         header('Location: /');
     }
+
+    // Восстановление пароля
+    public function passwordRec()
+    {
+        try {
+            $email = $_POST['email'];
+            if (User::checkEmail($email)) {
+                $user = new User();
+                $user->email = $email;
+                // EmailSender::send($user, 'Восстановление пароля!', 'passwordRecovery.php', [ // Отправляем параметры в метод класса EmailSender
+                //     'hash' => User::hash($email)
+                // ]);
+                
+                //Todo создать в таблице users столбик с хешем восстановления пароля, по умолчанию null*/
+                //Todo по открытой ссылке из почты, открывать страницу ввода email и нового пароля дважды (с проверкой email и совпадают ли пароли в двух полях, не пустые ли они)
+                //Todo при этом проверять есть ли хеш на восстановление в бд, не пустой ли он. 
+                //Todo обновить пароль
+                //Todo по завершению удалять хеш (чтобы вновь ссылка не открывалась)
+                //Todo авторизовать с помощью готового метода login() из UsersController.php желательно с нотисом об успешной смене пароля
+
+                // Меняем хеш в БД
+                // mysqli_query($db, "UPDATE `user` SET hash='$hash' WHERE email='$email'");
+                // проверка отправилась ли почта
+                // if (mail($email, "Восстановление пароля через Email", $message, $headers)) {
+                //     Если да, то выводит сообщение
+                //     echo 'Ссылка для восстановления пароля отправленная на вашу почту';
+                // } else {
+                //     echo 'Произошла какая то ошибка, письмо отправилось';
+                // }
+
+                //User::passwordRec($email);
+                header('Location: /');
+                exit();
+            }
+        } catch (InvalidArgumentException $e) {
+            $this->view->renderHtml('users/login.php', ['message' => new DangerMessage($e->getMessage())]);
+            return;
+        }
+        $this->view->renderHtml('users/login.php');
+    }
 }

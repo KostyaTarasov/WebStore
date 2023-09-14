@@ -19,8 +19,10 @@ return [
 
     '~^users/register$~' => [\MyProject\Controllers\UsersController::class, 'signUp'], // Роут для регистрации пользователей http://localhost:8080/users/register
     '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate'], // Роут успешной активации пользователя  Где user_id и code взяты из таблицы users_activation_codes
-    '~^users/login~' => [\MyProject\Controllers\UsersController::class, 'login'], // Роут для авторизации пользователя http://localhost:8080/users/login
-    '~^users/log-out~' => [\MyProject\Controllers\UsersController::class, 'logOut'], // Роут для выхода пользователя http://localhost:8080/users/login
+    '~^users/login$~' => [\MyProject\Controllers\UsersController::class, 'login'], // Роут для авторизации пользователя http://localhost:8080/users/login
+    '~^users/log-out$~' => [\MyProject\Controllers\UsersController::class, 'logOut'], // Роут для выхода пользователя http://localhost:8080/users/log-out
+    '~^users/password-rec$~' => [\MyProject\Controllers\UsersController::class, 'passwordRec'], // Восстановление пароля http://localhost:8080/users/password_rec
+    '~^users/password-rec/?hash=/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'passwordRec'], // Восстановление пароля http://localhost:8080/users/password-rec/?hash=...
 
     '~^order(.*)$~' => [\MyProject\Controllers\OrderController::class, 'order'], // Роут для заказа http://learnphp/order
     '~^formOrder(.*)$~' => [\MyProject\Controllers\OrderController::class, 'formOrder'],// Роут для оформления заказа http://learnphp/orderForm

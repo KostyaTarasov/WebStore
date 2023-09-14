@@ -142,6 +142,35 @@ class User extends ActiveRecordEntity
         return $user;
     }
 
+    # Проверка email пользователя
+    public static function checkEmail(string $email): bool
+    {
+        if (empty($email)) {
+            throw new InvalidArgumentException('Не передан email');
+        }
+
+        $user = User::findOneByColumn('email', $email); // Проверка, имеется ли email в базе данных SQL, равен ли введённому пользователем значению
+        if ($user === null) {
+            throw new InvalidArgumentException('Нет пользователя с таким email');
+        }
+
+        if (!$user->isConfirmed) {
+            throw new InvalidArgumentException('Пользователь не подтверждён');
+        }
+
+        return true;
+    }
+
+    # Восстановление пароля
+    public static function hash(string $email)
+    {
+        // хешируем хеш, который состоит из email и времени
+        return md5($email . time());
+
+        // Для 
+        // $user->passwordHash = password_hash($userData['password'], PASSWORD_DEFAULT);
+    }
+
     public function getPasswordHash(): string
     {
         return $this->passwordHash;
