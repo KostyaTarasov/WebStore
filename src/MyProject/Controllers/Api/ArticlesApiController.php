@@ -28,7 +28,7 @@ class ArticlesApiController extends AbstractController
 php://input – это входной поток данных. Именно из него мы и будем получать JSON из запроса. 
 file_get_contents – читает данные из указанного места, в нашем случае из входного потока. 
 json_decode декодирует json в структуру массива.
-Используя Postman отправим запрос: Post, адрес http://learnphp/www/api/articles/add, в Body raw пишем:
+Используя Postman отправим запрос: Post, адрес http://web-store/www/api/articles/add, в Body raw пишем:
 {
 "articles": [
 {
@@ -39,7 +39,7 @@ json_decode декодирует json в структуру массива.
 ]
 }
 Далее жмём кнопку Send. Выбираем вкладку Preview и получаем массив
-Просмотр статьи http://learnphp/www/api/articles/1
+Просмотр статьи http://web-store/www/api/articles/1
 */
     public function add()
     {

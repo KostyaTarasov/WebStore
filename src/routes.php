@@ -15,7 +15,7 @@ return [
     '~^catalog/(.+)$~' => [\MyProject\Controllers\CatalogController::class, 'firstPage'], // Роут первой страницы определённого каталога товаров
 
     '~^search/(\d+)$~' => [\MyProject\Controllers\SearchController::class, 'page'], // Роут для поиска
-    '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'], // Роут для поиска http://learnphp/search
+    '~^search(.*)$~' => [\MyProject\Controllers\SearchController::class, 'searchFunction'], // Роут для поиска http://web-store/search
 
     '~^users/register$~' => [\MyProject\Controllers\UsersController::class, 'signUp'], // Роут для регистрации пользователей http://localhost:8080/users/register
     '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate'], // Роут успешной активации пользователя  Где user_id и code взяты из таблицы users_activation_codes
@@ -24,8 +24,8 @@ return [
     '~^users/password-rec$~' => [\MyProject\Controllers\UsersController::class, 'passwordRec'], // Восстановление пароля http://localhost:8080/users/password_rec
     '~^users/password-rec/?hash=/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'passwordRec'], // Восстановление пароля http://localhost:8080/users/password-rec/?hash=...
 
-    '~^order(.*)$~' => [\MyProject\Controllers\OrderController::class, 'order'], // Роут для заказа http://learnphp/order
-    '~^formOrder(.*)$~' => [\MyProject\Controllers\OrderController::class, 'formOrder'],// Роут для оформления заказа http://learnphp/orderForm
+    '~^order(.*)$~' => [\MyProject\Controllers\OrderController::class, 'order'], // Роут для заказа http://web-store/order
+    '~^formOrder(.*)$~' => [\MyProject\Controllers\OrderController::class, 'formOrder'],// Роут для оформления заказа http://web-store/orderForm
 
     '~^news/(\d+)$~' => [\MyProject\Controllers\NewsController::class, 'newsPage'], // Роут новостей
     '~^news(.*)$~' => [\MyProject\Controllers\NewsController::class, 'newsFirstPage'], // Роут первой страницы новостей
