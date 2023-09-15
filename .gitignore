@@ -5,3 +5,5 @@ vendor
 lessons
 debug
 manual.php
+bin
+src/MyProject/Controllers/CLI
