@@ -46,11 +46,11 @@
    git clone https://github.com/KostyaTarasov/WebStore.git
    ```
 
-2. Выполните установку пакетов
+2. Выполните установку пакетов:
    ```
    composer install
    ```
-   
+
 3. Настройте окружение и базу данных. Подключение к БД в файле src/settings.php
 
 - 'host' => 'localhost:3306',
