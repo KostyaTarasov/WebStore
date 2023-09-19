@@ -26,9 +26,10 @@
 12. PSR
 13. Уязвимости: SQL-inj, XSS и другие.
 14. Куки и сессии
-Хеш-функции
-15. Запросы Post, Get
-16. Bootstrap и гибкая Grid
+15. Хеш-функции
+16. Запросы Post, Get
+17. Bootstrap и гибкая Grid
+18. Docker
 
 ## Версии
 
@@ -43,12 +44,23 @@
 1. Клонируйте репозиторий: `git clone https://github.com/KostyaTarasov/WebStore.git`
 2. Выполните composer install
 3. Настройте окружение и базу данных. Подключение к БД в файле src/settings.php
- - 'host' => 'localhost:3306',
- - 'dbname' => 'my_project',
- - 'user' => 'root',
- - 'password' => '',
-4. Запустите проект. В моём случае в настройках WampServer VirtualHost: http://web-store/
 
-## Разворачивание проекта с помощью docker
+- 'host' => 'localhost:3306',
+- 'dbname' => 'my_project',
+- 'user' => 'root',
+- 'password' => '',
 
-1. Выполните команду docker-compose up
+4. Можно указать произвольный адрес в настройках WampServer VirtualHost, например http://web-store/
+
+## Запуск в Docker
+
+1. Запустить docker-compose:
+
+   ```
+   docker-compose up
+   ```
+
+2. Открыть по адресу:
+   ```
+   http://localhost
+   ```
