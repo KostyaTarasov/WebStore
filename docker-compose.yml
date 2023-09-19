@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_php_container
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - DOCKER_ENV=true
+    networks:
+      - my_network
+    entrypoint: sh -c "composer install && apache2-foreground"  
+
+  db:
+    image: mysql:5.7.36
+    environment:
+      MYSQL_DATABASE: my_project
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: ''
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - my_network
+    command: --pid-file=/var/run/mysqld/mysqld.pid  
+
+networks:
+  my_network:

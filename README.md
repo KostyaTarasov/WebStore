@@ -48,3 +48,7 @@
  - 'user' => 'root',
  - 'password' => '',
 4. Запустите проект. В моём случае в настройках WampServer VirtualHost: http://web-store/
+
+## Разворачивание проекта с помощью docker
+
+1. Выполните команду docker-compose up

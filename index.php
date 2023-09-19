@@ -8,7 +8,7 @@ $title = "Главная страница";
 require __DIR__ . '/vendor/autoload.php';
 try {
     $route = $_GET['route'] ?? ''; // имя экшена текущей страницы
-    $routes = require __DIR__ . './src/routes.php';
+    $routes = require __DIR__ . '/src/routes.php';
     $isRouteFound = false;
     foreach ($routes as $pattern => $controllerAndAction) {
         preg_match($pattern, $route, $matches);
@@ -32,16 +32,16 @@ try {
     $controller = new $controllerName();
     $controller->$actionName(...$matches);
 } catch (\MyProject\Exceptions\DbException $e) { // Ловим исключение если не подкл к базе данных
-    $view = new \MyProject\View\View(__DIR__ . './templates/errors');
+    $view = new \MyProject\View\View(__DIR__ . '/templates/errors');
     $view->renderHtml('500.php', ['error' => $e->getMessage()], 500);
 } catch (\MyProject\Exceptions\NotFoundException $e) { // Ловим исключение если нету такой страницы
-    $view = new \MyProject\View\View(__DIR__ . './templates/errors');
+    $view = new \MyProject\View\View(__DIR__ . '/templates/errors');
     $view->renderHtml('404.php', ['error' => $e->getMessage()], 404);
 } catch (\MyProject\Exceptions\UnauthorizedException $e) { // Ловим исключение если пользователь не авторизован
-    $view = new \MyProject\View\View(__DIR__ . './templates/errors');
+    $view = new \MyProject\View\View(__DIR__ . '/templates/errors');
     $view->renderHtml('401.php', ['error' => $e->getMessage()], 401);
 } catch (\MyProject\Exceptions\Forbidden $e) {  // Ловим исключение на странице добавления статей (так как пользователь с ролью user, создавать статьи можно только пользователям с ролью admin)
-    $view = new \MyProject\View\View(__DIR__ . './templates/errors');
+    $view = new \MyProject\View\View(__DIR__ . '/templates/errors');
     $view->renderHtml('403.php', ['error' => $e->getMessage()], 403);
 }
 

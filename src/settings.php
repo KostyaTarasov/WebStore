@@ -1,20 +1,15 @@
-<?php // Настройки для подключения к базе данных
+<?php
 
-// Для Mamp
-// return [
-//     'db' => [
-//         'host' => 'localhost:8889', // host и порт заданный в MAMP для SQL
-//         'dbname' => 'my_project', // Имя базы данных в корне sql
-//         'user' => 'root',
-//         'password' => 'root',
-//     ]
-// ];
+if (getenv('DOCKER_ENV') === 'true') {
+    $dbHost = 'db';
+} else {
+    $dbHost = 'localhost:3306';
+}
 
-// Для Wamp (импортировал через phpMyAdmin)
 return [
     'db' => [
-        'host' => 'localhost:3306', // host и порт заданный в MAMP для SQL
-        'dbname' => 'my_project', // Имя базы данных в корне sql
+        'host' => $dbHost,
+        'dbname' => 'my_project',
         'user' => 'root',
         'password' => '',
     ]
