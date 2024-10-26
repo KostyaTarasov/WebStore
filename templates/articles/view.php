@@ -1,11 +1,13 @@
 <?php
 $getName = $article->getName();
-$title = "Купить $getName в KirovShop";
+$title = $commonInformation[0]->getDo() . $getName . $commonInformation[0]->getDoInfo();
 include __DIR__ . '/../header.php'; ?>
 <div class="main">
     <h1><?= $getName ?> </h1>
     <p><?= $article->getParsedText() ?></p>
-    <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
+    <?php if ($settings[0]->isVisibleAuthor()) : ?>
+        <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
+    <?php endif; ?>
     <?php if ($user !== null && $user->isAdmin()) :
     ?>
         <a class="btn btn-primary" href="edit">Редактировать статью</a>
@@ -24,7 +26,9 @@ include __DIR__ . '/../header.php'; ?>
         <input type="hidden" name="price" value="<?= $article->getPrice(); ?>" />
         <input type="hidden" name="name" value="<?= $getName; ?>" />
         <input type="hidden" name="text" value="<?= $article->getParsedText(); ?>" />
-        <button type="submit" class="btn btn-success">Заказать</button>
+        <?php if ($settings[0]->isVisibleBuy()) : ?>
+            <button type="submit" class="btn btn-success">Заказать</button>
+        <?php endif; ?>
     </form>
 </div>
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

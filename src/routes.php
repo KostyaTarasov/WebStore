@@ -32,4 +32,6 @@ return [
     '~^news/(.+)/(\d+)/$~' => [\MyProject\Controllers\NewsController::class, 'view'], // Роут для просмотра товара
     '~^news/add$~' => [\MyProject\Controllers\NewsController::class, 'add'], // Роут для добавления товара
     '~^contact$~' => [\MyProject\Controllers\СontactController::class, 'contact'], // Роут страницы контактной информации
+
+    '~^about$~' => [\MyProject\Controllers\AboutController::class, 'action'], // Роут страницы контактной информации
 ];

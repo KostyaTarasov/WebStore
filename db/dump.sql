@@ -23,6 +23,39 @@ INSERT INTO `catalog` (`id`, `cpu_name_catalog`, `name`, `text`, `content`) VALU
 (5, 'naushniki', 'Наушники', 'Дополнительное описание', 'naushniki'),
 (6, 'popularnye_tovary', 'Популярные товары', 'Дополнительное описание', 'popularnye_tovary');
 
+DROP TABLE IF EXISTS `common_information`;
+CREATE TABLE IF NOT EXISTS `common_information` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(20) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `h1` text NOT NULL,
+  `do` text NOT NULL,
+  `do_info` text NOT NULL,
+  `decription` text NOT NULL,
+  `about_us` text NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `time_work` text NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `yandex_map` LONGTEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `common_information` (`id`, `name`, `title`, `h1`, `do`, `do_info`, `decription`, `about_us`,`phone`, `address`, `time_work`, `mail`, `yandex_map`) VALUES
+(1, 'Kirov Shop', 'Компания', 'Компания наша', 'Купить ', ' в Kirov Shop', 'Мы работаем', 'Профессионалы в этом деле', '+7 (123) 888-88-90', 'г. Киров, ул. Ленина, 1', 'ПН-ПТ: 10:00 - 18:00', 'test@yandex.ru', '');
+
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_visible_login` tinyint(1) NOT NULL DEFAULT '1',
+  `is_visible_author` tinyint(1) NOT NULL DEFAULT '1',
+  `is_visible_buy` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+INSERT INTO `settings` (`id`, `is_visible_login`, `is_visible_author`, `is_visible_buy`) VALUES
+(1, 1, 1, 1);
+
 CREATE TABLE `users` (
     `id` int(11) NOT NULL,
     `nickname` varchar(255) NOT NULL,

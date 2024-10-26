@@ -6,6 +6,8 @@ use MyProject\Models\Users\User;
 use MyProject\Services\UsersAuthService;
 use MyProject\View\View;
 use MyProject\Models\Articles\Catalog;
+use MyProject\Models\Informations\Settings;
+use MyProject\Models\Informations\Informations;
 
 abstract class AbstractController
 {
@@ -21,6 +23,8 @@ abstract class AbstractController
         $this->view = new View(__DIR__ . '/../../../templates');
         $this->view->setVar('user', $this->user); // задаём нужные переменные во View (имя пользователя авторизованного, для отображения имени пользователя на странице конкретной статьи)
         $this->view->setVar('cpuCatalogs', Catalog::getCPU()); // задаём нужные переменные во View (имя пользователя авторизованного, для отображения имени пользователя на странице конкретной статьи)
+        $this->view->setVar('settings', Settings::findAll());
+        $this->view->setVar('commonInformation', Informations::findAll());
     }
 
     # функционал чтения входных данных для JSON:

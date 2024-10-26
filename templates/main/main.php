@@ -1,5 +1,5 @@
-<?php $title = "";
-$h1 = "Главная страница";
+<?php $title = $commonInformation[0]->getTitle();
+$h1 = $commonInformation[0]->getH();
 include __DIR__ . '/../header.php';
 ?>
 <div class="main">

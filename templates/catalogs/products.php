@@ -1,5 +1,5 @@
-<?php $title = "$nameCatalog купить в KirovShop";
-$h1 = "$nameCatalog";
+<?php $title = $commonInformation[0]->getDo() . $nameCatalog . $commonInformation[0]->getDoInfo();
+$h1 = $nameCatalog;
 include __DIR__ . '/../header.php';
 ?>
 <div class="main">

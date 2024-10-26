@@ -28,13 +28,15 @@
                                     </div>
                                 </nav>
                                 <a href="/"><img class="logo" src="/images/personal/logo.png "></a>
-                                <div class="icon-profile">
-                                    <a href="/../users/login" data-bs-toggle="collapse" data-bs-target="#collapseProfile">
-                                        <svg width="40" height="40" viewBox="0 0 15 15">
-                                            <use xlink:href="/images/svg/person.svg#icon-profile-id"></use>
-                                        </svg>
-                                    </a>
-                                </div>
+                                <?php if ($settings[0]->isVisibleLogin()) : ?>
+                                    <div class="icon-profile">
+                                        <a href="/../users/login" data-bs-toggle="collapse" data-bs-target="#collapseProfile">
+                                            <svg width="40" height="40" viewBox="0 0 15 15">
+                                                <use xlink:href="/images/svg/person.svg#icon-profile-id"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                             <ul class="collapse" id="collapseProfile" style="list-style-type: none; padding-left: 0;">
@@ -87,18 +89,16 @@
                                             </ul>
                                         </li>
                                     </div>
-                                    <li><a class="dropdown-item navbar-text" href="/../templates/pages/about.php">О нас</a></li>
+                                    <li><a class="dropdown-item navbar-text" href="/about">О нас</a></li>
                                     <li><a class="dropdown-item navbar-text" href="/contact">Контакты</a></li>
                                     <li><a class="dropdown-item navbar-text" href="/news">Наши работы</a></li>
                                 </ul>
                                 <br>
                                 <ul class="navbar-text" style="list-style-type: none; padding-left: 10px;">
-                                    <li>г.Киров, ул.Ленина 1</li>
-                                    <li>Пн. - Пт 08:00 - 18:00</li>
-                                    <li>Сб. - Вс выходной</li>
+                                    <li><?= $commonInformation[0]->getAddress() ?></li>
+                                    <li><?= $commonInformation[0]->getTimeWork() ?></li>
                                     <br>
-                                    <li><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</li>
-                                    <li>k.tarasov@yandex.ru</li>
+                                    <li><img class="iconSmall" src="/images/svg/phone1.svg"> <?= $commonInformation[0]->getPhone() ?></li>
                                 </ul>
                             </div>
                         </div>
@@ -107,26 +107,27 @@
                             <div style="display: flex; justify-content: center;">
                                 <div class="header-pc-common text-header" style="display: flex; justify-content: space-between;">
                                     <div>
-                                        <a style="font-weight:normal;">г.Киров, ул.Ленина 1
+                                        <a style="font-weight:normal;"><?= $commonInformation[0]->getAddress() ?>
                                             <div class="overlay">
                                                 <ul class="card card-body">
-                                                    <li>г.Киров, ул.Ленина 1</li>
-                                                    <li>Пн. - Пт 08:00 - 18:00</li>
-                                                    <li>Сб. - Вс выходной</li>
+                                                    <li><?= $commonInformation[0]->getAddress() ?></li>
+                                                    <li><?= $commonInformation[0]->getTimeWork() ?></li>
                                                     <br>
-                                                    <li>8-800-800-8888</li>
-                                                    <li>k.tarasov@yandex.ru</li>
+                                                    <li><?= $commonInformation[0]->getPhone() ?></li>
+                                                    <?php if (!empty($commonInformation[0]->getMail())) : ?>
+                                                        <li><?= $commonInformation[0]->getMail() ?></li>
+                                                    <?php endif; ?>
                                                 </ul>
                                             </div>
                                         </a>
                                     </div>
                                     <div>
                                         <a href="/">Главная</a>
-                                        <a href="/../templates/pages/about.php">О нас</a>
+                                        <a href="/about">О нас</a>
                                         <a href="/news">Наши работы</a>
                                     </div>
                                     <div>
-                                        <a><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</a>
+                                        <a><img class="iconSmall" src="/images/svg/phone1.svg"><?= $commonInformation[0]->getPhone() ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +156,7 @@
                                     <div class="underlining" style="padding-right:10px;">
                                         <?php if (!empty($user)) : ?>
                                             <?= $user->getNickname() ?> | <a href="/../users/log-out">Выйти</a>
-                                        <?php else : ?>
+                                        <?php elseif ($settings[0]->isVisibleLogin()) : ?>
                                             <a href="/../users/login">
                                                 <svg width="22" height="22" viewBox="0 1 16 16">
                                                     <use xlink:href="/images/svg/person.svg#icon-profile-id"></use>
