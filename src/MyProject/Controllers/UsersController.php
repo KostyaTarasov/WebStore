@@ -55,7 +55,7 @@ class UsersController extends AbstractController
             try { // Если логин введён правильный
                 $user = User::login($_POST);
                 UsersAuthService::createToken($user);
-                header('Location: /'); // Открытие главной страницы сайта
+                echo '<meta http-equiv="refresh" content="0;url=/">';
                 exit();
             } catch (InvalidArgumentException $e) {
                 $this->view->renderHtml('users/login.php', ['message' => new DangerMessage($e->getMessage())]);
