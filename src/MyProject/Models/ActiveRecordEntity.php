@@ -1,4 +1,5 @@
 <?php
+
 namespace MyProject\Models;
 
 use MyProject\Services\Db;
@@ -238,6 +239,13 @@ abstract class ActiveRecordEntity implements \JsonSerializable
             [],
             static::class
         );
+    }
+
+    public static function removePopularCatalogs(array $items): array
+    {
+        return array_values(array_filter($items, function ($item) {
+            return $item->name !== "Популярные товары";
+        }));
     }
 
     public static function getNameCatalog(string $nameTableCatalog) // Получаем имена каталогов заданные в общей таблице catalog

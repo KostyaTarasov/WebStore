@@ -3,7 +3,9 @@
 namespace MyProject\Controllers;
 
 use MyProject\Models\Articles\Article;
+use MyProject\Models\Articles\PopularGoods;
 use MyProject\Models\Articles\News;
+use MyProject\Models\Articles\Catalog;
 
 class MainController extends AbstractController
 {
@@ -11,14 +13,15 @@ class MainController extends AbstractController
     {
         $this->page(1);
     }
-    
+
     public function page(int $pageNum) // Экшн страниц каталогов
     {
-        $amount = 5; // Количество статей на 1 странице
-        $pagesCount = Article::getPagesCount($amount);
+        $amount = 7; // Количество статей на 1 странице
+        $pagesCount = PopularGoods::getPagesCount($amount); // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
         $this->view->renderHtml('main/main.php', [
-            'articles' => Article::getPage($pageNum, $amount),
-            'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
+            'articles' => PopularGoods::getPage($pageNum, $amount),
+            'catalog' => Catalog::removePopularCatalogs(Catalog::getPage($pageNum, 12)),
+            'pagesCount' => $pagesCount,
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
             'previousPageLink' => $pageNum > 1
                 ? ($pageNum - 1)

@@ -3,31 +3,72 @@ $h1 = "Главная страница";
 include __DIR__ . '/../header.php';
 ?>
 <div class="main">
-    <section aria-label="Популярные товары" class="content-container">
-        <h2 style="padding-left: 1rem; padding-bottom: 10px">Хиты продаж</h2>
-        <ul class="products-list">
-            <?php foreach ($articles as $item) : ?>
-                <li class="products-item a-edit" onclick="location.href='/catalog/popularnye_tovary/<?= $item->getId() ?>/'">
-                    <h2 class="font-text-head products-title text-big">
-                        <a href="/catalog/popularnye_tovary/<?= $item->getId() ?>/">
-                            <?= $item->getName() ?>
-                        </a>
-                    </h2>
-                    <p class="margin-null"><?= $item->getParsedText() ?></p> <!-- Вывод основного текста через парсер Markdown-разметки getParsedText(), без парсера getText()-->
-                    <p class="margin-null">Автор: <?= $item->getAuthor()->getNickname() ?></p>
-                    <?php
-                    $image = base64_encode($item->getImage());
-                    if (!empty($image) && $image != "IA==") : ?>
-                        <img class="image small" src="data:image/png;base64, <?= $image ?> ">
-                    <?php else : ?>
-                        <img class="image small" src="/images/catalog/no-image.png ">
-                    <?php endif; ?>
-                    <hr>
-                    <p class="margin-null">Цена: <?= $item->getPrice() ?> ₽</p>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+    <h1 style="font-size: 14pt; font-weight: normal; padding-left: 1rem;"><?= $h1 ?> </h1>
 
+    <section aria-label="Каталог" class="content-container section-content works-section">
+        <h2 style="padding-bottom: 10px">Каталог</h2>
+        <div class="catalog-navigation">
+            <button class="scroll-btn catalog-btn" onclick="scrollCatalogLeft()">
+                <img class="vertical-bottom" src="/images/svg/arrow-left-circle.svg">
+            </button>
+
+            <div class="works-wrapper wrapper catalog-wrapper-lines catalog-wrapper">
+                <div class="works-row">
+                    <?php foreach ($catalog as $item) : ?>
+                        <li class="products-item a-edit" onclick="location.href='/catalog/<?= $item->getNameTable() ?>/'">
+                            <div class="tdJust">
+                                <p class="font-text-head text-middle"><?= $item->getName() ?></p>
+                                <img class="image small" src="<?= $item->getPathImage() ?>">
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <button class="scroll-btn catalog-btn" onclick="scrollCatalogRight()">
+                <img class="vertical-bottom" src="/images/svg/arrow-right-circle.svg">
+            </button>
+        </div>
+    </section>
+
+    <section aria-label="Популярные товары" class="content-container section-content works-section">
+        <h2 style="padding-bottom: 10px">Хиты продаж</h2>
+        <div class="catalog-navigation">
+            <button class="scroll-btn popular-btn" onclick="scrollPopularGoodsLeft()">
+                <img class="vertical-bottom" src="/images/svg/arrow-left-circle.svg">
+            </button>
+
+            <div class="works-wrapper wrapper catalog-wrapper-lines popular-goods-wrapper">
+                <div class="works-row">
+                    <?php foreach ($articles as $item) : ?>
+                        <li class="products-item a-edit" onclick="location.href='/catalog/popularnye_tovary/<?= $item->getId() ?>/'">
+                            <div class="tdJust">
+                                <h3 class="font-text-head products-title text-big">
+                                    <a href="/catalog/popularnye_tovary/<?= $item->getId() ?>/">
+                                        <?= $item->getName() ?>
+                                    </a>
+                                </h3>
+                                <p class="margin-null"><?= $item->getParsedText() ?></p>
+                                <?php
+                                $image = base64_encode($item->getImage());
+                                if (!empty($image) && $image != "IA==") : ?>
+                                    <img class="image small" src="data:image/png;base64, <?= $image ?> ">
+                                <?php else : ?>
+                                    <img class="image small" src="/images/catalog/no-image.png ">
+                                <?php endif; ?>
+                                <hr>
+                                <p class="margin-null">Цена: <?= $item->getPrice() ?> ₽</p>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <button class="scroll-btn popular-btn" onclick="scrollPopularGoodsRight()">
+                <img class="vertical-bottom" src="/images/svg/arrow-right-circle.svg">
+            </button>
+        </div>
+
+        <!-- 
         <nav aria-label="Пацинация страниц">
             <ul class="pagination justify-content-center">
                 <?php if ($previousPageLink != null) : ?>
@@ -58,7 +99,7 @@ include __DIR__ . '/../header.php';
                     </li>
                 <?php endif; ?>
             </ul>
-        </nav>
+        </nav> -->
     </section>
 
     <section aria-label="Наши работы" class="content-container section-content works-section">
@@ -86,8 +127,43 @@ include __DIR__ . '/../header.php';
         </div>
     </section>
 
-    <section aria-label="Контакты">
+    <section aria-label=" Контакты">
         <?php include __DIR__ . '/../pages/contact.php'; ?>
     </section>
 </div>
+
+<script>
+    function scrollCatalogLeft() {
+        const catalogContainer = document.querySelector('.catalog-wrapper');
+        catalogContainer.scrollBy({
+            left: -240, // Прокрутка влево на 240 пикселей
+            behavior: 'smooth'
+        });
+    }
+
+    function scrollCatalogRight() {
+        const catalogContainer = document.querySelector('.catalog-wrapper');
+        catalogContainer.scrollBy({
+            left: 240, // Прокрутка вправо на 240 пикселей
+            behavior: 'smooth'
+        });
+    }
+
+    function scrollPopularGoodsLeft() {
+        const catalogContainer = document.querySelector('.popular-goods-wrapper');
+        catalogContainer.scrollBy({
+            left: -240, // Прокрутка влево на 240 пикселей
+            behavior: 'smooth'
+        });
+    }
+
+    function scrollPopularGoodsRight() {
+        const catalogContainer = document.querySelector('.popular-goods-wrapper');
+        catalogContainer.scrollBy({
+            left: 240, // Прокрутка вправо на 240 пикселей
+            behavior: 'smooth'
+        });
+    }
+</script>
+
 <?php include __DIR__ . '/../rightSidebar.php'; ?>

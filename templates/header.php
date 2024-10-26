@@ -87,7 +87,7 @@
                                             </ul>
                                         </li>
                                     </div>
-                                    <li><a class="dropdown-item navbar-text" href="/../templates/pages/about.php">О себе</a></li>
+                                    <li><a class="dropdown-item navbar-text" href="/../templates/pages/about.php">О нас</a></li>
                                     <li><a class="dropdown-item navbar-text" href="/contact">Контакты</a></li>
                                     <li><a class="dropdown-item navbar-text" href="/news">Наши работы</a></li>
                                 </ul>
@@ -122,7 +122,7 @@
                                     </div>
                                     <div>
                                         <a href="/">Главная</a>
-                                        <a href="/../templates/pages/about.php">О себе</a>
+                                        <a href="/../templates/pages/about.php">О нас</a>
                                         <a href="/news">Наши работы</a>
                                     </div>
                                     <div>
@@ -170,4 +170,4 @@
                 </header>
             </div>
 
-            <?php if (empty($_REQUEST['route']) || $_REQUEST['route'] != 'catalog') include __DIR__ . '/leftSidebar.php' ?>
+            <?php if (!in_array($_SERVER['REQUEST_URI'], ['/', '/catalog'])) include __DIR__ . '/leftSidebar.php' ?>

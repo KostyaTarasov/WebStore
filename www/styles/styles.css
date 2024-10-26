@@ -4,6 +4,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .content-container {
@@ -113,19 +114,14 @@ body {
 }
 
 .image.middle {
-  width: 300px; 
-  height: 300px; 
+  max-width: 100%; /* Убедитесь, что изображения не превышают ширину своего контейнера */
+  height: auto; /* Сохраняем пропорции изображений */
 }
 
 .image.big {
   width: 40%; 
   height: 40%;
   margin: auto;
-}
-
-.tdJust {
-  width: 33%;
-  vertical-align: top;
 }
 
 .font-text-head {
@@ -336,6 +332,11 @@ a:hover {
     display: none;
     visibility: hidden;
   }
+
+  .works-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .header {
@@ -450,4 +451,122 @@ a:hover .overlay{
   border-radius: 9px!important;
   box-shadow: 0 1px 7px #d3d3d3;
   list-style-type: none!important; 
+}
+
+.works-section {
+  position: relative;
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+.works-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.works-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.tdJust {
+  min-width: 240px;
+  scroll-snap-align: start;
+}
+
+.tdJust {
+  flex: 0 0 240px;
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .catalog-wrapper-lines {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Полное скрытие полосы для Chrome, Edge и Safari */
+  .catalog-wrapper-lines::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-wrapper-lines {
+    overflow-x: auto;
+}
+
+  .works-section {
+    padding: 0 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .tdJust {
+    scroll-snap-align: start;
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+
+  .scroll-btn {
+    display: none!important;
+  }
+}
+
+.scroll-btn {
+  position: absolute; /* Абсолютное позиционирование для кнопок */
+  top: 50%; /* Центрируем по вертикали */
+  transform: translateY(-50%); /* Центрируем по вертикали */
+  z-index: 10; /* Устанавливаем высокий z-index, чтобы кнопки были поверх других элементов */
+  width: 40px; /* Ширина кнопки */
+  height: 40px; /* Высота кнопки */
+  border-radius: 50%; /* Круглая форма кнопки */
+  cursor: pointer; /* Указываем, что это кнопка */
+  display: flex; /* Выравниваем изображение по центру */
+  align-items: center; /* Вертикальное выравнивание */
+  justify-content: center; /* Горизонтальное выравнивание */
+  transition: background-color 0.3s, border-color 0.3s; /* Плавный переход при наведении */
+
+  /* Добавление стилей для создания эффекта "светлого круга" */
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 7.5px rgba(255, 255, 255, 0.6), 0 0 15px rgba(0, 0, 0, 0.05);
+  border: 2px solid transparent;
+}
+
+.scroll-btn:first-child {
+  left: 5px;
+}
+
+.scroll-btn:last-child {
+  right: 5px;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(128, 128, 128, 0.8);
+}
+
+.wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.1rem;
+}
+
+.catalog-navigation {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
 }
