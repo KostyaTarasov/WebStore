@@ -61,27 +61,28 @@ include __DIR__ . '/../header.php';
         </nav>
     </section>
 
-    <section aria-label="Последние новости" class="content-container section-content">
-        <div>
-            <table class="a-edit">
-                <h2 style="padding-bottom: 10px">Новости</h2>
-                <?php foreach (array_chunk($news, 4) as $value) : ?>
-                    <tr>
-                        <?php foreach ($value as $item) : ?>
-                            <td class="tdJust">
-                                <p class="text-grey"><?= $item->getCreatedAt() ?></p>
-                                <a class="font-text-head text-middle">
-                                    <?= $item->getName() ?>
-                                </a>
-                                <a><?= $item->getParsedText() ?></a>
-                            </td>
-                        <?php endforeach; ?>
-                    </tr>
+    <section aria-label="Наши работы" class="content-container section-content works-section">
+        <h2 style="padding-bottom: 10px">Наши работы</h2>
+        <div class="works-wrapper">
+            <div class="works-row">
+                <?php foreach ($news as $item) : ?>
+                    <div class="tdJust">
+                        <p class="text-grey"><?= $item->getCreatedAt() ?></p>
+                        <p class="font-text-head text-middle"><?= $item->getName() ?></з>
+                            <?php
+                            $image = base64_encode($item->getImage());
+                            if (!empty($image) && $image != "IA==") : ?>
+                                <img class="image middle" style="margin: auto" src="data:image/png;base64, <?= $image ?>">
+                            <?php else : ?>
+                                <img class="image middle" style="margin: auto" src="/images/catalog/no-image.png ">
+                            <?php endif; ?>
+                            <a><?= $item->getParsedText() ?></a>
+                    </div>
                 <?php endforeach; ?>
-            </table>
+            </div>
         </div>
         <div>
-            <a class="link-all-news" href="/news">Все новости</a>
+            <a class="link-all-news" href="/news">Посмотреть ещё</a>
         </div>
     </section>
 

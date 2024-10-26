@@ -13,7 +13,7 @@
                 <?php }
                 if (!empty($templateName) & $templateName == 'news/news.php') { ?>
                     <div class="underlining">
-                        <li><a href="/news/add">Добавить новость</a></li>
+                        <li><a href="/news/add">Добавить работу</a></li>
                     </div>
                 <?php } ?>
             </ul>
@@ -21,7 +21,7 @@
     </td>
 </aside>
 
-<footer class="footer">Все права защищены &copy; 2022</footer>
+<footer class="footer">Все права защищены &copy; 2024</footer>
 </div>
 </div>
 </body>

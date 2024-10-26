@@ -1,13 +1,20 @@
-<?php $title = "Новости";
+<?php $title = "Наши работы";
 include __DIR__ . '/../header.php';
 ?>
 <div class="main">
     <div style="padding-left: 10px;">
-        <h2 style="padding-bottom: 10px">Новости</h2>
+        <h2 style="padding-bottom: 10px">Наши работы</h2>
         <?php foreach ($articles as $article) : ?>
             <h2 class=" font-text-head text-big td2-text-bold a-edit">
                 <?= $article->getName() ?>
             </h2>
+            <?php
+            $image = base64_encode($article->getImage());
+            if (!empty($image) && $image != "IA==") : ?>
+                <img class="image middle" style="margin: auto" src="data:image/png;base64, <?= $image ?>">
+            <?php else : ?>
+                <img class="image middle" style="margin: auto" src="/images/catalog/no-image.png ">
+            <?php endif; ?>
             <p><?= $article->getParsedText() ?></p>
             <a class="text-grey"><?= $article->getCreatedAt() ?></a>
             <hr>

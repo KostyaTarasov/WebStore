@@ -25,9 +25,11 @@ return [
     '~^users/password-rec/?hash=/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'passwordRec'], // Восстановление пароля http://localhost:8080/users/password-rec/?hash=...
 
     '~^order(.*)$~' => [\MyProject\Controllers\OrderController::class, 'order'], // Роут для заказа http://web-store/order
-    '~^formOrder(.*)$~' => [\MyProject\Controllers\OrderController::class, 'formOrder'],// Роут для оформления заказа http://web-store/orderForm
+    '~^formOrder(.*)$~' => [\MyProject\Controllers\OrderController::class, 'formOrder'], // Роут для оформления заказа http://web-store/orderForm
 
-    '~^news/(\d+)$~' => [\MyProject\Controllers\NewsController::class, 'newsPage'], // Роут новостей
-    '~^news(.*)$~' => [\MyProject\Controllers\NewsController::class, 'newsFirstPage'], // Роут первой страницы новостей
+    '~^news$~' => [\MyProject\Controllers\NewsController::class, 'newsFirstPage'], // Роут новостей
+    '~^news/(\d+)$~' => [\MyProject\Controllers\NewsController::class, 'newsPage'], // Роут первой страницы новостей
+    '~^news/(.+)/(\d+)/$~' => [\MyProject\Controllers\NewsController::class, 'view'], // Роут для просмотра товара
+    '~^news/add$~' => [\MyProject\Controllers\NewsController::class, 'add'], // Роут для добавления товара
     '~^contact$~' => [\MyProject\Controllers\СontactController::class, 'contact'], // Роут страницы контактной информации
 ];

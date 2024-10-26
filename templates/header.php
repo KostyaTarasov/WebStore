@@ -89,7 +89,7 @@
                                     </div>
                                     <li><a class="dropdown-item navbar-text" href="/../templates/pages/about.php">О себе</a></li>
                                     <li><a class="dropdown-item navbar-text" href="/contact">Контакты</a></li>
-                                    <li><a class="dropdown-item navbar-text" href="/news">Новости</a></li>
+                                    <li><a class="dropdown-item navbar-text" href="/news">Наши работы</a></li>
                                 </ul>
                                 <br>
                                 <ul class="navbar-text" style="list-style-type: none; padding-left: 10px;">
@@ -123,7 +123,7 @@
                                     <div>
                                         <a href="/">Главная</a>
                                         <a href="/../templates/pages/about.php">О себе</a>
-                                        <a href="/news">Новости</a>
+                                        <a href="/news">Наши работы</a>
                                     </div>
                                     <div>
                                         <a><img class="iconSmall" src="/images/svg/phone1.svg"> 8-800-800-8888</a>

@@ -128,7 +128,7 @@ class Article extends ActiveRecordEntity
     }
 
     //* Создание новой статьи на странице add
-    public static function createFromArray(array $fields, User $author): Article
+    public static function createFromArray(array $fields, $author = null): Article
     {
         if (empty($fields['name'])) {
             throw new InvalidArgumentException('Не передано название статьи');
@@ -138,12 +138,16 @@ class Article extends ActiveRecordEntity
             throw new InvalidArgumentException('Не передан текст статьи');
         }
 
-        $article = new Article();
+        $article = new self();
 
-        $article->setAuthor($author);
+        if (!empty($author)) {
+            $article->setAuthor($author);
+        }
         $article->setName($fields['name']);
         $article->setText($fields['text']);
-        $article->setPrice($fields['price']);
+        if (!empty($fields['price'])) {
+            $article->setPrice($fields['price']);
+        }
         $article->setImages();
 
         $article->save();
