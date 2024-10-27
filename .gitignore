@@ -7,3 +7,4 @@ debug
 manual.php
 bin
 src/MyProject/Controllers/CLI
+sftp.json
