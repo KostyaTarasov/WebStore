@@ -10,6 +10,7 @@ include __DIR__ . '/../header.php'; ?>
     <?php endif; ?>
     <?php if ($user !== null && $user->isAdmin()) :
     ?>
+        <p>Автор: <?= $article->getIsPopular() ?></p>
         <a class="btn btn-primary" href="edit">Редактировать статью</a>
         <a class="btn btn-danger" href="del">Удалить статью</a>
     <?php endif; ?>
@@ -26,6 +27,7 @@ include __DIR__ . '/../header.php'; ?>
         <input type="hidden" name="price" value="<?= $article->getPrice(); ?>" />
         <input type="hidden" name="name" value="<?= $getName; ?>" />
         <input type="hidden" name="text" value="<?= $article->getParsedText(); ?>" />
+        <input type="hidden" name="text" value="<?= $article->getIsPopular(); ?>" />
         <?php if ($settings[0]->isVisibleBuy()) : ?>
             <button type="submit" class="btn btn-success">Заказать</button>
         <?php endif; ?>

@@ -17,6 +17,10 @@ include __DIR__ . '/../header.php'; ?>
         <label for="price">Цена товара в рублях:</label><br>
         <input name="price" id="price" type="number" min="0" placeholder="0"> ₽
         <br><br>
+        <label for="is_popular">Популярность</label><br>
+        <input type="hidden" name="is_popular" value="0">
+        <input type="checkbox" name="is_popular" id="is_popular" value="1">
+        <br><br>
         Изображение: <input type="file" name="image" />
         <input type="submit" value="Создать">
     </form>

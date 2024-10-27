@@ -17,8 +17,14 @@ include __DIR__ . '/../header.php'; ?>
         <label for="price">Цена товара в рублях:</label><br>
         <input name="price" id="price" type="number" min="0" value="<?= $article->getPrice() ?>"> ₽
         <br>
+        <label for="is_popular">Популярность</label><br>
+        <input type="hidden" name="is_popular" value="0">
+        <input type="checkbox" name="is_popular" id="is_popular" value="1"
+            <?= $article->getIsPopular() == '1' ? 'checked' : '' ?>>
+        <br>
         <?php if (!empty($image) && $image != "IA==") : ?>
             <img class="image middle" src="data:image/png;base64, <?= $image ?? null ?>  " />
+            <input type="hidden" name="current_image" value="<?= $image ?>">
         <?php endif; ?>
         <br>
         Изображение: <input type="file" accept=".png, .jpg, .jpeg" name="image" />

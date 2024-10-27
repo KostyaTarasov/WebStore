@@ -189,4 +189,13 @@ class Catalog extends ActiveRecordEntity
 
         return $this;
     }
+
+    public static function mapCatalogByCpuName(array $catalog): array
+    {
+        return array_column(
+            array_map(fn($item) => ['cpu_name_catalog' => $item->cpu_name_catalog, 'id' => $item->id], $catalog),
+            'cpu_name_catalog',
+            'id'
+        );
+    }
 }

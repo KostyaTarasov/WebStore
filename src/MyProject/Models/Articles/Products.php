@@ -14,21 +14,24 @@ class Products extends ActiveRecordEntity
     protected $name;
 
     /** @var string */
-    protected  $text;
+    protected $text;
 
     /** @var int */
-    protected  $price;
+    protected $price;
 
     /** @var string */
-    protected  $authorId;
+    protected $authorId;
 
     /** @var string */
-    protected  $createdAt;
+    protected $createdAt;
 
-    protected  $content;
+    protected $content;
 
     /** @var int */
-    protected  $catalog_id;
+    protected $catalog_id;
+
+    /** @var bool */
+    protected $isPopular;
 
     public static function getTableName(): string
     {
@@ -81,6 +84,11 @@ class Products extends ActiveRecordEntity
         return $this->content;
     }
 
+    public function getIsPopular()
+    {
+        return $this->isPopular;
+    }
+
     public function setName($name1): string
     {
         return $this->name = $name1;
@@ -101,7 +109,7 @@ class Products extends ActiveRecordEntity
         return $this->catalog_id = $catalogId;
     }
 
-    public function setImages()
+    public function setImages($currentImage)
     {
         if (!empty($_FILES['image']['name'])) {
             // Проверяем, что при загрузке не произошло ошибок
@@ -112,6 +120,8 @@ class Products extends ActiveRecordEntity
                     return $this->content = file_get_contents($_FILES['image']['tmp_name']);
                 }
             }
+        } elseif (!empty($currentImage)) {
+            $this->content = base64_decode($currentImage);
         } else {
             return $this->content = " "; // Для INSERT необходимо значение. Затем в шаблоне view при выводе изображения будет проверка на пустое значение. Где " " равен "IA=="
         }
@@ -129,6 +139,11 @@ class Products extends ActiveRecordEntity
     public function setAuthor(User $author): void
     {
         $this->authorId = $author->getId();
+    }
+
+    public function setIsPopular($isPopular): string
+    {
+        return $this->is_popular = $isPopular;
     }
 
     //* Создание новой статьи на странице add
@@ -154,8 +169,8 @@ class Products extends ActiveRecordEntity
         }
 
         $article->setCatalogId(Catalog::getCatalogIdByName(Catalog::getCatalogName()));
-
-        $article->setImages();
+        $article->setIsPopular($fields['is_popular']);
+        $article->setImages($fields['current_image']);
 
         $article->save();
 
@@ -176,7 +191,8 @@ class Products extends ActiveRecordEntity
         $this->setName($fields['name']);
         $this->setText($fields['text']);
         $this->setPrice($fields['price']);
-        $this->setImages();
+        $this->setIsPopular($fields['is_popular']);
+        $this->setImages($fields['current_image']);
         $this->save();
 
         return $this;
@@ -190,7 +206,7 @@ class Products extends ActiveRecordEntity
     }
 
     # Получение количества страниц (для пагинации). Метод будет принимать на вход количество записей на одной странице.
-    public static function getPagesCount(int $itemsPerPage, $catalogId = null): int
+    public static function getPagesCount(int $itemsPerPage, int $catalogId = null, bool $isPopular = false): int
     {
         $db = Db::getInstance();
 
@@ -199,6 +215,11 @@ class Products extends ActiveRecordEntity
         if ($catalogId) {
             $query .= ' WHERE catalog_id = :catalogId';
             $params['catalogId'] = $catalogId;
+        }
+
+        if ($isPopular) {
+            $query .= ' WHERE is_popular = :isPopular';
+            $params['isPopular'] = $isPopular;
         }
 
         $result = $db->query($query . ';', $params, static::class);
@@ -210,7 +231,7 @@ class Products extends ActiveRecordEntity
     /**
      * @return static[]
      */
-    public static function getPage(int $pageNum, int $itemsPerPage, $catalogId = null): array
+    public static function getPage(int $pageNum, int $itemsPerPage, int $catalogId = null, bool $isPopular = false): array
     {
         $db = Db::getInstance();
 
@@ -222,8 +243,26 @@ class Products extends ActiveRecordEntity
             $params['catalogId'] = $catalogId;
         }
 
+        if ($isPopular) {
+            $query .= ' WHERE is_popular = :isPopular';
+            $params['isPopular'] = $isPopular;
+        }
+
         $query .= sprintf(' ORDER BY id DESC LIMIT %d OFFSET %d', $itemsPerPage, ($pageNum - 1) * $itemsPerPage);
 
         return $db->query($query, $params, static::class);
+    }
+
+    public function getCatalogIdByProductId(int $productId): string
+    {
+        $db = Db::getInstance();
+
+        $query = sprintf('SELECT `catalog_id` FROM `%s`', static::getTableName());
+        $params = [];
+
+        $query .= ' WHERE id = :id';
+        $params['id'] = $productId;
+
+        return $db->query($query, $params, static::class)[0]->catalog_id;
     }
 }

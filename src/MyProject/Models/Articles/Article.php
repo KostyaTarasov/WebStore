@@ -52,9 +52,6 @@ class Article extends ActiveRecordEntity
     # Возвращает имя таблицы: articles в случае если адрес /catalog/articles, где хранятся статьи.
     public static function getTableName(): string // необходим для реализации потому что объявлен абстрактно в классе родителе ActiveRecordEntity
     {
-        if ($_SERVER['REQUEST_URI'] == "/" || preg_replace('/[0-9]/', '', $_SERVER['REQUEST_URI']) == "/") {
-            return 'popularnye_tovary';
-        }
         $pregRetult = preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route'])); // заменяем цифры и слова на пустое значение чтобы вернуть имя таблицы
         $pregRetult = ActiveRecordEntity::replaceDash($pregRetult);
 
@@ -158,26 +155,6 @@ class Article extends ActiveRecordEntity
         $article->save();
 
         return $article;
-    }
-
-    // Обновление таблицы БД после ручного редактирования статьи на странице edit
-    public function updateFromArray(array $fields): Article
-    {
-        if (empty($fields['name'])) {
-            throw new InvalidArgumentException('Не передано название статьи');
-        }
-
-        if (empty($fields['text'])) {
-            throw new InvalidArgumentException('Не передан текст статьи');
-        }
-
-        $this->setName($fields['name']);
-        $this->setText($fields['text']);
-        $this->setPrice($fields['price']);
-        $this->setImages();
-        $this->save();
-
-        return $this;
     }
 
     //* Markdown-разметка. Будет прогонять текст статьи через парсер, прежде чем его вернуть

@@ -41,12 +41,10 @@ include __DIR__ . '/../header.php';
             <div class="works-wrapper wrapper catalog-wrapper-lines popular-goods-wrapper">
                 <div class="works-row">
                     <?php foreach ($articles as $item) : ?>
-                        <li class="products-item a-edit" onclick="location.href='/catalog/popularnye_tovary/<?= $item->getId() ?>/'">
+                        <li class="products-item a-edit" onclick="location.href='/catalog/<?= $mapCatalog[$item->getCatalogIdByProductId($item->getId())] ?>/<?= $item->getId() ?>/'">
                             <div class="tdJust">
                                 <h3 class="font-text-head products-title text-big">
-                                    <a href="/catalog/popularnye_tovary/<?= $item->getId() ?>/">
-                                        <?= $item->getName() ?>
-                                    </a>
+                                    <?= $item->getName() ?>
                                 </h3>
                                 <p class="margin-null"><?= $item->getParsedText() ?></p>
                                 <?php

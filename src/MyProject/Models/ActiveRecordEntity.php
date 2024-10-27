@@ -240,13 +240,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         );
     }
 
-    public static function removePopularCatalogs(array $items): array
-    {
-        return array_values(array_filter($items, function ($item) {
-            return $item->cpu_name_catalog !== "popularnye_tovary";
-        }));
-    }
-
     public static function getNameCatalog(string $nameTableCatalog) // Получаем имена каталогов заданные в общей таблице catalog
     {
         $nameTableCatalog = self::replaceuUderline($nameTableCatalog); // Заменяем имя таблицы на '-', чтобы соответстовать ЧПУ из таблицы catalog

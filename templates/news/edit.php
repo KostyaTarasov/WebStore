@@ -16,6 +16,7 @@ include __DIR__ . '/../header.php'; ?>
         <br>
         <?php if (!empty($image) && $image != "IA==") : ?>
             <img class="image middle" src="data:image/png;base64, <?= $image ?? null ?>  " />
+            <input type="hidden" name="current_image" value="<?= $image ?>">
         <?php endif; ?>
         <br>
         Изображение: <input type="file" accept=".png, .jpg, .jpeg" name="image" />

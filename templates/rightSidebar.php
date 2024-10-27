@@ -8,7 +8,7 @@
                 <?php
                 if (!empty($templateName) & $templateName == 'catalogs/products.php') { ?>
                     <div class="underlining">
-                        <a class="btn btn-primary" href="catalog/<?= $nameTableCatalog ?>/add">Добавить товар</a>
+                        <a class="btn btn-primary" href="/catalog/<?= $nameTableCatalog ?>/add">Добавить товар</a>
                     </div>
                 <?php } elseif (!empty($templateName) & $templateName == 'news/news.php') { ?>
                     <div class="underlining">

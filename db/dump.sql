@@ -20,7 +20,6 @@ INSERT INTO `catalog` (`id`, `cpu_name_catalog`, `name`, `text`) VALUES
 (3, 'televizory', 'Телевизоры', 'Дополнительное описание'),
 (4, 'naushniki', 'Наушники', 'Дополнительное описание'),
 (5, 'chajniki', 'Чайники', 'Дополнительное описание');
-(20, 'popularnye_tovary', 'Популярные товары', 'Дополнительное описание'),
 
 DROP TABLE IF EXISTS `common_information`;
 CREATE TABLE IF NOT EXISTS `common_information` (

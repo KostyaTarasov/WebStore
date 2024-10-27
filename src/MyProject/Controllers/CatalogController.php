@@ -16,7 +16,7 @@ class CatalogController extends AbstractController
     public function catalog()  // Экшн страницы "Каталоги"
     {
         $this->view->renderHtml('catalogs/catalog.php', [
-            'articles' => Catalog::removePopularCatalogs(Catalog::getPage(1, 100)),
+            'articles' => Catalog::getPage(1, 100),
         ]);
     }
 

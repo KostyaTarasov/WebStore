@@ -16,12 +16,13 @@ class MainController extends AbstractController
 
     public function page(int $pageNum) // Экшн страниц каталогов
     {
+        $catalog = Catalog::getPage($pageNum, 12);
         $amount = 7; // Количество статей на 1 странице
-        $catalogId = Catalog::getCatalogIdByName('popularnye_tovary');
-        $pagesCount = Products::getPagesCount($amount, $catalogId); // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
+        $pagesCount = Products::getPagesCount($amount, null, true); // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
         $this->view->renderHtml('main/main.php', [
-            'articles' => Products::getPage($pageNum, $amount, $catalogId),
-            'catalog' => Catalog::removePopularCatalogs(Catalog::getPage($pageNum, 12)),
+            'articles' => Products::getPage($pageNum, $amount, null, true),
+            'catalog' => $catalog,
+            'mapCatalog' => Catalog::mapCatalogByCpuName($catalog),
             'pagesCount' => $pagesCount,
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
             'previousPageLink' => $pageNum > 1

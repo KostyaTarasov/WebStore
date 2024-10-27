@@ -73,7 +73,7 @@ class News extends ActiveRecordEntity
                 }
             }
         } elseif (!empty($image)) {
-            return $this->content = $image; // Для INSERT необходимо значение. Затем в шаблоне view при выводе изображения будет проверка на пустое значение. Где " " равен "IA=="
+            return $this->content = base64_decode($image);; // Для INSERT необходимо значение. Затем в шаблоне view при выводе изображения будет проверка на пустое значение. Где " " равен "IA=="
         } else {
             return $this->content = " "; // Для INSERT необходимо значение. Затем в шаблоне view при выводе изображения будет проверка на пустое значение. Где " " равен "IA=="
         }
@@ -91,7 +91,7 @@ class News extends ActiveRecordEntity
 
         $this->setName($fields['name']);
         $this->setText($fields['text']);
-        $this->setImages($fields['image']);
+        $this->setImages($fields['current_image']);
         $this->save();
 
         return $this;
