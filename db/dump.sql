@@ -8,20 +8,19 @@ CREATE TABLE IF NOT EXISTS `catalog` (
   `cpu_name_catalog` char(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `content` mediumblob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 /*Уникальный столбец name*/
 ALTER TABLE `catalog` ADD UNIQUE(`name`);
 
-INSERT INTO `catalog` (`id`, `cpu_name_catalog`, `name`, `text`, `content`) VALUES
-(1, 'articles', 'Статьи', 'Дополнительное описание', ''),
-(2, 'holodilniki', 'Холодильники', 'Дополнительное описание', 'holodilniki'),
-(3, 'chajniki', 'Чайники', 'Дополнительное описание', 'chajniki'),
-(4, 'televizory', 'Телевизоры', 'Дополнительное описание', 'televizory'),
-(5, 'naushniki', 'Наушники', 'Дополнительное описание', 'naushniki'),
-(6, 'popularnye_tovary', 'Популярные товары', 'Дополнительное описание', 'popularnye_tovary');
+INSERT INTO `catalog` (`id`, `cpu_name_catalog`, `name`, `text`) VALUES
+(1, 'articles', 'Статьи', 'Дополнительное описание'),
+(2, 'holodilniki', 'Холодильники', 'Дополнительное описание'),
+(3, 'chajniki', 'Чайники', 'Дополнительное описание'),
+(4, 'televizory', 'Телевизоры', 'Дополнительное описание'),
+(5, 'naushniki', 'Наушники', 'Дополнительное описание'),
+(6, 'popularnye_tovary', 'Популярные товары', 'Дополнительное описание');
 
 DROP TABLE IF EXISTS `common_information`;
 CREATE TABLE IF NOT EXISTS `common_information` (
@@ -179,6 +178,24 @@ CREATE TABLE IF NOT EXISTS `holodilniki` (
 INSERT INTO `holodilniki` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
 (1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
 (2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` mediumblob NOT NULL,
+  `catalog_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+INSERT INTO `products` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`, `catalog_id`) VALUES
+(1, 1, 'Статья о себе1.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', '', 1),
+(2, 1, 'Родился в городе Киров2', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3),
+(3, 1, 'Статья о себе.3', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', '', 1),
+(4, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3);
 
 CREATE TABLE IF NOT EXISTS `chajniki` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

@@ -4,6 +4,7 @@ namespace MyProject\Controllers;
 
 use MyProject\Models\Articles\Article;
 use MyProject\Models\Articles\Catalog;
+use MyProject\Models\Articles\Products;
 
 class CatalogController extends AbstractController
 {
@@ -30,6 +31,8 @@ class CatalogController extends AbstractController
         $this->view->renderHtml('catalogs/products.php', [
             'nameCatalog' => Article::getNameCatalog($nameTableCatalog),
             'nameTableCatalog' => $nameTableCatalog,
+            // 'articles' => Products::getPage($pageNum, $amount, 3),
+            // 'pagesCount' => Products::getPagesCount($amount, 3), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
             'articles' => Article::getPage($pageNum, $amount),
             'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей 5 на одной странице
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
