@@ -39,7 +39,7 @@ class Catalog extends ActiveRecordEntity
     public function getPathImage(): string
     {
         $path = '/images/catalog/';
-        $fullPath = $path . $this->content . '.png';
+        $fullPath = $path . $this->cpu_name_catalog . '.png';
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $fullPath)) {
             return $fullPath;
         } else {
@@ -89,7 +89,7 @@ class Catalog extends ActiveRecordEntity
     /**
      * @return static[]
      */
-    public static function getCPU() : array
+    public static function getCPU(): array
     {
         $db = Db::getInstance();
         $arrCatalogs = $db->query(

@@ -17,6 +17,10 @@ include __DIR__ . '/../header.php';
             <?php endif; ?>
             <p><?= $article->getParsedText() ?></p>
             <a class="text-grey"><?= $article->getCreatedAt() ?></a>
+            <?php if ($user !== null && $user->isAdmin()) : ?>
+                <a class="btn btn-primary" href="news/<?= $article->getId() ?>/edit">Редактировать статью</a>
+                <a class="btn btn-danger" href="news/<?= $article->getId() ?>/del">Удалить статью</a>
+            <?php endif; ?>
             <hr>
         <?php endforeach; ?>
     </div>

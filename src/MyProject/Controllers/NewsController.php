@@ -4,6 +4,7 @@ namespace MyProject\Controllers;
 
 use MyProject\Models\Articles\Article;
 use MyProject\Models\Articles\News;
+use MyProject\Models\Articles\Images;
 
 class NewsController extends AbstractController
 {
@@ -15,10 +16,10 @@ class NewsController extends AbstractController
     public function newsPage(int $pageNum) // Экшн страницы определённого каталога товаров
     {
         $amount = 20; // Количество статей на каждой странице
-        $pagesCount = Article::getPagesCount($amount);
+        $pagesCount = News::getPagesCount($amount);
         $this->view->renderHtml('news/news.php', [
-            'articles' => Article::getPage($pageNum, $amount),
-            'pagesCount' => Article::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей на одной странице
+            'articles' => News::getPage($pageNum, $amount),
+            'pagesCount' => News::getPagesCount($amount), // Вызываем метод для подсчёта колич. страниц, в параметрах количество записей на одной странице
             'currentPageNum' => $pageNum, // передаём номер текущей страницы в шаблон
             'previousPageLink' => $pageNum > 1
                 ? ($pageNum - 1)
@@ -31,15 +32,12 @@ class NewsController extends AbstractController
 
     public function view(int $articleId)
     {
-        $article = Article::getById($articleId);
+        $article = News::getById($articleId);
 
         if ($article === null) {
-            // $this->view->renderHtml('errors/404.php', [], 404);
-            // return;
             throw new NotFoundException();
         }
 
-        # Рефлектор для вывода свойств объекта Article
         $reflector = new \ReflectionObject($article);
         $properties = $reflector->getProperties();
 
@@ -47,14 +45,11 @@ class NewsController extends AbstractController
             $propertiesNames[] = $property->getName(); // getName() возвращает имя класса
         }
 
-
-        # Получение нужного юзера:
-        //$articleAuthor = User::getById($article->getAuthorId());
         $this->view->renderHtml('news/view.php', [
             'nameTableCatalog' => Article::getTableName(),
             'article' => $article,
             'image' => Images::loadImage($articleId), // Для рендеринга изображения из бд
-            //'author' => $articleAuthor
+            //'author' => User::getById($article->getAuthorId())
         ]);
     }
 
@@ -71,16 +66,69 @@ class NewsController extends AbstractController
 
         if (!empty($_POST)) {
             try {
-                News::createFromArray($_POST);
+                Article::createFromArray($_POST);
             } catch (InvalidArgumentException $e) {
                 $this->view->renderHtml('news/add.php', ['error' => $e->getMessage()]);
                 return;
             }
 
-            header('Location:' . '/', true, 302);
+            header('Location:' . '/news', true, 302);
             exit();
         }
 
         $this->view->renderHtml('news/add.php');
+    }
+
+    public function edit(int $articleId): void
+    {
+        $news = News::getById($articleId);
+
+        if ($news === null) {
+            throw new NotFoundException();
+        }
+
+        if ($this->user === null) {
+            throw new UnauthorizedException();
+        }
+
+        if (!$this->user->isAdmin()) {
+            throw new Forbidden('Для редактирования статьи нужно обладать правами администратора');
+        }
+
+        if (!empty($_POST)) {
+            try {
+                $news->updateFromArray($_POST);
+            } catch (InvalidArgumentException $e) {
+                $this->view->renderHtml('news/edit.php', ['error' => $e->getMessage()]);
+                return;
+            }
+
+            header('Location: /news', true, 302);
+            exit();
+        }
+
+        $this->view->renderHtml('news/edit.php', [
+            'article' => $news,
+            'image' => Images::loadImage($articleId),
+        ]);
+    }
+
+    public function del(int $delArticleId): void
+    {
+        if ($this->user === null) {
+            throw new UnauthorizedException(); // 401) 
+        }
+
+        if (!$this->user->isAdmin()) {
+            throw new Forbidden('Для удаления статьи нужно обладать правами администратора'); // Бросаем исключение 403, пользователь с ролью user не может удалить статью, нужна роль admin
+        }
+
+        $news = News::getById($delArticleId);
+        if ($news === null) {
+            throw new NotFoundException(); // 404
+        }
+
+        $news->delete(); // Вызов метода удаления статьи
+        header('Location: /news', true, 302);
     }
 }

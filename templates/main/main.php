@@ -1,5 +1,5 @@
 <?php $title = $commonInformation[0]->getTitle();
-$h1 = $commonInformation[0]->getH();
+$h1 = $commonInformation[0]->getH() . $commonInformation[0]->getDescription();
 include __DIR__ . '/../header.php';
 ?>
 <div class="main">

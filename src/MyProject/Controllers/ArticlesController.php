@@ -13,7 +13,6 @@ use MyProject\Models\Users\User;
 //* Контроллер для работы со статьями (просмотр, добавление, обновление, удаление статей)
 class ArticlesController extends AbstractController
 {
-
     # Запрос в базу, в котором получим статью с нужным id
     public function view(int $articleId)
     {
@@ -43,7 +42,6 @@ class ArticlesController extends AbstractController
             //'author' => $articleAuthor
         ]);
     }
-
 
     # Обновление БД через Active Record, в routes.php прописывается edit()
     public function edit(int $articleId): void // Экшн http://localhost:8080/articles/1/edit

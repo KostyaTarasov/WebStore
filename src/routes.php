@@ -31,7 +31,10 @@ return [
     '~^news/(\d+)$~' => [\MyProject\Controllers\NewsController::class, 'newsPage'], // Роут первой страницы новостей
     '~^news/(.+)/(\d+)/$~' => [\MyProject\Controllers\NewsController::class, 'view'], // Роут для просмотра товара
     '~^news/add$~' => [\MyProject\Controllers\NewsController::class, 'add'], // Роут для добавления товара
+    '~^news/(\d+)/edit$~' => [\MyProject\Controllers\NewsController::class, 'edit'], // Роут для изменения наших работ
+    '~^news/(\d+)/del$~' => [\MyProject\Controllers\NewsController::class, 'del'], // Роут для удаления наших работ
     '~^contact$~' => [\MyProject\Controllers\СontactController::class, 'contact'], // Роут страницы контактной информации
 
-    '~^about$~' => [\MyProject\Controllers\AboutController::class, 'action'], // Роут страницы контактной информации
+    '~^about$~' => [\MyProject\Controllers\AboutController::class, 'action'], // Роут страницы о нас
+    '~^about/edit$~' => [\MyProject\Controllers\AboutController::class, 'edit'], // Роут для изменения страницы о нас и базовой информации с настройками сайта
 ];

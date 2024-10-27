@@ -8,12 +8,12 @@
                 <?php
                 if (!empty($templateName) & $templateName == 'catalogs/products.php') { ?>
                     <div class="underlining">
-                        <li><a href="catalog/<?= $nameTableCatalog ?>/add">Добавить товар</a></li>
+                        <a class="btn btn-primary" href="catalog/<?= $nameTableCatalog ?>/add">Добавить товар</a>
                     </div>
                 <?php }
                 if (!empty($templateName) & $templateName == 'news/news.php') { ?>
                     <div class="underlining">
-                        <li><a href="/news/add">Добавить работу</a></li>
+                        <a class="btn btn-primary" href="/news/add">Добавить работу</a>
                     </div>
                 <?php } ?>
             </ul>
@@ -21,7 +21,7 @@
     </td>
 </aside>
 
-<footer class="footer">Все права защищены &copy; 2024</footer>
+<footer class="footer">Все права защищены &copy; <?= date('Y') ?></footer>
 </div>
 </div>
 </body>
