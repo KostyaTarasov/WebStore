@@ -10,10 +10,13 @@
                     <div class="underlining">
                         <a class="btn btn-primary" href="catalog/<?= $nameTableCatalog ?>/add">Добавить товар</a>
                     </div>
-                <?php }
-                if (!empty($templateName) & $templateName == 'news/news.php') { ?>
+                <?php } elseif (!empty($templateName) & $templateName == 'news/news.php') { ?>
                     <div class="underlining">
                         <a class="btn btn-primary" href="/news/add">Добавить работу</a>
+                    </div>
+                <?php } elseif (!empty($templateName) & $templateName == 'catalogs/catalog.php') { ?>
+                    <div class="underlining">
+                        <a class="btn btn-primary" href="/catalogs/add">Добавить каталог</a>
                     </div>
                 <?php } ?>
             </ul>

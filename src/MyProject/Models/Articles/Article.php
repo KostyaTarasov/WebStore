@@ -57,6 +57,11 @@ class Article extends ActiveRecordEntity
         }
         $pregRetult = preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route'])); // заменяем цифры и слова на пустое значение чтобы вернуть имя таблицы
         $pregRetult = ActiveRecordEntity::replaceDash($pregRetult);
+
+        if (in_array($pregRetult, Catalog::getMapCatalogNamesId())) {
+            return 'products';
+        }
+
         return $pregRetult;
     }
 

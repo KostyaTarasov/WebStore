@@ -15,7 +15,7 @@ include __DIR__ . '/../header.php'; ?>
         <textarea name="text" id="text" rows="10" cols="80"><?= $_POST['text'] ?? $article->getText() ?></textarea><br>
         <br>
         <label for="price">Цена товара в рублях:</label><br>
-        <input name="price" id="price" type="number" step="10" min="0" value="<?= $article->getPrice() ?>"> ₽
+        <input name="price" id="price" type="number" min="0" value="<?= $article->getPrice() ?>"> ₽
         <br>
         <?php if (!empty($image) && $image != "IA==") : ?>
             <img class="image middle" src="data:image/png;base64, <?= $image ?? null ?>  " />

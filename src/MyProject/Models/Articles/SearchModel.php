@@ -14,7 +14,7 @@ class SearchModel
 
     public static function countArticles(array $valueFromPost)
     {
-        $tableCatalogs = self::getNamesTableCatalogs();
+        $tableCatalogs = [Products::getTableName()];
         $sql = "";
         $sql = 'SELECT';
         foreach ($tableCatalogs as $table) {
@@ -53,23 +53,13 @@ class SearchModel
         return ceil($countArticle / $itemsPerPage);
     }
 
-
-    public static function getNamesTableCatalogs() // Получаем имена таблиц каталогов заданные в общей таблице catalog
-    {
-        $db = Db::getInstance();
-        $allTable = $db->query(
-            "SELECT `cpu_name_catalog` FROM `catalog`;",
-        );
-        return array_column($allTable, 'cpu_name_catalog'); // Извлечь значения из ассоциативного массива и записать их в индексированный массив без ключа
-    }
-
     //* Получение статей на n-ой странице
     /** 
      * @return static[]
      */
     public static function getPage(int $pageNum, int $itemsPerPage, array $valueFromPost) // параметры: номер страницы, количество записей на одной странице, слова которые ищет пользователь.
     {
-        $tableCatalogs = self::getNamesTableCatalogs();
+        $tableCatalogs = [Products::getTableName()];
         $sql = "";
         foreach ($tableCatalogs as $table) {
             $table = ActiveRecordEntity::replaceDash($table);

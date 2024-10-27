@@ -221,7 +221,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         return ceil($result[0]->cnt / $itemsPerPage); // Общее количество записей делим на 5 записей на одной странице, затем округляем и получаем необходимое колич страниц
     }
 
-
     //* Получение записей на n-ой страничке
     /**
      * @return static[]
@@ -244,7 +243,7 @@ abstract class ActiveRecordEntity implements \JsonSerializable
     public static function removePopularCatalogs(array $items): array
     {
         return array_values(array_filter($items, function ($item) {
-            return $item->name !== "Популярные товары";
+            return $item->cpu_name_catalog !== "popularnye_tovary";
         }));
     }
 

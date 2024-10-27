@@ -6,6 +6,7 @@ use MyProject\Exceptions\InvalidArgumentException;
 use MyProject\Exceptions\Forbidden;
 use MyProject\Exceptions\NotFoundException;
 use MyProject\Exceptions\UnauthorizedException;
+use MyProject\Models\Articles\Products;
 use MyProject\Models\Articles\Article;
 use MyProject\Models\Articles\Images;
 use MyProject\Models\Users\User;
@@ -16,7 +17,7 @@ class ArticlesController extends AbstractController
     # Запрос в базу, в котором получим статью с нужным id
     public function view(int $articleId)
     {
-        $article = Article::getById($articleId);
+        $article = Products::getById($articleId);
 
         if ($article === null) {
             // $this->view->renderHtml('errors/404.php', [], 404);
@@ -46,7 +47,7 @@ class ArticlesController extends AbstractController
     # Обновление БД через Active Record, в routes.php прописывается edit()
     public function edit(int $articleId): void // Экшн http://localhost:8080/articles/1/edit
     {
-        $article = Article::getById($articleId);
+        $article = Products::getById($articleId);
 
         if ($article === null) {
             // $this->view->renderHtml('errors/404.php', [], 404);
@@ -107,7 +108,7 @@ class ArticlesController extends AbstractController
 
         if (!empty($_POST)) {
             try {
-                $article = Article::createFromArray($_POST, $this->user);
+                $article = Products::createFromArray($_POST, $this->user);
             } catch (InvalidArgumentException $e) {
                 $this->view->renderHtml('articles/add.php', ['error' => $e->getMessage()]);
                 return;
@@ -145,7 +146,7 @@ class ArticlesController extends AbstractController
             throw new Forbidden('Для удаления статьи нужно обладать правами администратора'); // Бросаем исключение 403, пользователь с ролью user не может удалить статью, нужна роль admin
         }
 
-        $article = Article::getById($delArticleId);
+        $article = Products::getById($delArticleId);
         if ($article === null) {
             throw new NotFoundException(); // 404
         }

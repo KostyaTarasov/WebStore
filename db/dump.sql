@@ -17,10 +17,10 @@ ALTER TABLE `catalog` ADD UNIQUE(`name`);
 INSERT INTO `catalog` (`id`, `cpu_name_catalog`, `name`, `text`) VALUES
 (1, 'articles', 'Статьи', 'Дополнительное описание'),
 (2, 'holodilniki', 'Холодильники', 'Дополнительное описание'),
-(3, 'chajniki', 'Чайники', 'Дополнительное описание'),
-(4, 'televizory', 'Телевизоры', 'Дополнительное описание'),
-(5, 'naushniki', 'Наушники', 'Дополнительное описание'),
-(6, 'popularnye_tovary', 'Популярные товары', 'Дополнительное описание');
+(3, 'televizory', 'Телевизоры', 'Дополнительное описание'),
+(4, 'naushniki', 'Наушники', 'Дополнительное описание'),
+(5, 'chajniki', 'Чайники', 'Дополнительное описание');
+(20, 'popularnye_tovary', 'Популярные товары', 'Дополнительное описание'),
 
 DROP TABLE IF EXISTS `common_information`;
 CREATE TABLE IF NOT EXISTS `common_information` (
@@ -91,35 +91,6 @@ ALTER TABLE `users_activation_codes`
 ALTER TABLE `users_activation_codes`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-
-INSERT INTO `articles` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
-(1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
-(2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', ''),
-(3, 1, 'Статья создана с помощью разметки Markdown', 'Wow!\r\n\r\n## It work!\r\n\r\n### Really?\r\n\r\n> Yes\r\n\r\n`\r\ncode\r\n`', 0, '2022-01-16 16:55:02', ''),
-(4, 4, 'Как я отдохнул', 'Побывал в Сочи!', 0, '2022-03-08 20:22:19', ''),
-(5, 18, 'Блог', 'Новая история зашла', 0, '2022-03-09 00:11:20', ''),
-(6, 1, 'Название статьи 1', 'Текст статьи 1', 0, '2022-03-27 11:28:38', ''),
-(7, 1, 'Название статьи 2', 'Текст статьи 2.', 0, '2022-03-27 11:28:38', ''),
-(8, 1, 'Название статьи 4', 'Текст статьи 5', 0, '2022-03-27 11:28:38', ''),
-(9, 1, 'Название статьи 5', 'Текст статьи 5', 0, '2022-03-27 11:28:38', ''),
-(10, 1, 'Название статьи 6', '`%\":value\"%`', 0, '2022-03-27 11:28:38', ''),
-(11, 1, 'Название статьи 7', '%\":value\"%', 0, '2022-03-27 11:28:38', ''),
-(12, 1, 'Название статьи 9', 'Текст статьи 9', 0, '2022-03-27 11:28:38', ''),
-(13, 1, 'Изменённая статья1', 'Текст статьи 10', 0, '2022-03-27 11:28:38', '');
-
 CREATE TABLE IF NOT EXISTS `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -145,40 +116,6 @@ INSERT INTO `question` (`id`, `name`, `text`, `created_at`) VALUES
 (1, 'Антон', 'Подскажите, какой срок доставки у данного товара?', '2022-05-22 19:30:21'),
 (2, 'Василиса', 'Кто является производителем у товара?', '2022-05-22 19:30:21');
 
-CREATE TABLE IF NOT EXISTS `popularnye_tovary` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-INSERT INTO `popularnye_tovary` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
-(1, 1, 'Популярный товар 1', 'Информация о товаре', '66', '2022-05-22 19:30:21', ''),
-(2, 1, 'Популярный товар 2', 'Информация о товаре', '77', '2022-05-22 19:30:21', ''),
-(3, 1, 'Популярный товар 3', 'Информация о товаре', '88', '2022-05-22 19:30:21', ''),
-(4, 1, 'Популярный товар 4', 'Информация о товаре', '99', '2022-05-22 19:30:21', ''),
-(5, 1, 'Популярный товар 5', 'Информация о товаре', '105', '2022-05-22 19:30:21', ''),
-(6, 1, 'Популярный товар 6', 'Информация о товаре', '107', '2022-05-22 19:30:21', '');
-
-CREATE TABLE IF NOT EXISTS `holodilniki` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-INSERT INTO `holodilniki` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
-(1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
-(2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
-
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
@@ -188,59 +125,27 @@ CREATE TABLE IF NOT EXISTS `products` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` mediumblob NOT NULL,
   `catalog_id` int(11) NOT NULL,
+  `is_popular` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-INSERT INTO `products` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`, `catalog_id`) VALUES
-(1, 1, 'Статья о себе1.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', '', 1),
-(2, 1, 'Родился в городе Киров2', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3),
-(3, 1, 'Статья о себе.3', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', '', 1),
-(4, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3);
-
-CREATE TABLE IF NOT EXISTS `chajniki` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-INSERT INTO `chajniki` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
-(1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
-(2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
-
-CREATE TABLE IF NOT EXISTS `televizory` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-INSERT INTO `televizory` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
-(1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
-(2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
-
-CREATE TABLE IF NOT EXISTS `naushniki` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `content` mediumblob NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-INSERT INTO `naushniki` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`) VALUES
-(1, 1, 'Статья о себе.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', ''),
-(2, 1, 'Родился в городе Киров', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '');
+INSERT INTO `products` (`id`, `author_id`, `name`, `text`, `price`, `created_at`, `content`, `catalog_id`, `is_popular`) VALUES
+(1, 1, 'Статья о себе1.', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', '', 1, 0),
+(2, 1, 'Родился в городе Киров2', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 1),
+(3, 1, 'Статья о себе.3', 'Текст статьи 5', NULL, '2022-01-31 18:52:51', '', 1, 0),
+(4, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 0),
+(5, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 4, 1),
+(6, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 4, 1),
+(7, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 2, 1),
+(8, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 0),
+(9, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 1),
+(10, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 2, 0),
+(11, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 1, 1),
+(12, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 0),
+(13, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 4, 1),
+(14, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 0),
+(15, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 1, 0),
+(16, 1, 'Родился в городе Киров4', 'Текст статьи 6', NULL, '2022-01-31 18:52:51', '', 3, 0);
 
 CREATE TABLE `orders` (
     `id` int(11) NOT NULL AUTO_INCREMENT,

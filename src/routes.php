@@ -5,6 +5,9 @@ return [
     '~^(\d+)$~' => [\MyProject\Controllers\MainController::class, 'page'], // Роут главной страницы
 
     '~^catalog$~' => [\MyProject\Controllers\CatalogController::class, 'catalog'], // Роут страницы общего каталога
+    '~^catalogs/add$~' => [\MyProject\Controllers\CatalogController::class, 'add'], // Роут для добавления каталога
+    '~^list/(\d+)/edit$~' => [\MyProject\Controllers\CatalogController::class, 'edit'], // Роут для изменения каталога
+    '~^list/(\d+)/del$~' => [\MyProject\Controllers\CatalogController::class, 'del'], // Роут для удаления каталога
 
     '~^catalog/(.+)/(\d+)/$~' => [\MyProject\Controllers\ArticlesController::class, 'view'], // Роут для просмотра товара
     '~^catalog/(.+)/(\d+)/edit$~' => [\MyProject\Controllers\ArticlesController::class, 'edit'], // Роут для изменения товара

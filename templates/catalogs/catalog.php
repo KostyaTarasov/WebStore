@@ -13,6 +13,10 @@ include __DIR__ . '/../header.php';
                 </a>
                 </h2>
                 <p class="margin-null"><?= $item->getText() ?></p>
+                <?php if ($user !== null && $user->isAdmin()) : ?>
+                    <a class="btn btn-primary" href="list/<?= $item->getId() ?>/edit">Редактировать каталог</a>
+                    <a class="btn btn-danger" href="list/<?= $item->getId() ?>/del">Удалить каталог</a>
+                <?php endif; ?>
             </li>
         <?php endforeach; ?>
     </ul>

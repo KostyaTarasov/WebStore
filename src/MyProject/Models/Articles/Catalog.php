@@ -63,9 +63,35 @@ class Catalog extends ActiveRecordEntity
         return htmlentities($this->price);
     }
 
-    public function getImage()
+    public function setName($name): string
     {
-        return $this->content;
+        return $this->name = $name;
+    }
+
+    public function setText($text): string
+    {
+        return $this->text = $text;
+    }
+
+    public function setImages($fileName)
+    {
+        $uploadDir =  'images/catalog/';
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['image']['tmp_name'];
+            $fileNameCmps = pathinfo($_FILES['image']['name']);
+            $fileExtension = strtolower($fileNameCmps['extension']);
+            $allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+            if (in_array($fileExtension, $allowedFileTypes)) {
+                $destPath = $uploadDir . $fileName . '.' . $fileExtension;
+
+                if (!move_uploaded_file($fileTmpPath, $destPath)) {
+                    throw new InvalidArgumentException('Произошла ошибка при загрузке файла');
+                }
+            } else {
+                throw new InvalidArgumentException('Недопустимый тип файла, разрешены только изображения');
+            }
+        }
     }
 
     //* Получение записей на n-ой страничке
@@ -102,10 +128,65 @@ class Catalog extends ActiveRecordEntity
         );
         foreach ($arrCatalogs as $value) {
             if (empty($value->cpu_name_catalog)) { // Если в базе данных для данного каталога нету ЧПУ
-                $value->cpu_name_catalog = self::slugify($value->name); // Транслитерация из кириллицы в латиницу для ЧПУ, замена промежутков и лишних символов на '-', Lower
+                $value->cpu_name_catalog = self::replaceDash(self::slugify($value->name)); // Транслитерация из кириллицы в латиницу для ЧПУ, замена промежутков и лишних символов на '-', Lower
                 $value->save(); // Создание нового ЧПУ в базе данных
             }
         }
         return $arrCatalogs;
+    }
+
+    public static function getMapCatalogNamesId(): array
+    {
+        $db = Db::getInstance();
+        $arrCatalogs = $db->query(
+            sprintf(
+                'SELECT `id`,`cpu_name_catalog` FROM `%s` ORDER BY id',
+                static::getTableName()
+            ),
+            [],
+            static::class
+        );
+        return array_column($arrCatalogs, 'cpu_name_catalog', 'id');
+    }
+
+    # Возвращает имя каталога из url
+    public static function getCatalogName(): string
+    {
+        $pregRetult = preg_replace("/[0-9]/", '', str_replace(array('catalog', 'product', 'page', '/', 'add', 'edit', 'del', 'bye'), '', $_GET['route']));
+        $pregRetult = ActiveRecordEntity::replaceDash($pregRetult);
+        return $pregRetult;
+    }
+
+    public static function getCatalogIdByName(string $catalogName): int
+    {
+        $db = Db::getInstance();
+
+        // Создаем запрос и параметры
+        $query = sprintf('SELECT `id` FROM `%s`', static::getTableName());
+        $params = ['cpu_name_catalog' => $catalogName];
+
+        // Добавляем условие
+        $query .= ' WHERE cpu_name_catalog = :cpu_name_catalog;';
+
+        // Выполняем запрос
+        return $db->query($query, $params, static::class)[0]->id;
+    }
+
+    public function updateFromArray(array $fields): self
+    {
+        if (empty($fields['name'])) {
+            throw new InvalidArgumentException('Не передано название каталога');
+        }
+
+        if (empty($fields['text'])) {
+            //throw new InvalidArgumentException('Не передан текст каталога');
+        }
+
+        $this->setName($fields['name']);
+        $this->setImages(self::slugify($fields['name']));
+        $this->setText($fields['text']);
+        $this->save();
+
+        return $this;
     }
 }
